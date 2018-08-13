@@ -25,8 +25,6 @@
 				
 				<?php include_once 'views/include/menuResponsive.php'?>
 			</div>
-		</div>
-		
-		
+		</div>		
 	</div>
 </header>
