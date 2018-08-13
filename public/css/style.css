@@ -1,0 +1,372 @@
+/*--------------navigation mobile---------*/
+
+#show_menu,
+#mainmobil,
+#mobil_navigation,
+#closemenu {
+    display: none;
+}
+
+/*------------------navigation mobile---------------*/
+
+h1 {
+    width: 100%;
+    margin-top: 20%;
+    text-align: center;
+    text-shadow: 4px 4px 4px black;
+    font-family: 'Tangerine';
+    font-size: 58px;
+    color: rgb(233, 177, 4);
+}
+
+/*bouton d'entrée et boutons en lire plus*/
+
+#input1,
+.input_read {
+    display: flex;
+    display: -ms-flexbox;
+    justify-content: center;
+    -ms-flex-pack: justify;
+    position: relative;
+    margin: auto;
+    padding: 15px 0;
+    border: 4px solid #FFF;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 3px;
+    -o-border-radius: 14px;
+    -ms-border-radius: 3px;
+    -ms-border-radius: 14px;
+    border-radius: 3px;
+    border-radius: 14px;
+    -webkit-box-shadow: 0 3px 10px #ccc;
+    -moz-box-shadow: 0 3px 10px #ccc;
+    -ms-box-shadow: 0 3px 10px #ccc;
+    -o-box-shadow: 0 3px 10px #ccc;
+    box-shadow: 0 3px 10px #ccc;
+    text-transform: uppercase;
+    font-family: "Raleway",sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    background: linear-gradient(rgb(62, 64, 68), rgb(32,61,119) );
+    background: -moz-linear-gradient(rgb(62,64,68), rgb(32,61,119) );
+    background: -webkit-linear-gradient(rgb(62,64,68), rgb(32,61,119) );
+    background: -o-linear-gradient(rgb(62,64,68), rgb(32,61,119) ); 
+}
+
+#input1:hover,
+.input_read:hover {
+    padding: 10px;
+    -webkit-text-shadow: 1px 1px 3px #444;
+    -moz-text-shadow: 1px 1px 3px #444;
+    -o-text-shadow: 1px 1px 3px #444;
+    text-shadow: 1px 1px 3px #444;
+    font-weight: bold;
+    color: rgb(30,56,56);
+    background-image: linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -moz-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -webkit-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -o-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    -webkit-box-shadow: 1px 1px 4px #777;
+    -moz-box-shadow: 1px 1px 4px #777;
+    -o-box-shadow: 1px 1px 4px #777;
+    -ms-box-shadow: 1px 1px 4px #777;
+    box-shadow: 1px 1px 4px #777;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    cursor: pointer;
+}
+
+a {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: rgb(221,208,54);
+}
+
+/* ----effet de neige qui tombe sur image d'accueil--------------*/
+
+html {
+    background: #9A97A5;
+    cursor: url("../image/pencil.gif"), default;
+}
+
+.welcome {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 900px;
+    border: 2px double white;
+    overflow: hidden;
+    background: url(../image/photo16.jpg) center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-box-shadow: 0 10px 10px #ccc;
+    -moz-box-shadow: 0 10px 10px #ccc;
+    -ms-box-shadow: 0 10px 10px #ccc;
+    -o-box-shadow: 0 10px 10px #ccc;
+    box-shadow: 0 10px 10px #ccc;
+}
+
+#alaska {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.snow {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.snow__layer {
+    position: absolute;
+    right: -100px;
+    left: -100px;
+    -moz-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -o-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -ms-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -webkit-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -webkit-transform: translateX(-50px);
+    -o-transform: translateX(-50px);
+    -ms-transform: translateX(-50px);
+    transform: translateX(-50px);
+    -webkit-perspective: 100px;
+    -moz-perspective: 100px;
+    -o-perspective: 100px;
+    -ms-perspective: 100px;
+    perspective: 100px;
+}
+
+.snow__fall {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2000px;
+    background: url(../image/snow-light.png);
+    -webkit-animation: fall 10s linear infinite;
+    -moz-animation: fall 10s linear infinite;
+    -o-animation: fall 10s linear infinite;
+    -ms-animation: fall 10s linear infinite;
+    animation: fall 10s linear infinite;
+}
+
+.snow__layer:nth-child(1) {
+    -webkit-animation-duration: 35s;
+    -moz-animation-duration: 35s;
+    -o-animation-duration: 35s;
+    -ms-animation-duration: 35s;
+    animation-duration: 35s;
+}
+
+.snow__layer:nth-child(1) .snow__fall {
+    left: -2000px;
+    width: 4000px;
+    background: url(../image/snow-blur.png);
+    -webkit-animation-name: fallblur;
+    -moz-animation-name: fallblur;
+    -o-animation-name: fallblur;
+    -ms-animation-name: fallblur;
+    animation-name: fallblur;
+    -webkit-transform: translateZ(25px);
+    -moz-transform: translateZ(25px);
+    -o-transform: translateZ(25px);
+    -ms-transform: translateZ(25px);
+    transform: translateZ(25px);
+}
+
+.snow__layer:nth-child(2) {
+    -webkit-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -o-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -moz-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    -ms-animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+    animation: wind 5s cubic-bezier(0.45,0.05,0.55,0.95) infinite alternate;
+}
+
+.snow__layer:nth-child(2) .snow__fall {
+    background: url(../image/snow-medium.png);
+    -webkit-animation-duration: 25s;
+    -moz-animation-duration: 25s;
+    -o-animation-duration: 25s;
+    -ms-animation-duration: 25s;
+    animation-duration: 25s;
+}
+
+.snow__fall:nth-child(3) {
+    background-size: 250px;
+    -webkit-animation-duration: 10s;
+    -moz-animation-duration: 10s;
+    -o-animation-duration: 10s;
+    -ms-animation-duration: 10s;
+    animation-duration: 10s;
+}
+
+.snow__fall:nth-child(2) {
+    background-size: 500px;
+    -webkit-animation-duration: 20s;
+    -o-animation-duration: 20s;
+    -moz-animation-duration: 20s;
+    -ms-animation-duration: 20s;
+    animation-duration: 20s;
+}
+
+.snow__layer:nth-child(4) .snow__fall {
+    -webkit-animation-name: falllight;
+    -moz-animation-name: falllight;
+    -o-animation-name: falllight;
+    -ms-animation-name: falllight;
+    animation-name: falllight;
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -o-animation-duration: 5s;
+    -ms-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-transform: translateZ(50px);
+    -moz-transform: translateZ(50px);
+    -o-transform: translateZ(50px);
+    -ms-transform: translateZ(50px);
+    transform: translateZ(50px);
+}
+
+@-webkit-keyframes fall {
+    from {
+   
+        transform: translateY(-1000px);
+    }
+}
+
+@-o-keyframes fall {
+    from {
+   
+        transform: translateY(-1000px);
+    }
+}
+
+@-moz-keyframes fall {
+    from {
+   
+        transform: translateY(-1000px);
+    }
+}
+
+@keyframes fall {
+    from {
+       
+        transform: translateY(-1000px);
+    }
+}
+
+@-webkit-keyframes falllight {
+    from {
+ 
+        transform: translateY(-1000px) translateZ(50px);
+    }
+}
+
+@-o-keyframes falllight {
+    from {
+ 
+        transform: translateY(-1000px) translateZ(50px);
+    }
+}
+
+@-moz-keyframes falllight {
+    from {
+ 
+        transform: translateY(-1000px) translateZ(50px);
+    }
+}
+
+
+@keyframes falllight {
+    from {
+       
+        transform: translateY(-1000px) translateZ(50px);
+    }
+}
+
+@-webkit-keyframes fallblur {
+    from {
+  
+        transform: translateY(-1000px) translateZ(25px);
+    }
+}
+
+@-o-keyframes fallblur {
+    from {
+  
+        transform: translateY(-1000px) translateZ(25px);
+    }
+}
+
+@-moz-keyframes fallblur {
+    from {
+  
+        transform: translateY(-1000px) translateZ(25px);
+    }
+}
+
+
+@keyframes fallblur {
+    from {
+
+        transform: translateY(-1000px) translateZ(25px);
+    }
+}
+
+@-webkit-keyframes wind {
+    to {
+       
+        transform: translateX(50px);
+    }
+}
+
+@-moz-keyframes wind {
+    to {
+       
+        transform: translateX(50px);
+    }
+}
+
+@-o-keyframes wind {
+    to {
+       
+        transform: translateX(50px);
+    }
+}
+
+
+@keyframes wind {
+    to {
+       
+        transform: translateX(50px);
+    }
+}
+
+/*------------------------fin fenetre présentation------------------*/
+
+/*---------------------Menu navigation-----------------------------*/
