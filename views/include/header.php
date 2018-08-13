@@ -29,5 +29,4 @@
 		
 		
 	</div>
-	<?php include_once 'views/include/menu.php'?>
 </header>
