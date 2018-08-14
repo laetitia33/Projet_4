@@ -29,4 +29,3 @@ $( "#closelegal" ).click(function() {
     // Animation complete.
   });
 });
-
