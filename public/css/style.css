@@ -369,4 +369,128 @@ html {
 
 /*------------------------fin fenetre présentation------------------*/
 
+
 /*---------------------Menu navigation-----------------------------*/
+
+ul#navigation {
+    display: flex;
+    display: -ms-flexbox;  
+    flex-direction: row;
+    -ms-flex-direction: row;
+    justify-content: center;
+    -ms-flex-pack: center;
+    margin-top: 35px;
+    list-style-type: none;    
+}
+
+.home,
+.services,
+.portfolio,
+.contact,
+.about {
+    padding: 12px 35px;
+    border: 2px solid grey;
+    border-radius: 3px;
+    -o-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    text-transform: uppercase;
+    font-family: "Raleway",sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #FFF;
+    background-image: linear-gradient(rgb(62, 64, 68), rgb(32,61,119) );
+    background-image: -moz-linear-gradient(rgb(62,64,68), rgb(32,61,119) );
+    background-image: -webkit-linear-gradient(rgb(62,64,68), rgb(32,61,119) );
+    background-image: -o-linear-gradient(rgb(62,64,68), rgb(32,61,119) );
+    -webkit-box-shadow: 4px 4px 12px #444;
+    -moz-box-shadow: 4px 4px 12px #444;
+    -o-box-shadow: 4px 4px 12px #444;
+    -ms-box-shadow: 4px 4px 12px #444;
+    box-shadow: 4px 4px 12px #444;
+    
+}
+
+.home:hover,
+.services:hover,
+.portfolio:hover,
+.contact:hover,
+.about:hover {
+    text-shadow: 1px 1px 3px #444;
+    -webkit-text-shadow: 1px 1px 3px #444;
+    -moz-text-shadow: 1px 1px 3px #444;
+    -o-text-shadow: 1px 1px 3px #444;
+    -ms-text-shadow: 1px 1px 3px #444;
+    font-weight: bold;
+    color: rgb(30,56,56);
+    background-image: linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -moz-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -webkit-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    background-image: -o-linear-gradient(rgb(233, 177, 4), rgb(221,208,54) );
+    -webkit-box-shadow: 1px 1px 4px #777;
+    -moz-box-shadow: 1px 1px 4px #777;
+    -o-box-shadow: 1px 1px 4px #777;
+    -ms-box-shadow: 1px 1px 4px #777;
+    box-shadow: 1px 1px 4px #777;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    
+}
+
+a {
+    width: 10%;
+    text-decoration: none;
+}
+
+/*-------------------fin navigation------------------------------*/
+/*--------------------présentation auteur------------------------*/
+
+#bio {
+    display: flex;
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    -ms-flex-wrap:wrap;
+    align-content: space-around;
+    align-items: center;
+    justify-content: space-around;
+    -ms-flex-pack:space-around;
+    width: 100%;
+    height: auto;
+    margin-top: 55px;
+    margin-bottom: 55px;
+}
+
+#bio p {
+    width: 60%;
+    font-family: "Raleway",sans-serif;
+    font-size: 1.5em;
+    font-style: oblique;
+}
+
+/*lettrine*/
+
+#bio p:first-of-type:first-letter {
+    float: left;
+    padding: 0.05em 0.05em 0 0;
+    font-family: "Raleway",sans-serif;
+    font-size: 6em;
+    font-style: normal;
+    color: white;
+}
+
+#photobio {
+    width: 25%;
+    margin-bottom: 25px;
+    -webkit-box-shadow: 4px 4px 12px #444;
+    -ms-box-shadow: 4px 4px 12px #444;
+    -moz-box-shadow: 4px 4px 12px #444;
+    -o-box-shadow: 4px 4px 12px #444;
+    box-shadow: 4px 4px 12px #444;
+}
+
+/*--------------------fin présentation auteur--------------------*/
