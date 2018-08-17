@@ -20,7 +20,7 @@ while ($data = $post->fetch())
     </div>
     <?php
 } // fin de la boucle des chapitres
-$chapter->closeCursor();
+$post->closeCursor();
 ?>
     <div class="administration">
         <h4>Derniers commentaires des visiteurs: </h4>
