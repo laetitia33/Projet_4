@@ -298,7 +298,7 @@ try{
                 }
                 else
                 {
-                    throw new Exception('pff ca marche pas probleme identification !');
+                    throw new Exception('probleme identification!');
                 }
             }
 
