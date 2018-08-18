@@ -8,6 +8,8 @@ class ViewController
 {
        
 
+
+
     // Page de connexion  
     public function login()
     {
@@ -18,5 +20,10 @@ class ViewController
     public function adminNewPost()
     {
         require ('views/newPostView.php');
+
+    }
+
+    public function mailView(){
+       require ('views/contactView.php');
     }
 }

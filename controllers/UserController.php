@@ -22,7 +22,7 @@ class UserController
     public function logUser($pseudo, $pass)
     {
         $user = $this->_user->getUser($pseudo);
-        $proper_pass = password_verify($_POST['pass'], $user['pass']);
+        $proper_pass = password_verify($pass, $user['pass']);
 
         if(!$user)
         {

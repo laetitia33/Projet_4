@@ -3,11 +3,8 @@
 namespace Laetitia_Bernardi\projet4\Model;
 
 require_once("models/Manager.php");
-
-
 use \DateTime;
 use \PDO;
-
 
 
 class PostManager extends Manager

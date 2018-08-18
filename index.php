@@ -8,6 +8,8 @@ require('controllers/AdminController.php');
 require('controllers/HomeController.php');
 require('controllers/ViewController.php');
 require('controllers/UserController.php');
+require('controllers/ContactController.php');
+use \controllers\ContactController;
 use \controllers\UserController;
 use \controllers\PostController;
 use \controllers\CommentController;
@@ -149,8 +151,8 @@ try{
             // Accueil Visiteur
             elseif ($_GET['action'] == 'home')
             {
-                $indexCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-                $indexCtrl->home();
+                $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
+                $homeCtrl->home();
             }
     
 
@@ -201,6 +203,28 @@ try{
                     throw new Exception('Aucun identifiant de chapitre envoyé !');
                 }
             }
+
+
+            //envoyer un mail
+            elseif ($_GET['action'] == 'addMail')
+
+                if (isset($_GET['mail_id']) && $_GET['mail_id'] > 0)
+                {
+                    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['content']))
+                    {
+                        $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                        $contactCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs doivent être remplis !');
+                    }
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de chapitre envoyé !');
+                }
+            
             // Signaler un commentaire
             elseif ($_GET['action'] == 'report')
             {
@@ -244,8 +268,8 @@ try{
             // Accueil Visiteur
             if ($_GET['action'] == 'home')
             {
-                $indexCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-                $indexCtrl->home();
+                $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
+                $homeCtrl->home();
             }
            
             // Liste des chapitres
@@ -267,18 +291,7 @@ try{
                 }
             }
 
-          
-            //envoi mail
-            elseif($_GET['action'] == 'email')
-            {
-                $contactctrl = new ContactFormulaire();
-                $contactctrl ->envoi_mail();
-            
-                    if(isset($_POST['nom'])){
-                        print_r($contact->loadForm($_POST));
-                    }
-                   
-            }
+    
             
             // Page de connexion
             elseif ($_GET['action'] == 'login')
@@ -287,21 +300,18 @@ try{
                 $viewCtrl->login();
                
             }
-// Connexion
             elseif ($_GET['action'] == 'log')
             {
-                if (!empty($_POST['pseudo'])&& !empty($_POST['pass']))
+                if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                 {
-
-
-                    require ('views/AdminView.php');
+                    $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
+                    $userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
                 }
                 else
                 {
-                    throw new Exception('probleme identification!');
+                    throw new Exception('Tous les champs doivent être remplis !');
                 }
             }
-
 
             // Deconnexion
             elseif ($_GET['action'] == 'logout')
@@ -309,6 +319,31 @@ try{
                 $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
                 $userCtrl->logoutUser();
             }
+
+
+            // page mail
+            elseif ($_GET['action'] == 'email') 
+            {
+                $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\ViewController();
+                $viewCtrl->mailView();
+            }
+
+            // envoi d'un mail
+            
+            elseif ($_GET['action'] == 'addMail') 
+            {            
+                if (!empty($_POST['name']) && !empty($_POST['email'])&& !empty($_POST['content'])) 
+                {
+                    $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                    $contactCtrl->addMail($_POST['name'], $_POST['email'],$_POST['content']);
+                } 
+                else
+                {
+                    throw new Exception('Tous les champs doivent être remplis !');
+                }
+            } 
+
+            
 
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addComment') 
@@ -340,7 +375,8 @@ try{
 
                         $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                         $commentCtrl->reportingComment();
-                        echo "<p class='comSignal'>Commentaire signalé </p>";
+                        echo "<p class ='comSignal'>Commentaire signalé </p>";
+               
                  
                     }
                     else
@@ -357,8 +393,8 @@ try{
         // Retourne à l'index.
         else
         {
-            $indexCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-            $indexCtrl->home();
+            $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
+            $homeCtrl->home();
         }
     }
 

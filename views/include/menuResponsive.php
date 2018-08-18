@@ -17,7 +17,6 @@ if(isset($_SESSION['id']))
 		<li><a class="creation" href="index.php?action=adminNewPost"><i class="fas fa-pencil-alt">Créer un chapitre</a></li>
 		<li> <a href="#">Commentaires</a></li>
 		<li><a  href="index.php?action=adminListComments">Tous les Commentaires</a></li>
-		<li><a class="contact" href="index.php?action=contact_view"><i class="far fa-envelope"></i>  Contactez-moi</a></li>
 		<li><a href="index.php?action=logout">Déconnexion</a></li>
 
 	</ul>

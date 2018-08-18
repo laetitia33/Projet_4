@@ -1057,7 +1057,7 @@ form input[type=submit]:hover {
 .news i {
     font-size: 1.4em;
 }
-div#comSignal {
+.comSignal {
     display:flex;
     display:-ms-flexbox;
     justify-content: space-between;
@@ -1082,15 +1082,10 @@ div#comSignal {
     -moz-box-shadow: 0 3px 10px #ccc;
     -o-box-shadow: 0 3px 10px #ccc;
     background-color:white ;
-    display:none;
+ 
+
 }
 
-#closeCom{
-    left:95%;
-    width: 1%;
-    position:absolute;
-    color:blue;
-}
 
 @media screen and (max-width:865px) {
     #blocpage {

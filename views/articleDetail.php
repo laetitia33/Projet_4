@@ -7,9 +7,8 @@
 	<body>
 		<img id="pageArticle" src="public/image/photo13.jpg" alt="photo Alaska"/>
 		
-		<div id="comSignal">
-			<p>Le commentaire a été signalé</p>
-			<a class="closeCom">X</a>
+		<p class ='comSignal'></p>
+			
 		</div>
 		<p><a class="news" href="index.php#episodes"id="news"><i class="fas fa-arrow-left">Retour à la liste des Chapitres</i></a></p>	
 		<h2>
