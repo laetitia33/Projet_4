@@ -34,4 +34,12 @@ class AdministrationController
     
         require('views/adminView.php');
     }
+
+
+       // Page nouveau chapitre
+    public function adminNewPost()
+    {
+        require ('views/newPostView.php');
+
+    }
 }

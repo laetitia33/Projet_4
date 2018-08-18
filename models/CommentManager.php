@@ -52,7 +52,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
 
-
     public function setIdComment($id_comment)
     {
         $id_comment = (int) $id_comment;
@@ -61,7 +60,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
             $this->_id_comment = $id_comment;
         }
     }
-
  
     public function setIdPost($post_id)
     {
@@ -71,7 +69,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
             $this->_post_id = $post_id;
         }
     }
-
  
     public function setAuthor($author)
     {
@@ -79,7 +76,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
             $this->_author = $author;
         }
     }
-
    
     public function setComment($comment)
     {
@@ -87,22 +83,20 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
             $this->_comment = $comment;
         }
     }
-
   
     public function setCommentDate(DateTime $comment_date)
     {
         $this->_comment_date = $comment_date;
     }
-
-   
+  
     public function setReporting($reporting)
     {
         $this->_reporting = $reporting;
     }
 
 
-    // dernier commentaire
 
+    // dernier commentaire
     public function getLastComment()
     {
         $db = $this->dbConnect();
@@ -110,11 +104,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comment;
     }
 
-
-
-
     //tous les commentaires
-
     public function getAllComments()
     {
         $db = $this->dbConnect();
@@ -122,12 +112,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comments;
     }
 
-
-
-
     //commentaires signalés
-
-
     public function getReportComments()
     {
         $db = $this->dbConnect();
@@ -146,9 +131,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $commentsTotal;
     }
 
-
-    //nombre de commentaires signalés
-    
+    //nombre de commentaires signalés   
     public function countCommentsReport()
     {
         $db = $this->dbConnect();
@@ -159,7 +142,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
     //recupere les commentaires d'un chapitre avec son id
-
     public function getComments($post_id)
     {
         $this->setIdPost($post_id);
@@ -203,6 +185,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $createComment;
     }
 
+//chargement commentaires
     public function updateComment($id_comment, $post_id, $author, $comment)
     {
         $this->setIdComment($id_comment);
@@ -221,8 +204,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $updateComment;
     }
 
-
-   
+   //supprimer commentaire
     public function deleteComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -234,8 +216,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $deleteComment;
     }
 
-    //Supprime tous les commentaires d'un chapitre
-   
+    //Supprime tous les commentaires d'un chapitre   
     public function deleteAllComments($post_id)
     {
         $this->setIdPost($post_id);
@@ -247,7 +228,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $deleteComments;
     }
 
-  
+  //signaler commentaire
     public function reportComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -262,12 +243,9 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
         return $report;
     }
-    
-
-  
+     
 
     //Valide un commentaire en retirant son signalement
-  
     public function approvedComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -277,13 +255,8 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
         $comments->bindParam(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
         $report = $comments->execute();
-     
-
+    
         return $report;
     }
-
-    
-
-
     
 }

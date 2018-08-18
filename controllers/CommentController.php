@@ -23,9 +23,6 @@ class CommentController
         require ('views/ListCommentsView.php');
     }
 
-
-  
-
 // Ajouter un commentaire
     public function addComment($post_id, $author, $comment)
     {

@@ -1,8 +1,7 @@
 <?php
 
 namespace Laetitia_Bernardi\projet4\Controller;
-
-use \models\ContactManager;
+require_once ('models/ContactManager.php');
 
 class ContactController
 
@@ -16,8 +15,14 @@ class ContactController
 
     }
 
+//page du formulaire
+ public function mailView(){
+       require ('views/contactView.php');
+    }
 
-// ADMIN envoyer un mail
+
+
+// envoyer un mail
     public function addMail($name, $email,$content)
     {
         $postMail = $this->_email->createMail($name, $email, $content);
@@ -26,17 +31,17 @@ class ContactController
             throw new Exception('Impossible d\'envoyer le message');
         }
         else{
-            echo '<p class="succesMail" >Email envoyé avec succès</p>';
+            header('Location: index.php?action=email');
+                echo '<p class="succesMail" >Email envoyé avec succès</p>';
 
         }
     }
 
 
-
 // Afficher  email
-    public function email($mail_id)
+    public function email($id)
     {
-        $email = $this->_email->getMail($mail_id);
+        $email = $this->_email->getMail($id);
         require('views/mailView.php');
     }
 
@@ -48,18 +53,17 @@ class ContactController
       
     }
 
-
 // Page d'édition d'un mail
     public function adminUpdateMail()
     {
-        $email = $this->_email->getMail($_GET['mail_id']);
+        $email = $this->_email->getMail($_GET['id']);
         require ('views/updateMailView.php');
     }
 
 // Editer un mail
-    public function updateMail($mail_id, $name, $email, $content)
+    public function updateMail($id, $name, $email, $content)
     {
-        $updateMail = $this->_email->updatemail($mail_id, $name, $email, $content);
+        $updateMail = $this->_email->updatemail($id, $name, $email, $content);
 
         if ($updatemail === false) {
             throw new Exception('Impossible de mettre à jour l email');
@@ -69,9 +73,9 @@ class ContactController
     }
 
 // Supprimer un mail
-    public function deleteMail($mail_id)
+    public function deleteMail($id)
     {
-        $deleteMail = $this->_email->deleteMail($mail_id);
+        $deleteMail = $this->_email->deleteMail($id);
 
         if ($deleteMail === false) {
             throw new Exception('Impossible de supprimer l \'email');

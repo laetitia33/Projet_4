@@ -6,17 +6,15 @@ require('controllers/PostController.php');
 require('controllers/CommentController.php');
 require('controllers/AdminController.php');
 require('controllers/HomeController.php');
-require('controllers/ViewController.php');
 require('controllers/UserController.php');
 require('controllers/ContactController.php');
+
 use \controllers\ContactController;
 use \controllers\UserController;
 use \controllers\PostController;
 use \controllers\CommentController;
 use \controllers\AdminController;
 use \controllers\HomeController;
-use \controllers\ViewController;
-
 
 try{
     if(isset($_SESSION['id']))
@@ -159,8 +157,8 @@ try{
             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')
             {
-                $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\ViewController();
-                $viewCtrl->adminNewPost();
+                $adminCtrl = new \Laetitia_Bernardi\projet4\Controller\AdminController();
+                $adminCtrl->adminNewPost();
             }
           
             // Liste des chapitres
@@ -203,27 +201,28 @@ try{
                     throw new Exception('Aucun identifiant de chapitre envoyé !');
                 }
             }
-
+            // Page de connexion
+            elseif ($_GET['action'] == 'login')
+            {
+                $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
+                $userCtrl->login();
+               
+            }
 
             //envoyer un mail
             elseif ($_GET['action'] == 'addMail')
 
-                if (isset($_GET['mail_id']) && $_GET['mail_id'] > 0)
-                {
+              
                     if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['content']))
                     {
-                        $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                        $contactCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
+                        $mailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                        $mailCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
                     }
                     else
                     {
                         throw new Exception('Tous les champs doivent être remplis !');
                     }
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de chapitre envoyé !');
-                }
+             
             
             // Signaler un commentaire
             elseif ($_GET['action'] == 'report')
@@ -290,16 +289,16 @@ try{
                     throw new Exception('Erreur. Pas de chapitre séléctionné !');
                 }
             }
-
-    
-            
+          
             // Page de connexion
             elseif ($_GET['action'] == 'login')
             {
-                $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\ViewController();
-                $viewCtrl->login();
+                $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
+                $userCtrl->login();
                
             }
+
+            //données de la connexion
             elseif ($_GET['action'] == 'log')
             {
                 if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
@@ -324,26 +323,25 @@ try{
             // page mail
             elseif ($_GET['action'] == 'email') 
             {
-                $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\ViewController();
-                $viewCtrl->mailView();
+                $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                $contactCtrl->mailView();
             }
-
-            // envoi d'un mail
             
+          
+            //envoyer un mail
             elseif ($_GET['action'] == 'addMail') 
-            {            
-                if (!empty($_POST['name']) && !empty($_POST['email'])&& !empty($_POST['content'])) 
-                {
-                    $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                    $contactCtrl->addMail($_POST['name'], $_POST['email'],$_POST['content']);
-                } 
-                else
-                {
-                    throw new Exception('Tous les champs doivent être remplis !');
-                }
-            } 
-
-            
+            {
+                            
+                    if (!empty($_POST['name']) && !empty($_POST['email'])&& !empty($_POST['content'])) 
+                    {
+                        $emailCtrl = new ContactController();
+                        $emailCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
+                    } 
+                    else
+                    {
+                        throw new Exception('Tous les champs doivent être remplis !');
+                    }                                
+            }
 
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addComment') 

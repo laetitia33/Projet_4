@@ -31,14 +31,6 @@ class HomeController
         require ('views/articleList.php');
     }
 
-//Prepare la fonction pour envoyer un mail de contact.
 
-   public function prepareEmail(){
-        if(isset($_POST) && !empty($_SESSION['name']) && !empty($_SESSION['email']) && !empty($_SESSION['objet'])&& !empty($_SESSION['mail'])){
-            $this->sendEmail();
-            header('Location: index.php');
-        }
-    
-    }
 
 }

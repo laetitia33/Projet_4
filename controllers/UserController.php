@@ -1,11 +1,11 @@
 <?php
 
 
-namespace V3\Controller;
+namespace Laetitia_Bernardi\projet4\Controller;
 
 require_once('models/UserManager.php');
 
-use\Model\UserManager;
+use\models\UserManager;
 use \Exception;
 
 class UserController
@@ -14,7 +14,14 @@ class UserController
 
     public function __construct()
     {
-        $this->_user = new UserManager();
+        $this->_user = new \Laetitia_Bernardi\projet4\Model\UserManager();
+    }
+
+
+//page formulaire
+ public function login()
+    {
+        require('views/loginView.php');
     }
 
 

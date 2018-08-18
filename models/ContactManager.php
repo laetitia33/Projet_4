@@ -30,7 +30,7 @@ protected $id, $name, $email, $content, $date_creation;
  
     public function getEmail()
     {
-        return $this->_mail;
+        return $this->_email;
     }
 
    
@@ -66,10 +66,10 @@ protected $id, $name, $email, $content, $date_creation;
     }
 
    
-    public function setEmail($mail)
+    public function setEmail($email)
     {
-        if(is_string($mail)) {
-            $this->_mail = $mail;
+        if(is_string($email)) {
+            $this->_email = $email;
         }
     }
 
@@ -87,59 +87,51 @@ protected $id, $name, $email, $content, $date_creation;
 
 
     // dernier commentaire
-
     public function getLastMail()
     {
         $db = $this->dbConnect();
-        $mail = $db->query('SELECT name, email,content , DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM contact ORDER BY date_creation DESC LIMIT 0, 1');
-        return $mail;
+        $email = $db->query('SELECT name, email,content , DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM contact ORDER BY date_creation DESC LIMIT 0, 1');
+        return $email;
     }
 
-
-
-
-    //tous les commentaires
-
+    //tous les mails
     public function getAllMails()
     {
         $db = $this->dbConnect();
-        $mails = $db->query('SELECT id, name, email, content,  DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM contact ORDER BY date_creation DESC');
-        return $mails;
+        $emails = $db->query('SELECT id, name, email, content,  DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i\') AS date_creation_fr FROM contact ORDER BY date_creation DESC');
+        return $emails;
     }
 
-
-    //nombre de commentaires
+    //nombre de mails
     public function countMails()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) AS total_mails FROM contact');
+        $req = $db->query('SELECT COUNT(*) AS total_emails FROM contact');
         $req->execute();
-        $mailsTotal = $req->fetch();
-        return $mailsTotal;
+        $emailsTotal = $req->fetch();
+        return $emailsTotal;
     }
 
-
-
-
-    //envoi d'un commentaire
-    public function createMail($name, $mail, $content)
+    //envoi d'un mail
+    public function createMail($name, $email, $content)
     {
         $this->setName($name);
-        $this->setEmail($mail);
+        $this->setEmail($email);
         $this->setContent($content);
 
         $db = $this->dbConnect();
-        $mails = $db->prepare('INSERT INTO contact (name, email,content, date_creation) VALUES( ?, ?, ?, NOW())');
-        $createMail = $mails->execute(array(
+        $emails = $db->prepare('INSERT INTO contact (name, email,content, date_creation) VALUES( ?, ?, ?, NOW())');
+        $createMail = $emails->execute(array(
             $this->getName(),
             $this->getEmail(),
-            $this->getContent()
+            $this->getContent(),
         ));
 
         return $createMail;
     }
 
-    public function updateMail($id, $name, $mail, $content)
+    //chargement mail
+    public function updateMail($id, $name, $email, $content)
     {
         $this->setId($id);
         $this->setIdName($name);
@@ -158,7 +150,7 @@ protected $id, $name, $email, $content, $date_creation;
     }
 
 
-   
+   //suppreimer mail
     public function deleteMail($id)
     {
         $this->setId($id);
