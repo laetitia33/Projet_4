@@ -10,11 +10,11 @@ use \Exception;
 
 class UserController
 {
-    private $_user;
+    private $user;
 
     public function __construct()
     {
-        $this->_user = new \Laetitia_Bernardi\projet4\Model\UserManager();
+        $this->user = new \Laetitia_Bernardi\projet4\Model\UserManager();
     }
 
 
@@ -28,7 +28,7 @@ class UserController
 // Connexion
     public function logUser($pseudo, $pass)
     {
-        $user = $this->_user->getUser($pseudo);
+        $user = $this->user->getUser($pseudo);
         $proper_pass = password_verify($pass, $user['pass']);
 
         if(!$user)

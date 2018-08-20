@@ -10,7 +10,7 @@ use \PDO;
 
 class UserManager extends Manager
 {
-    private $_id_user, $_pseudo, $_pass;
+    private $id, $pseudo, $pass;
 
 
     public function __construct()
@@ -18,16 +18,16 @@ class UserManager extends Manager
 
     }
 
-    public function getIdUser()
+    public function getId()
     {
-        return $this->_id_user;
+        return $this->id;
     }
 
 
 
     public function getPseudo()
     {
-        return $this->_pseudo;
+        return $this->pseudo;
     }
 
     /**
@@ -35,15 +35,15 @@ class UserManager extends Manager
      */
     public function getPass()
     {
-        return $this->_pass;
+        return $this->pass;
     }
 
 
-    public function setIdUser($id_user)
+    public function setId($id)
     {
-        $id_user = (int) $id_user;
-        if($id_user > 0){
-            $this->_id_user = $id_user;
+        $id = (int) $id;
+        if($id> 0){
+            $this->id = $id;
         }
 
     }
@@ -52,7 +52,7 @@ class UserManager extends Manager
     public function setPseudo($pseudo)
     {
         if(is_string($pseudo)) {
-            $this->_pseudo = $pseudo;
+            $this->pseudo = $pseudo;
         }
     }
 
@@ -60,7 +60,7 @@ class UserManager extends Manager
     public function setPass($pass)
     {
         if(is_string($pass)) {
-            $this->_pass = $pass;
+            $this->pass = $pass;
         }
     }
 
@@ -71,7 +71,7 @@ class UserManager extends Manager
         $this->setPseudo($pseudo);
 
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM users WHERE pseudo = ?');
+        $req = $db->prepare('SELECT * FROM users WHERE pseudo = ? , pass= ?');
         $req->execute($this->getPseudo());
         $user = $req->fetch();
 
