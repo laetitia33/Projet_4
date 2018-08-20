@@ -31,7 +31,7 @@ else
 	<ul id="navigation">
 		<li><a class="home" href="index.php?home"><i class="fas fa-home"></i> Accueil</a></li>
 		<li><a class="portfolio" href="#episodes">Chapitres</a></li>
-		<li><a class="portfolio" href="index.php?action=login">Inscription</a></li>
+		<li><a class="portfolio" href="index.php?action=login">Connexion</a></li>
 		<li><a class="contact" href="index.php?action=email"><i class="far fa-envelope"></i>  Contactez-moi</a></li>
 	</ul>
 </nav>
