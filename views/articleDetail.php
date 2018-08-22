@@ -17,8 +17,8 @@
 		<p>
 			<p>Article écrit par <a href="index.php#bio"><?= $post['author'] ?></a><br><br> <i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
 			</p>
-			<div class="news" >
 			
+			<div class="news" >			
 				<?= nl2br(htmlspecialchars($post['content'])) ?>
 			</div>	
 		</p>

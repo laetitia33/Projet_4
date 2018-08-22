@@ -376,18 +376,14 @@ ul#navigation {
     display: flex;
     display: -ms-flexbox;  
     flex-direction: row;
-    -ms-flex-direction: row;
+    -ms-flex-direction:row;
     justify-content: center;
     -ms-flex-pack: center;
     margin-top: 35px;
     list-style-type: none;    
 }
 
-.home,
-.services,
-.portfolio,
-.contact,
-.about {
+.btn{
     padding: 12px 35px;
     border: 2px solid grey;
     border-radius: 3px;
@@ -413,11 +409,7 @@ ul#navigation {
     
 }
 
-.home:hover,
-.services:hover,
-.portfolio:hover,
-.contact:hover,
-.about:hover {
+.btn:hover {
     text-shadow: 1px 1px 3px #444;
     -webkit-text-shadow: 1px 1px 3px #444;
     -moz-text-shadow: 1px 1px 3px #444;
@@ -1085,7 +1077,55 @@ form input[type=submit]:hover {
  
 
 }
+/*--------------tableau de bord-----------*/
 
+.bienvenue{
+
+    font-size :1.5em;
+    color:black;
+    font-style:italic;
+    margin-top:2%;
+
+}
+
+.adminPost{
+    margin:auto;
+      display: flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    -ms-flex-direction:column;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    margin-bottom: 25px;
+    border: 10px solid white;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 14px;
+    -o-border-radius: 3px;
+    -o-border-radius: 14px;
+    -ms-border-radius: 3px;
+    -ms-border-radius: 14px;
+    border-radius: 3px;
+    border-radius: 14px;
+    background: white;
+    -webkit-box-shadow: 0 3px 10px #ccc;
+    -moz-box-shadow: 0 3px 10px #ccc;
+    -o-box-shadow: 0 3px 10px #ccc;
+    -ms-box-shadow: 0 3px 10px #ccc;
+    box-shadow: 0 3px 10px #ccc;
+
+}
+
+
+.admin{
+
+    text-align:center;
+    padding-right:4%;
+    font-size:1.5em;
+
+}
 
 @media screen and (max-width:865px) {
     #blocpage {
@@ -1211,10 +1251,12 @@ form input[type=submit]:hover {
     }
 
     footer {
+
         flex-direction: column;
         -ms-flex-direction: column;
         padding-bottom: 15px;
         text-align: center;
+
     }
 
     footer img {
@@ -1245,6 +1287,10 @@ form input[type=submit]:hover {
     div#comSignal {
        width: 97%; 
     }
+    .adminPost{
+        width: 90%;
+    }
+
 }
 
 @media(orientation:landscape) and (max-device-width:850px) {
@@ -1313,7 +1359,7 @@ form input[type=submit]:hover {
     #ep1{
         width: 100%;
         border: 2px solid white;
-    }
+    }  
 
       #btntop {
         margin-left: 41%;

@@ -21,7 +21,7 @@
 			<a id="episodes"></a>
 		
 			<div class="body_card">
-				<h2>Liste des derniers Chapitres</h2>
+				<h2>Liste des Chapitres</h2>
 				<?php
 				while ($data = $posts->fetch()){
 				?>

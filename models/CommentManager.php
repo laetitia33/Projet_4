@@ -118,7 +118,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $db = $this->dbConnect();
 
         $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY reporting DESC');
-        return $reportingComments;
+        return $reportComments;
     }
 
     //nombre de commentaires
@@ -195,7 +195,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET post_id= :post_id, author= :author, comment= :comment, comment_date= NOW() WHERE id= :id_comment');
-        $comments->bindParam('id_chapter', $this->getIdPost(), PDO::PARAM_INT);
+        $comments->bindParam('post_id', $this->getIdPost(), PDO::PARAM_INT);
         $comments->bindParam('author',$this->getAuthor(), PDO::PARAM_STR);
         $comments->bindParam('comment',$this->getComment(), PDO::PARAM_STR);
         $comments->bindParam('id_comment', $this->getIdComment(), PDO::PARAM_INT);

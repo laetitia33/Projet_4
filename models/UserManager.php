@@ -30,9 +30,7 @@ class UserManager extends Manager
         return $this->pseudo;
     }
 
-    /**
-     * @return string           $_pass
-     */
+  
     public function getPass()
     {
         return $this->pass;
@@ -66,16 +64,17 @@ class UserManager extends Manager
 
 
 
-    public function getUser($pseudo)
+    public function getUser($pseudo,$pass)
     {
         $this->setPseudo($pseudo);
 
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM users WHERE pseudo = ? , pass= ?');
-        $req->execute($this->getPseudo());
-        $user = $req->fetch();
-
+        $req = $db->query("SELECT * FROM users WHERE pseudo = '$pseudo' AND pass = '$pass' "); 
+        $user = $req->fetch(); 
+        $req->closeCursor();
+    
         return $user;
+
     }
     
 

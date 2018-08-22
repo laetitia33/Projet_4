@@ -24,40 +24,45 @@ class UserController
         require('views/loginView.php');
     }
 
+//page inscription
+
+    public function inscriLogin()
+    {
+        require ('views/inscriptionView.php');
+    }
+
+
 
 // Connexion
     public function logUser($pseudo, $pass)
     {
-        $user = $this->user->getUser($pseudo);
-        $proper_pass = password_verify($pass, $user['pass']);
+        $user = $this->user->getUser($pseudo,$pass);
 
-        if(!$user)
+
+        if(!$user )
         {
             throw new Exception('Wrong username or/and password');
         }
       
-            elseif($proper_pass )
-            {
-                session_start();
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['pseudo'] = $user['pseudo'];
-                $_SESSION['pass'] = $user['pass'];
+        else
+        {
+            session_start();
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['pseudo'] = $user['pseudo'];
+            $_SESSION['pass'] = $user['pass'];
 
-                $id = $user['id'];
-                $pseudo = $user['pseudo'];
-                $pass_hash = $user['pass'];
+            $id = $user['id'];
+            $pseudo = $user['pseudo'];
+            $pass_hash = $user['pass'];
 
-                setcookie('id', $id, time() + 1800, null, null, false, true);
-                setcookie('pseudo', $pseudo, time() + 1800, null, null, false, true);
-                setcookie('pass', $pass_hash, time() + 1800, null, null, false, true);
+            setcookie('id', $id, time() + 1800, null, null, false, true);
+            setcookie('pseudo', $pseudo, time() + 1800, null, null, false, true);
+            setcookie('pass', $pass_hash, time() + 1800, null, null, false, true);
 
-                header('Location: index.php?action=administration');
-            }
-            else
-            {
-                throw new Exception('Wrong Username or Password');
-            }
+            header('Location: index.php?action=administration');
         }
+  
+    }
     
 
 

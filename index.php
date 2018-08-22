@@ -209,21 +209,13 @@ try{
                
             }
 
-            //envoyer un mail
-            elseif ($_GET['action'] == 'addMail')
+            // Deconnexion
+            elseif ($_GET['action'] == 'logout')
+            {
+                $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
+                $userCtrl->logoutUser();
+            }
 
-              
-                    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['content']))
-                    {
-                        $mailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                        $mailCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
-                    }
-                    else
-                    {
-                        throw new Exception('Tous les champs doivent être remplis !');
-                    }
-             
-            
             // Signaler un commentaire
             elseif ($_GET['action'] == 'report')
             {
@@ -289,7 +281,51 @@ try{
                     throw new Exception('Erreur. Pas de chapitre séléctionné !');
                 }
             }
-          
+        
+             // Page d'inscription
+            elseif ($_GET['action'] == 'inscriLogin')
+            {
+                
+                $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
+                $userCtrl->inscriLogin();
+               
+            }
+             // Inscription
+            elseif ($_GET['action'] == 'register')
+            {
+                if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass_confirm']) && !empty($_POST['email']))
+                {
+                    // Sécurité
+                    $pseudo = htmlspecialchars($_POST['pseudo']);
+                    $email = htmlspecialchars($_POST['email']);
+                    // Hachage du mot de passe
+                    $password_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+                    // On vérifie la Regex pour l'adresse email
+                    if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']))
+                    {
+                        // On vérifie que les 2 mots de passe sont identiques.
+                        if ($_POST['pass'] == $_POST['pass_confirm'])
+                        {
+                            $userCtrl = new UserController();
+                            $userCtrl->registerUser(2, $pseudo, $password_hache, $email);
+                        }
+                        else
+                        {
+                            throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception('L\'adresse email ' . $email . ' n\'est pas valide, recommencez !');
+                    }
+                }
+                else
+                {
+                    throw new Exception('Tous les champs doivent être remplis !');
+                }
+            }
+
+
             // Page de connexion
             elseif ($_GET['action'] == 'login')
             {
@@ -301,6 +337,8 @@ try{
             //données de la connexion
             elseif ($_GET['action'] == 'log')
             {
+                print_r($_POST['pass']);
+                print_r($_POST['pseudo']);
                 if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                 {
                     $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();

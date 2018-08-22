@@ -10,13 +10,13 @@
             
            
             <div>
-                <label for="author">Pseudo :</label><br />
-                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="author"/>
+                <label for="pseudo">Pseudo :</label><br />
+                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"/>
             </div>
             
             <div>
-                <label for="password"/>Mot de passe :</label><br />
-                <input type="password" class="inputbasic" id="password" name="password" ; placeholder="mot de passe"/>
+                <label for="pass"/>Mot de passe :</label><br />
+                <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe"/>
                
             </div>
             
