@@ -13,33 +13,30 @@ use \models\CommentManager;
 
 class AdministrationController
 {
-    private $_post;
-    private $_comment;
- 
+    private $post;
+    private $comment;
+   
 
     public function __construct()
     {
-        $this->_post = new \Laetitia_Bernardi\projet4\Model\PostManager();
-        $this->_comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
-      
+        $this->post = new \Laetitia_Bernardi\projet4\Model\PostManager();
+        $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
+       
     }
 
     public function administration()
     {
-        $post = $this->_post->getLastPost();
-        $comment = $this->_comment->getLastComment();
-        $postsTotal = $this->_post->countPosts();
-        $commentsTotal = $this->_comment->countComments();
-        $commentsReportTotal = $this->_comment->countCommentsReport();
+        $post = $this->post->getLastPost();
+        $comment = $this->comment->getLastComment();
+        $postsTotal = $this->post->countPosts();
+        $commentsTotal = $this->comment->countComments();
+        $commentsReportTotal = $this->comment->countCommentsReport();
     
         require('views/adminView.php');
     }
 
-
-       // Page nouveau chapitre
-    public function adminNewPost()
-    {
-        require ('views/newPostView.php');
-
+    public function adminNewPost(){
+        require('views/newPostView.php');
     }
+   
 }

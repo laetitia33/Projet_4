@@ -46,8 +46,9 @@ try{
                 if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
                 {
                     $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                    $postCtrl->createPost($_POST['author'], $_POST['title'], $_POST['content']);
+                    $postCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
                 }
+
                 else
                 {
                     throw new Exception('Tous les champs ne sont pas remplis..');
@@ -146,13 +147,7 @@ try{
                 $commentCtrl->approvedComment();
             }
           
-            // Accueil Visiteur
-            elseif ($_GET['action'] == 'home')
-            {
-                $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-                $homeCtrl->home();
-            }
-    
+      
 
             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')
@@ -411,7 +406,7 @@ try{
 
                         $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                         $commentCtrl->reportingComment();
-                        echo "<p class ='comSignal'>Commentaire signalé </p>";
+                  
                
                  
                     }

@@ -10,37 +10,33 @@
 <?php ob_start(); ?>
 
 <form action="index.php?action=createPost" method="POST">
-    <div class="col-lg-12">
-        <div class="form-group row">
-            <label for="author" class="col-lg-3">Auteur</label>
-            <div class="col-lg-9">
-                <input type="text" name="author" id="author" class="form-control" value="<?php
+        <div>
+            <label for="author" >Auteur</label>
+     
+                <input type="text" name="author" class="inputbasic" id="author"value="<?php
                 if (isset($_SESSION['pseudo']))
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
                 }
                 ?>"
                 />
-            </div>
         </div>
-        <div class="form-group row">
-            <label for="title" class="col-lg-3">Titre</label>
-            <div class="col-lg-9">
-                <input type="text" name="title" class="form-control" id="title" placeholder="Indiquez ici votre titre"/>
-            </div>
+
+        <div>
+            <label for="title">Titre</label>
+           
+                <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici votre titre"/>
+
         </div>
-        <div class="form-group row">
-            <label for="content" class="col-lg-3">Chapitre</label>
-            <div class="col-lg-9">
-                <textarea name="content" id="content" class="form-control" placeholder="Indiquez ici votre chapitre"></textarea>
-            </div>
+        
+        <div>
+            <label for="content" >Chapitre</label>
+        
+                <textarea name="content" id="content" class="inputbasic" placeholder="Indiquez ici votre chapitre"></textarea>
         </div>
-        <div class="form-group row">
-            <div class="col-lg-9">
-            <button type="submit" name="envoyer" class="btn btn-primary">Envoyer</button>
-            </div>
-        </div>
-    </div>
+      
+            <button type="submit" name="envoyer">Envoyer</button>
+  
 </form>
 
 <?php $content = ob_get_clean(); ?>

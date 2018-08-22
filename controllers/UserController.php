@@ -41,7 +41,7 @@ class UserController
 
         if(!$user )
         {
-            throw new Exception('Wrong username or/and password');
+            throw new Exception('Utilisateur ou mot de passe incorrect');
         }
       
         else

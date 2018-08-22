@@ -3,10 +3,8 @@
 
 <?php ob_start(); ?>
     <div id="adminView"></div>
-    <p class ="bienvenue">Bienvenue sur votre compte, <?= $_SESSION['pseudo'].'!'; ?></p>
 
 <?php $header = ob_get_clean(); ?>
-
 
 
 <?php
@@ -38,13 +36,15 @@ while ($data = $post->fetch())
 $post->closeCursor();
 ?>
     
-        <h2>Dernier Commentaire:</h2>
-<div class = "commentaires">
+
     <?php
+
 
     while ($data = $comment->fetch())
     {
-        ?>
+            ?>
+    <h2>Dernier Commentaire:</h2>
+    <div class = "commentaires">
         <p><strong><?= htmlspecialchars($data['author']); ?></strong> le <?= $data['comment_date_fr']; ?></p>
 
         <div class="news" >

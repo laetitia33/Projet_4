@@ -2,11 +2,11 @@
 	
 	<p>&copy; 2018 Jean Forteroche tous droits réservés<br></p>
 	<p> <?php
-    if(empty($_SESSION['authorization_user'])) {
+    if(empty($_SESSION['pseudo'])) {
         echo "<a class='' href='index.php?action=login'>Administration</a>";
     }
     else{
-        echo 'Bievenue sur le site '.$_SESSION['login'].' - <a class="" href="index.php?action=logout">Se déconnecter</a>';
+        echo 'Bienvenue sur le site '.$_SESSION['pseudo'].' - <a class="" href="index.php?action=logout">Se déconnecter</a>';
     }?> </p>
 	<p id="legal">Mentions légales</p>
 	<div id="legalnotice">

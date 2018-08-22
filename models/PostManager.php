@@ -21,31 +21,31 @@ class PostManager extends Manager
 
     public function getId()
     {
-        return $this->_post_id;
+        return $this->post_id;
     }
 
 
     public function getTitle()
     {
-        return $this->_title;
+        return $this->title;
     }
  
 
     public function getAuthor()
     {
-        return $this->_author;
+        return $this->author;
     }
 
 
     public function getContent()
     {
-        return $this->_content;
+        return $this->content;
     }
 
   
     public function getDateCreation()
     {
-        return $this->_date_creation;
+        return $this->date_creation;
     }
 
 
@@ -53,7 +53,7 @@ class PostManager extends Manager
     {
         $post_id = (int) $post_id;
         if($post_id > 0){
-            $this->_post_id = $post_id;
+            $this->post_id = $post_id;
         }
     }
 
@@ -61,7 +61,7 @@ class PostManager extends Manager
     public function setTitle($title)
     {
         if(is_string($title)) {
-            $this->_title = $title;
+            $this->title = $title;
         }
     }
 
@@ -69,7 +69,7 @@ class PostManager extends Manager
     public function setAuthor($author)
     {
         if(is_string($author)) {
-            $this->_author = $author;
+            $this->author = $author;
         }
     }
 
@@ -77,13 +77,13 @@ class PostManager extends Manager
     public function setContent($content)
     {
         if(is_string($content)) {
-            $this->_content = $content;
+            $this->content = $content;
         }
     }
 
     public function setCreationDate(DateTime $date_creation)
     {
-        $this->_date_creation= $date_creation;
+        $this->date_creation= $date_creation;
     }
 
 
@@ -152,7 +152,7 @@ class PostManager extends Manager
         $this->setContent($content);
 
         $db = $this->dbConnect();
-        $post = $db->prepare('INSERT INTO posts (author, title, content, creation_date) VALUES ( ?, ?, ?, NOW())');
+        $post = $db->prepare('INSERT INTO posts (author, title, content, date_creation) VALUES ( ?, ?, ?, NOW())');
         $createPost = $post->execute(array(
             $this->getAuthor(),
             $this->getTitle(),

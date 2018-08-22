@@ -22,7 +22,10 @@
 		
 			<div class="body_card">
 				<h2>Liste des Chapitres</h2>
-				<?php
+
+
+		<?php
+				
 				while ($data = $posts->fetch()){
 				?>
 				
@@ -31,12 +34,20 @@
 					<h2><?= (htmlspecialchars($data['title'])) ?></h2>
 					<p><span class="publishing">Article écrit par <?= $data['author'] ?><br><i class="far fa-calendar-alt"> le <?= $data['date_creation_fr'] ?></i></span></p>
 					
-					<p><?= nl2br(substr(htmlspecialchars($data['content']), 0, 500).'...'); ?></p>
-					<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
-					<div id="commentaires">
-					
+						<p><?= nl2br(substr(htmlspecialchars($data['content']), 0, 500).'...'); ?></p>
+						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
+						<div id="commentaires">
+						<a href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#com"><em><i class="fas fa-pencil-alt"> Ajouter un Commentaire</i></em></a><br>
+					 	
+					<?php if(isset($_SESSION['pseudo'])) { ?>
+				
 							
-						<a href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#com"><em><i class="fas fa-pencil-alt"> Ajouter un Commentaire</i></em></a>
+						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-pen-square"> Éditer </i></em></a><br>
+               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer</i></em></a>
+					
+					<?php
+		            }
+		            ?>
 					</div>
 				</div>
 				<?php
@@ -44,7 +55,7 @@
 				?>
 			</div>
 			<?php
-			//--------fin de la boucle--------------------
+
 			$posts->closeCursor();
 			;?>
 

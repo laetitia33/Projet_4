@@ -10,7 +10,7 @@ if(isset($_SESSION['pseudo']))
 
 		<li><a class="btn" href="index.php?action=administration#adminView">Tableau de bord</a></li>
 		<li><a class="btn" href="index.php?action=listPosts#episodes">Chapitres</a></li>
-		<li><a class="btn" href="index.php?action=adminNewPost">Créer un chapitre</a><li>
+		<li><a class="btn" href="index.php?action=createPost">Créer un chapitre</a><li>
 		<li><a class="btn" href="index.php?action=adminListComments#com">Tous les Commentaires</a></li>
 		<li><a class ="btn" href="index.php?action=logout">Déconnexion</a></li>
 	</ul>
@@ -28,8 +28,6 @@ else
 	
 	<ul id="navigation">
 		<li><a class="btn" href="#episodes">Chapitres</a></li>
-		<li><a class="btn" href="index.php?action=login">Connexion</a></li>
-		<li><a class="btn" href="index.php?action=inscriLogin">Inscription</a></li>
 		<li><a class="btn" href="index.php?action=email"><i class="far fa-envelope"></i>  Contactez-moi</a></li>
 	</ul>
 </nav>
