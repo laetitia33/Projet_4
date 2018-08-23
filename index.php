@@ -33,6 +33,7 @@ try{
             {
                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                 $commentCtrl->adminListComments();
+
             }
             // ADMIN - Liste des commentaires signalés
             elseif ($_GET['action'] == 'adminCommentsReport')
@@ -141,6 +142,22 @@ try{
                     throw new Exception('Aucun identifiant de commentaire envoyé !');
                 }
             }
+            // ADMIN - Supprimer tous les commentaires
+
+
+                elseif ($_GET['action'] == 'deleteAllComment')
+            {
+                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+                {
+                    $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
+                    $commentsCtrl->deleteAllComment($_GET['post_id']);
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de commentaire envoyé !');
+                }
+            }
+
             // ADMIN - Approuver un commentaire (retirer le signalement)
             elseif ($_GET['action'] == 'approvedComment')
             {

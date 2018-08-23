@@ -221,15 +221,15 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
     //Supprime tous les commentaires d'un chapitre   
-    public function deleteAllComments($post_id)
+    public function deleteAllComment($post_id)
     {
         $this->setIdPost($post_id);
 
         $db = $this->dbConnect();
         $comments = $db->prepare('DELETE FROM comments WHERE post_id= ?');
-        $deleteComments = $comments->execute(array($this->getIdPost()));
+        $deleteAllComment = $comments->execute(array($this->getIdPost()));
 
-        return $deleteComments;
+        return $deleteAllComments;
     }
 
   //signaler commentaire

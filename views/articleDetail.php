@@ -99,6 +99,8 @@
 
 	
 <!----boucle affichage commentaire --->	
+
+	
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
@@ -112,9 +114,16 @@
 					</p></span>
 				
 		     	</div>
-		     		<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i>
+		     	<?php
+					if(isset($_SESSION['pseudo'])) { ?>
+						<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i>
 						</a>
-					</em>
+						</em>
+					  <em><a href="index.php?action=adminUpdateComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Modifier <i class="fas fa-comment-dots"></i></a></em>
+            			<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Supprimer <i class="fas fa-comment-slash"></i></a></em>
+			<?php
+            }
+            ?>
 			</div>
 		<?php
 		}
@@ -124,17 +133,17 @@
 <!---lien retour page précédente selon si visiteur ou admin---->	
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
-			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
-			Retour à votre tableau de bord</i></a></p>
-		 <?php
+				<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
+				Retour à votre tableau de bord</i></a></p>
+		<?php
             }
            	else { ?>
 
-			<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
-			Retour à la liste des Chapitres</i></a></p>
-			  <?php
+				<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
+				Retour à la liste des Chapitres</i></a></p>
+		<?php
             }
-            ?>
+          ?>
 		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
 		<script src ="public/js/tinymce/fr.js"></script>

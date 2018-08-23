@@ -88,6 +88,22 @@ class CommentController
         require ('views/reportCommentsView.php');
     }
 
+
+// supprimer tous les commentaires d'un chapitre(post_id)
+    public function deleteAllComment($post_id)
+    {
+        $deleteAllComment = $this->post->deleteAllComment($post_id);
+        if($deleteAllComment === false)
+        {
+            throw new Exception('Impossible de supprimer le commentaire' );
+        }
+        else
+        {
+            header('Location: index.php?action=adminListComments' );
+        }
+    }
+
+    
 // Supprimer un commentaire
     public function deleteComment($id_comment)
     {
