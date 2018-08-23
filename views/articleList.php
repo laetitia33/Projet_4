@@ -42,7 +42,7 @@
 					<?php if(isset($_SESSION['pseudo'])) { ?>
 				
 							
-						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-pen-square"> Éditer </i></em></a><br>
+						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-pen-square"> Modifier </i></em></a><br>
                			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer</i></em></a>
 					
 					<?php

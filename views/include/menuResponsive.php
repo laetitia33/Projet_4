@@ -10,8 +10,8 @@ if(isset($_SESSION['id']))
 <div id="mainmobil">
 	<a href="#ferme" title="fermer" id="closemenu"><i class="fas fa-times"></i></a>
 	<ul id="mobil_navigation">
-		 <li><a class="adminbtn "href="index.php?action=administration#adminView"></i> Tableau de bord</a></li>
-		<li><a class="creation" href="index.php?action=listPosts#episodes">Chapitres</a></li>
+		 <li><a class="adminbtn "href="index.php?action=administration#adminView"></i>Tableau de bord</a></li>
+		<li><a class="creation" href="index.php?action=listPosts#episodes">Tous les chapitres</a></li>
 		<li><a class="creation" href="index.php?action=adminNewPost">Créer un chapitre</a></li>
 		<li><a  href="index.php?action=adminListComments#com">Tous les Commentaires</a></li>
 		<li><a href="index.php?action=logout">Déconnexion</a></li>

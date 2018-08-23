@@ -1,7 +1,7 @@
 <?php $title = 'Créer un nouveau Chapitre '; ?>
 
 <?php ob_start(); ?>
-
+<div id ="create"></div>
 
 <h2>Ecriture d'un nouveau chapitre</h2>
 
@@ -11,9 +11,9 @@
 
 <form action="index.php?action=createPost" method="POST">
         <div>
-            <label for="author" >Auteur</label>
+            <label for="author" ></label>
      
-                <input type="text" name="author" class="inputbasic" id="author"value="<?php
+            <input type="text" name="author" class="inputbasic" id="author"value="<?php
                 if (isset($_SESSION['pseudo']))
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
@@ -23,20 +23,23 @@
         </div>
 
         <div>
-            <label for="title">Titre</label>
-           
-                <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici votre titre"/>
+            <label for="title"></label>          
+            <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici votre titre"/>
 
         </div>
         
-        <div>
-            <label for="content" >Chapitre</label>
-        
-                <textarea name="content" id="content" class="inputbasic" placeholder="Indiquez ici votre chapitre"></textarea>
+        <div >
+            
+        <div class="inputbasic" style="margin:auto;">
+                <label for="content"></label>
+                <textarea name="content" id="content">Indiquez ,ici ,votre chapitre</textarea>
+            </div>
         </div>
-      
-            <button type="submit" name="envoyer">Envoyer</button>
-  
+
+
+        <div>
+            <input type="submit" value="envoyez votre Chapitre"></input>
+        </div>
 </form>
 
 <?php $content = ob_get_clean(); ?>

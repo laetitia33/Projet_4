@@ -18,5 +18,6 @@
 		
 		</div>	
 	<script src = "public/js/script.js"></script>
+	<script src ="public/js/tinymce/fr.js"></script>
 	</body>
 </html>

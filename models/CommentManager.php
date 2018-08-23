@@ -12,43 +12,43 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
    public function __construct()
     {
-        $this->_comment_date = new DateTime('now');
+        $this->comment_date = new DateTime('now');
         
     }
 
     public function getIdComment()
     {
-        return $this->_id_comment;
+        return $this->id_comment;
     }
 
  
     public function getIdPost()
     {
-        return $this->_post_id;
+        return $this->post_id;
     }
 
 
     public function getAuthor()
     {
-        return $this->_author;
+        return $this->author;
     }
 
  
     public function getComment()
     {
-        return $this->_comment;
+        return $this->comment;
     }
 
    
     public function getCommentDate()
     {
-        return $this->_comment_date;
+        return $this->comment_date;
     }
 
    
     public function getReporting()
     {
-        return $this->_reporting;
+        return $this->reporting;
     }
 
 
@@ -57,7 +57,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $id_comment = (int) $id_comment;
 
         if ($id_comment > 0) {
-            $this->_id_comment = $id_comment;
+            $this->id_comment = $id_comment;
         }
     }
  
@@ -66,32 +66,32 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $post_id = (int) $post_id;
 
         if ($post_id > 0) {
-            $this->_post_id = $post_id;
+            $this->post_id = $post_id;
         }
     }
  
     public function setAuthor($author)
     {
         if(is_string($author)) {
-            $this->_author = $author;
+            $this->author = $author;
         }
     }
    
     public function setComment($comment)
     {
         if(is_string($comment)) {
-            $this->_comment = $comment;
+            $this->comment = $comment;
         }
     }
   
     public function setCommentDate(DateTime $comment_date)
     {
-        $this->_comment_date = $comment_date;
+        $this->comment_date = $comment_date;
     }
   
     public function setReporting($reporting)
     {
-        $this->_reporting = $reporting;
+        $this->reporting = $reporting;
     }
 
 
@@ -167,6 +167,8 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comment;
     }
 
+
+
     //envoi d'un commentaire
     public function createComment($post_id, $author, $comment)
     {
@@ -184,6 +186,8 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
         return $createComment;
     }
+
+
 
 //chargement commentaires
     public function updateComment($id_comment, $post_id, $author, $comment)

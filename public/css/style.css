@@ -510,7 +510,6 @@ a {
     justify-content: space-around;
     -ms-flex-pack: space-around;
     margin-bottom: 55px;
-  
 }
 
 .body_card span img {
@@ -906,6 +905,7 @@ form input {
     margin-bottom: 10px;
 }
 
+
 .inputbasic {
     width: 60%;
     padding: 10px;
@@ -1079,18 +1079,10 @@ form input[type=submit]:hover {
 }
 /*--------------tableau de bord-----------*/
 
-.bienvenue{
-
-    font-size :1.5em;
-    color:black;
-    font-style:italic;
-    margin-top:2%;
-
-}
 
 .adminPost{
     margin:auto;
-      display: flex;
+    display: flex;
     display: -ms-flexbox;
     flex-direction: column;
     -ms-flex-direction:column;
@@ -1119,11 +1111,16 @@ form input[type=submit]:hover {
 }
 
 
+.bloc p
+
+{
+    font-size:1em;
+}
 .admin{
 
     text-align:center;
-    padding-right:4%;
-    font-size:1.5em;
+    padding-right:3%;
+    font-size:1.2em;
 
 }
 

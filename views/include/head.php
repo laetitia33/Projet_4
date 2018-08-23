@@ -9,15 +9,16 @@
 		<meta property="og:type" content="website">
 		<meta property="og:image" content="public/images/logo.png">
 		<meta name="Language" CONTENT="fr" />
-		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-	
 		<link rel="icon" href="public/image/plane.ico" type="image/x-icon">
 		<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-		
+
+		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h6ble8677pog4pffjmzlwtaf0l6xs0i472c1aw6acasvxtuy"></script>
+  		<script>tinymce.init({ selector:'textarea'}); </script>
+	
 		<title><?= isset($title) ? $title : 'Un billet pour l\'Alaska ';?></title>
 	</head>
 	

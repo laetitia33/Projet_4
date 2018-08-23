@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-   
+   <div id="#editcom"></div>
     <h2>Éditer le commentaire de: </h2>
     <p><?= htmlspecialchars($comment['author']); ?><em> du <?= htmlspecialchars($comment['comment_date_fr']); ?></em><br/>
         <?= htmlspecialchars($comment['comment']); ?> </p>

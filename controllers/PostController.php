@@ -37,7 +37,6 @@ class PostController
     }
 
 
-
 // Ajouter un chapitre
     public function postAdd($author, $title, $content)
     {
@@ -74,7 +73,7 @@ class PostController
         } elseif ($deleteComments === false) {
             throw new Exception('Impossible de supprimer les commentaire du chapitre');
         } else {
-            header('Location:index.php?action=articleList');
+            header('Location: index.php?action=listPosts');
         }
     }
 }

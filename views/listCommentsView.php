@@ -4,7 +4,6 @@
 
    
     <h2>Commentaires</h2>
-
 <?php $header = ob_get_clean(); ?>
 
 <?php ob_start(); ?>

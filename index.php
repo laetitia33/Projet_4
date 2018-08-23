@@ -54,8 +54,9 @@ try{
                     throw new Exception('Tous les champs ne sont pas remplis..');
                 }
             }
+
             // ADMIN - page de MAJ d'un chapitre
-            elseif ($_GET['action'] == 'adminUpdateChapter')
+            elseif ($_GET['action'] == 'adminUpdatePost')
             {
                 $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                 $postCtrl->adminUpdatePost();
@@ -146,16 +147,13 @@ try{
                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                 $commentCtrl->approvedComment();
             }
-          
-      
-
+    
             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')
             {
-                $adminCtrl = new \Laetitia_Bernardi\projet4\Controller\AdminController();
-                $adminCtrl->adminNewPost();
+                $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $viewCtrl->adminNewPost();
             }
-          
             // Liste des chapitres
             elseif ($_GET['action'] == 'listPosts')
             {
@@ -196,6 +194,29 @@ try{
                     throw new Exception('Aucun identifiant de chapitre envoyé !');
                 }
             }
+
+
+
+            // Ajoute un commentaire dans le chapitre selectionné
+            elseif ($_GET['action'] == 'addCommentAdmin')
+            {
+                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+                {
+                    if (!empty($_POST['comment']))
+                    {
+                        $commentadminCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
+                        $commentadminCtrl->addCommentAdmin($_GET['post_id'], $_POST['comment']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs doivent être remplis !');
+                    }
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de chapitre envoyé !');
+                }
+            }
             // Page de connexion
             elseif ($_GET['action'] == 'login')
             {
@@ -210,6 +231,8 @@ try{
                 $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
                 $userCtrl->logoutUser();
             }
+
+        
 
             // Signaler un commentaire
             elseif ($_GET['action'] == 'report')

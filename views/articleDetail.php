@@ -12,7 +12,7 @@
 <!---lien retour page précédente selon si visiteur ou admin---->		
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
-			<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
+			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 			Retour à votre tableau de bord</i></a></p>
 		 <?php
             }
@@ -46,19 +46,29 @@
 		</p>
 
 <!-----commentaires admin--->
-<?php
 
-if(isset($_SESSION['pseudo'])) { ?>
 		<span id ="com"><h3><i class="far fa-comments"></i>Commentaires</h3></span>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#commentaires" method="POST">
 			
-			<div>
+		<div>
+            <label for="author" ></label>
+     
+            <input type="text" name="author" class="inputbasic" id="author"value="<?php
+                if (isset($_SESSION['pseudo']))
+                {
+                    echo htmlspecialchars($_SESSION['pseudo']);
+                }
+                ?>"
+                />
+        </div>
+
+			<div class="inputbasic" style="margin:auto;">
 				<label for="comment"></label><br />
-				<textarea class="inputbasic" id="comment" name="comment" ; placeholder="Entrez votre commentaire"></textarea>
+				<textarea  name="comment" id="comment" ; placeholder="Entrez votre commentaire"></textarea>
 			</div>
 			
 			<div>
-				<input type="submit" value="Envoyez votre commentaire,Jean" />
+				<input type="submit" value="Envoyez votre commentaire" />
 			</div>
 		 </form>
 	
@@ -86,35 +96,7 @@ if(isset($_SESSION['pseudo'])) { ?>
 		?>
 
 
-<?php
-}
-//commentaires visiteurs
-else
-{
-    ?>
 
-		<span id ="com"><h3><i class="far fa-comments"></i>
-		Commentaires</h3></span>
-		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#commentaires" method="POST">
-			<div>
-				<label for="author"></label><br />
-				<input type="text" placeholder="Entrez votre nom" class="inputbasic" id="user" name="author"/>
-			</div>
-			
-			<div>
-				<label for="comment"></label><br />
-				<textarea class="inputbasic" id="comment" name="comment" ; placeholder="Entrez votre commentaire"></textarea>
-			</div>
-			
-			<div>
-				<input type="submit" value="Envoyez votre commentaire" />
-			</div>
-		</form>
-	
-		
-<?php
-}
-?>;
 	
 <!----boucle affichage commentaire --->	
 		<?php
@@ -142,7 +124,7 @@ else
 <!---lien retour page précédente selon si visiteur ou admin---->	
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
-			<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
+			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
 			Retour à votre tableau de bord</i></a></p>
 		 <?php
             }
@@ -155,5 +137,6 @@ else
             ?>
 		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
+		<script src ="public/js/tinymce/fr.js"></script>
 	</body>
 </html>
