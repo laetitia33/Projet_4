@@ -31,8 +31,8 @@
 			if(isset($_SESSION['pseudo'])) { ?>
 				<i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
 				</p>
-				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-pen-square"> Modifier </i></em></a><br><br>
-               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer</i></em></a>
+				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-pen-square"> Modifier le chapitre </i></em></a><br><br>
+               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a><br><br>
  			<?php
         	}
        		else { ?>
@@ -82,15 +82,21 @@
 			<div class = "commentaires">
 				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
 				</p>
+
 				<div class="user" id="commentaires">
-					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars($comment['comment'])) ?>
-						
-					</p></span>
-				
+					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p></span>				
 		     	</div>
-		     		<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i>
-						</a>
-					</em>
+			<?php
+			if(isset($_SESSION['pseudo'])) { ?>
+		     		
+		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>"><i class="fas fa-minus-circle"></i> Supprimer </a></em>
+			<?php
+        	}
+       		else { ?>
+       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i></a></em>
+		    <?php
+            }
+            ?>
 			</div>
 		<?php
 		}

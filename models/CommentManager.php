@@ -208,7 +208,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $updateComment;
     }
 
-public function deleteComment($id_comment)
+    public function deleteComment($id_comment)
     {
         $this->setIdComment($id_comment);
 
@@ -219,10 +219,8 @@ public function deleteComment($id_comment)
         return $deleteComment;
     }
 
-    /**
-     * @param                           $id_chapter
-     * @return bool                     Supprime tous les commentaires d'un chapitre
-     */
+
+
     public function deleteAllComments($post_id)
     {
         $this->setIdPost($post_id);

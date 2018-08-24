@@ -142,10 +142,12 @@ try{
                     throw new Exception('Aucun identifiant de commentaire envoyé !');
                 }
             }
+
+
             // ADMIN - Supprimer tous les commentaires
 
 
-                elseif ($_GET['action'] == 'deleteAllComment')
+            elseif ($_GET['action'] == 'deleteAllComment')
             {
                 if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
                 {

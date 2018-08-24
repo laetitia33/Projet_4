@@ -103,6 +103,8 @@ class CommentController
         }
     }
 
+
+
     
 // Supprimer un commentaire
     public function deleteComment($id_comment)
