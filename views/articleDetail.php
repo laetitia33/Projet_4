@@ -26,11 +26,13 @@
 		<h2><?= htmlspecialchars($post['title']) ?></h2>
 		<p>
 
-<!---affichage de l'auteur selon si visiteur ou admin---->				
+<!---affichage de l'auteur , de modification ou suppression de l'article selon si visiteur ou admin---->				
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
-				 <i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
+				<i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
 				</p>
+				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-pen-square"> Modifier </i></em></a><br><br>
+               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer</i></em></a>
  			<?php
         	}
        		else { ?>
