@@ -68,12 +68,12 @@ class PostController
         $deletePost = $this->post->deletePost($post_id);
         $deleteComments = $this->comment->deleteAllComments($post_id);
 
-        if ($deleteChapter === false) {
+        if ($deletePost === false) {
             throw new Exception('Impossible de supprimer le chapitre');
         } elseif ($deleteComments === false) {
             throw new Exception('Impossible de supprimer les commentaire du chapitre');
         } else {
-            header('Location: index.php?action=listPosts');
+            header('Location:index.php?action=listPosts');
         }
     }
 }

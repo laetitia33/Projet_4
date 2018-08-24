@@ -208,8 +208,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $updateComment;
     }
 
-   //supprimer commentaire
-    public function deleteComment($id_comment)
+public function deleteComment($id_comment)
     {
         $this->setIdComment($id_comment);
 
@@ -220,17 +219,21 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $deleteComment;
     }
 
-    //Supprime tous les commentaires d'un chapitre   
-    public function deleteAllComment($post_id)
+    /**
+     * @param                           $id_chapter
+     * @return bool                     Supprime tous les commentaires d'un chapitre
+     */
+    public function deleteAllComments($post_id)
     {
         $this->setIdPost($post_id);
 
         $db = $this->dbConnect();
         $comments = $db->prepare('DELETE FROM comments WHERE post_id= ?');
-        $deleteAllComment = $comments->execute(array($this->getIdPost()));
+        $deleteComments = $comments->execute(array($this->getIdPost()));
 
-        return $deleteAllComments;
+        return $deleteComments;
     }
+
 
   //signaler commentaire
     public function reportComment($id_comment)
