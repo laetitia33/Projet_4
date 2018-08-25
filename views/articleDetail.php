@@ -60,7 +60,7 @@
 		<?php
         	}
        		else { ?>
-       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" />"
+       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" />
        	 <?php
             }
             ?>

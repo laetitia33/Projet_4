@@ -19,6 +19,9 @@ class CommentController
 // Liste des commentaires
     public function adminListComments()
     {
+        $postsTotal = $this->post->countPosts();
+        $commentsReportTotal = $this->comment->countCommentsReport();
+        $commentsTotal  =$this ->comment ->countComments();
         $comments = $this->comment->getAllComments();
         require ('views/ListCommentsView.php');
     }
@@ -51,9 +54,9 @@ class CommentController
     {
         $post = $this->post->getPost($_GET['post_id']);
         $reportComment = $this->comment->reportComment($_GET['id']);
-
-
+        echo '<p class="comSignal" >Email envoyé avec succès</p>';
         header('Location: index.php?action=post&post_id=' . $_GET['post_id']);
+
     }
 
 
@@ -69,6 +72,8 @@ class CommentController
 // Liste des commentaires signalés
     public function adminCommentsReport()
     {
+        $postsTotal = $this->post->countPosts();
+        $commentsTotal  =$this ->comment ->countComments();
         $reportComments = $this->comment->getReportComments();
         require ('views/reportCommentsView.php');
     }

@@ -90,13 +90,13 @@ class PostManager extends Manager
 //fin getters et setters
 
 
-
+//récupère le dernier article
     public function getLastPost()
     {
-            $db = $this->dbConnect();
+        $db = $this->dbConnect();
 
-            $post = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 1');
-            return $post;
+        $post = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 1');
+        return $post;
     }
 
 
@@ -162,7 +162,7 @@ class PostManager extends Manager
         return $createPost;
     }
 
- //modification de l'article
+//modification de l'article
     public function updatePost($post_id, $author, $title, $content)
     {
         $this->setId($post_id);

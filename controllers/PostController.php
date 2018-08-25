@@ -23,6 +23,7 @@ class PostController
 // Afficher un chapitre + ses commentaires
     public function post($post_id)
     {
+        $commentsReportTotal = $this->comment->countCommentsReport();
         $post = $this->post->getPost($post_id);
         $comments = $this->comment->getComments($post_id);
         require('views/articleDetail.php');
@@ -33,7 +34,8 @@ class PostController
     {
         $posts = $this->post->getPosts();
         $postsTotal = $this->post->countPosts();
-
+        $commentsTotal  =$this ->comment ->countComments();
+        $commentsReportTotal = $this->comment->countCommentsReport();
         require('views/articleList.php');
 
     }
@@ -46,14 +48,17 @@ class PostController
         header('Location: index.php?action=listPosts');
     }
 
-// Page d'édition d'un chapitre
+// Page de modification d'un chapitre
     public function adminUpdatePost()
     {
+        $commentsReportTotal = $this->comment->countCommentsReport();
+        $postsTotal = $this->post->countPosts();
+        $commentsTotal  =$this ->comment ->countComments();
         $post = $this->post->getPost($_GET['post_id']);
         require ('views/updatePostView.php');
     }
 
-// Editer un chapitre
+// Modification d'un chapitre
     public function updatePost($post_id, $author, $title, $content)
     {
         $updatePost = $this->post->updatePost($post_id, $author, $title, $content);

@@ -48,6 +48,7 @@ try{
                 {
                     $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                     $postCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
+                   
                 }
 
                 else

@@ -32,7 +32,7 @@ class ContactController
         }
         else{
             header('Location: index.php?action=email');
-                echo '<p class="succesMail" >Email envoyé avec succès</p>';
+                echo '<p class="comSignal" >Le commentaire a ete signalé</p>';
 
         }
     }
