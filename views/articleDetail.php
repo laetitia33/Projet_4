@@ -88,7 +88,8 @@
 				</p>
 
 				<div class="user" id="commentaires">
-					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p></span>				
+
+					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars(substr($comment['comment'],0,400))) ?></p></span>				
 		     	</div>
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>

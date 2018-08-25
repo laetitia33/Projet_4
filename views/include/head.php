@@ -16,8 +16,9 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
+
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h6ble8677pog4pffjmzlwtaf0l6xs0i472c1aw6acasvxtuy"></script>
-  		<script>tinymce.init({ selector:'textarea'}); </script>
+  		<script>tinymce.init({ selector:'textarea',invalid_elements : 'strong,em,div,li,ul,&nbsp,span,br',entities : '160,nbsp,&nbsp,162,cent,8364,euro,163,pound', entity_encoding : "raw", forced_root_block : '', force_br_newlines : true, force_p_newlines : false,}); </script>
 
 		<title><?= isset($title) ? $title : 'Un billet pour l\'Alaska ';?></title>
 	</head>

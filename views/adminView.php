@@ -20,7 +20,7 @@
                         
             
                 <div class="news" >
-                    <?= nl2br(htmlspecialchars(substr($data['content'], 0, 250))); ?>...
+                    <?= nl2br(htmlspecialchars(substr($data['content'], 0, 350))); ?>...
                 </div>
                 
                 <a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>">En lire plus</a>           
@@ -41,7 +41,7 @@
             <p><strong><?= htmlspecialchars($data['author']); ?></strong> le <?= $data['comment_date_fr']; ?></p>
 
             <div class="news" >
-                <p><?= nl2br(htmlspecialchars($data['comment'])); ?></p>
+                <p><?= nl2br(htmlspecialchars(substr($data['comment'],0,350))); ?></p>
             </div>
         </div>
 
