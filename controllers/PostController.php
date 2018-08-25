@@ -32,6 +32,8 @@ class PostController
     public function listPosts()
     {
         $posts = $this->post->getPosts();
+        $postsTotal = $this->post->countPosts();
+
         require('views/articleList.php');
 
     }
@@ -57,7 +59,9 @@ class PostController
         $updatePost = $this->post->updatePost($post_id, $author, $title, $content);
 
         if ($updatePost === false) {
+
             throw new Exception('Impossible de mettre à jour le chapitre');
+
         } else {
             header('Location: index.php?action=listPosts');
         }

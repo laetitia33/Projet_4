@@ -45,10 +45,9 @@ class CommentController
         require ('views/updateCommentView.php');
     }
 
-// Editer un commentaire
-    public function updateComment($id_comment, $post_id, $author, $comment)
+    public function updateComment($id_comment, $post_id ,$author, $comment)
     {
-        $updateComment = $this->comment->updateComment($id_comment, $post_id, $author, $comment);
+        $updateComment = $this->comment->updateComment($id_comment, $post_id , $author, $comment);
 
         if($updateComment === false)
         {
@@ -56,7 +55,7 @@ class CommentController
         }
         else
         {
-            header('Location: index.php?action=post&post_id=' . $post_id);
+            header('Location: index.php?action=post&$post_id =' . $post_id  );
         }
     }
 
@@ -102,8 +101,6 @@ class CommentController
             header('Location: index.php?action=adminListComments' );
         }
     }
-
-
 
     
 // Supprimer un commentaire

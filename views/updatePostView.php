@@ -16,7 +16,8 @@
         </div>
     </p>
 
-    <form action="index.php?action=updatePost&amp;post_id=<?= $_GET['post_id']; ?>" method="POST">
+    <form action="index.php?action=updatePost&amp;post_id=<?= $_GET['post_id'];?>" method="POST">
+
             
         <div>
             <label for="author" ></label>
@@ -31,12 +32,12 @@
         </div>
           
         <div >
-                <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici votre titre"/>
+                <input type="text" name="title" class="inputbasic" id="title" value="<?php echo htmlspecialchars($post['title']) ;?>"/>
         </div>
   
         <div class="inputbasic" style="margin:auto;">
                 <label for="content"></label>
-                <textarea name="content" id="content">Indiquez ,ici ,votre chapitre</textarea>
+                <textarea name="content" id="content"><?php echo htmlspecialchars($post['content']) ;?></textarea>
             
         </div>
         <div>

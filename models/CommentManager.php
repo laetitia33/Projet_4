@@ -190,7 +190,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
 
 //chargement commentaires
-    public function updateComment($id_comment, $post_id, $author, $comment)
+       public function updateComment($id_comment, $post_id, $author, $comment)
     {
         $this->setIdComment($id_comment);
         $this->setIdPost($post_id);

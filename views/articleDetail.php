@@ -1,6 +1,6 @@
 <?php $title = 'Chapitre ' . htmlspecialchars($post['id']) . ''; ?>
 
-
+<!-------------------------------------head et header------------------------------>
 <!DOCTYPE html>
 <html>
 	<?php include_once 'views/include/head.php';?>
@@ -9,7 +9,7 @@
 		
 		<p class ='comSignal'></p>
 
-<!---lien retour page précédente selon si visiteur ou admin---->		
+<!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
@@ -47,7 +47,7 @@
 			</div>	
 		</p>
 
-<!-----commentaires admin--->
+<!-----------------------------écrire commentaires admin-  ou visiteur--------------------------------------->
 
 		<span id ="com"><h3><i class="far fa-comments"></i>Commentaires</h3></span>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#commentaires" method="POST">
@@ -59,7 +59,11 @@
                 if (isset($_SESSION['pseudo']))
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
-                }
+              
+        		}
+       			else {
+       				echo htmlspecialchars("indiquez votre nom");
+       			}
                 ?>"
                 />
         </div>
@@ -74,7 +78,7 @@
 			</div>
 		 </form>
 	
-<!----boucle affichage commentaire --->
+<!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
@@ -93,7 +97,7 @@
 			<?php
         	}
        		else { ?>
-       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i></a></em>
+       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signalez un abus</i></a></em>
 		    <?php
             }
             ?>
@@ -103,42 +107,8 @@
 		$comments->closeCursor();
 		?>
 
+<!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
-
-	
-<!----boucle affichage commentaire --->	
-
-	
-		<?php
-		while ($comment = $comments->fetch())
-		{ ;?>
-		
-			<div class = "commentaires">
-				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
-				</p>
-				<div class="user" id="commentaires">
-					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars($comment['comment'])) ?>
-						
-					</p></span>
-				
-		     	</div>
-		     	<?php
-					if(isset($_SESSION['pseudo'])) { ?>
-						<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signaler</i>
-						</a>
-						</em>
-					  <em><a href="index.php?action=adminUpdateComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Modifier <i class="fas fa-comment-dots"></i></a></em>
-            			<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Supprimer <i class="fas fa-comment-slash"></i></a></em>
-			<?php
-            }
-            ?>
-			</div>
-		<?php
-		}
-		$comments->closeCursor();
-		?>
-
-<!---lien retour page précédente selon si visiteur ou admin---->	
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
 				<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
@@ -155,5 +125,6 @@
 		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
 		<script src ="public/js/tinymce/fr.js"></script>
+		<script src ="public/js/pagination.js"></script>
 	</body>
 </html>

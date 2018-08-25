@@ -1,5 +1,8 @@
+
+
 <?php $title = 'Jean Forteroche - Billet simple pour l\'Alaska'; ?>
 
+<!--------------------------------------------biographie---------------------------------------------->
 <?php ob_start(); ?>
 
 
@@ -17,10 +20,11 @@
 
 
 <?php ob_start(); ?>
-	<!----affichage des articles --------->
-			<a id="episodes"></a>
-		
+<!-------------------------------------------affichage de tous les articles------------------------------>
+			<a id="episodes"></a><!--ancre du bouton de navigation chapitre à episodes en javascript-->
+	
 			<div class="body_card">
+
 				<h2>Liste des Chapitres</h2>
 
 
@@ -54,14 +58,21 @@
 				}
 				?>
 			</div>
+	
+
 			<?php
 
 			$posts->closeCursor();
 			;?>
+			<div class="admin">
+                <a  href="index.php?action=listPosts#episodes">
+                    <p>Vous avez actuellement <?= $postsTotal['total_posts']?> chapitres dans votre Blog.</p>
+                </a>
+            </div>
 
-			
+     
 
-		
+
 <?php $content = ob_get_clean(); ?>
-
+<!---------------------------------renvoi vers la template appelée home------------------------------>
 <?php require('views/home.php'); ?>

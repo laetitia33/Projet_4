@@ -101,6 +101,7 @@ try{
                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                 $commentCtrl->adminUpdateComment();
             }
+         
             // ADMIN - Mise à jour d'un commentaire
             elseif ($_GET['action'] == 'updateComment')
             {
