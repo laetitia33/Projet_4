@@ -8,8 +8,12 @@
 		<?= htmlspecialchars($errorMessage) ?></p>
 		
 		<p style="margin-left:25px; font-size:1.5em;"><a href=javascript:history.go(-1)><i class="fas fa-arrow-left"> Retour</i></a></p>				
-		<?php include_once 'views/include/footer.php' ?>
+		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
+		<script src ="public/js/tinymce/fr.js"></script>
+		<script src ="public/js/pagination.js"></script>
+		<script src ="public/js/placeholder.js"></script>
+		<script src ="public/js/placeholder.min.js"></script>
 		
 	</body>
 </html>

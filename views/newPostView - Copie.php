@@ -9,7 +9,7 @@
 
 <?php ob_start(); ?>
 
-<form action="index.php?action=createPost" method="POST">
+<form action="index.php?action=createMail" method="POST">
         <div>
             <label for="author" ></label>
      
@@ -24,7 +24,7 @@
 
         <div>
             <label for="title"></label>          
-            <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici votre titre"/>
+            <input type="text" name="title" class="inputbasic" id="title" placeholder="Indiquez ici le sujet"/>
 
         </div>
         
@@ -32,13 +32,13 @@
             
         <div class="inputbasic" style="margin:auto;">
                 <label for="content"></label>
-                <textarea name="content" id="content" placeholder="Indiquez ,ici ,votre chapitre"></textarea>
+                <textarea name="content" id="content">Ecrivez votre message</textarea>
             </div>
         </div>
 
 
         <div>
-            <input type="submit" value="envoyez votre Chapitre"></input>
+            <input type="submit" value="envoyez votre Message"></input>
         </div>
 </form>
 

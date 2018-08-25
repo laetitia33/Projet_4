@@ -86,12 +86,12 @@ class PostManager extends Manager
         $this->date_creation= $date_creation;
     }
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //fin getters et setters
 
 
 
-     public function getLastPost()
+    public function getLastPost()
     {
             $db = $this->dbConnect();
 
@@ -100,7 +100,7 @@ class PostManager extends Manager
     }
 
 
-//indique le nombre d'articles sur ma page
+//indique le nombre d'articles sur ma page (6)
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -131,7 +131,7 @@ class PostManager extends Manager
         return $postsTotal;
     }
 
-//recupere article
+//recupere un article
     public function getPost($post_id)
     {
         $this->setId($post_id);
@@ -144,7 +144,7 @@ class PostManager extends Manager
         return $post;
     }
 
-  //creation d'un article
+//creation d'un article
     public function createPost($author, $title, $content)
     {
         $this->setAuthor($author);
@@ -162,7 +162,7 @@ class PostManager extends Manager
         return $createPost;
     }
 
- //actualisation article
+ //modification de l'article
     public function updatePost($post_id, $author, $title, $content)
     {
         $this->setId($post_id);
@@ -181,7 +181,7 @@ class PostManager extends Manager
         return $updatePost;
     }
 
-   //suppression articles
+//suppression d'un article
     public function deletePost($post_id)
     {
         $this->setId($post_id);

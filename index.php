@@ -95,41 +95,7 @@ try{
                     throw new Exception('Aucun identifiant de chapitre envoyé !');
                 }
             }
-            // ADMIN - page de MAJ des commentaires
-            elseif ($_GET['action'] == 'adminUpdateComment')
-            {
-                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                $commentCtrl->adminUpdateComment();
-            }
-         
-            // ADMIN - Mise à jour d'un commentaire
-            elseif ($_GET['action'] == 'updateComment')
-            {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
-                {
-                    if (isset($_GET['id']) && $_GET['id'] > 0)
-                    {
-                        if ($_POST['author'] != NULL && $_POST['comment'] != NULL)
-                        {
-                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                            $commentCtrl->updateComment($_GET['id'], $_GET['post_id'], $_POST['author'], $_POST['comment']);
-                        }
-                        else
-                        {
-                            throw new Exception('Tous les champs ne sont pas remplis..');
-                        }
-                    }
-                    else
-                    {
-                        throw new Exception('Aucun identifiant de commentaire envoyé !');
-                    }
-
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de chapitre envoyé !');
-                }
-            }
+           
             // ADMIN - Supprimer un commentaire
             elseif ($_GET['action'] == 'deleteComment')
             {

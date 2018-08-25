@@ -85,8 +85,10 @@ protected $id, $name, $email, $content, $date_creation;
         $this->_date_creation = $date_creation;
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//fin des getters et setters
 
-    // dernier commentaire
+    // dernier mail
     public function getLastMail()
     {
         $db = $this->dbConnect();

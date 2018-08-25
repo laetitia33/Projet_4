@@ -93,10 +93,10 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     {
         $this->reporting = $reporting;
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//fin de getters et setters
 
-
-
-    // dernier commentaire
+// dernier commentaire
     public function getLastComment()
     {
         $db = $this->dbConnect();
@@ -104,7 +104,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comment;
     }
 
-    //tous les commentaires
+//tous les commentaires
     public function getAllComments()
     {
         $db = $this->dbConnect();
@@ -112,7 +112,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comments;
     }
 
-    //commentaires signalés
+//commentaires signalés
     public function getReportComments()
     {
         $db = $this->dbConnect();
@@ -121,7 +121,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $reportComments;
     }
 
-    //nombre de commentaires
+//nombre de commentaires
     public function countComments()
     {
         $db = $this->dbConnect();
@@ -131,7 +131,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $commentsTotal;
     }
 
-    //nombre de commentaires signalés   
+//nombre de commentaires signalés   
     public function countCommentsReport()
     {
         $db = $this->dbConnect();
@@ -141,7 +141,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $commentsReportTotal;
     }
 
-    //recupere les commentaires d'un chapitre avec son id
+//recupere les commentaires d'un chapitre 
     public function getComments($post_id)
     {
         $this->setIdPost($post_id);
@@ -154,7 +154,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
 
-    //Récupère un commentaire via son identifiant
+//Récupère un commentaire via son identifiant
     public function getCommentById($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -169,7 +169,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
 
 
-    //envoi d'un commentaire
+//envoi d'un commentaire
     public function createComment($post_id, $author, $comment)
     {
         $this->setIdPost($post_id);
@@ -187,27 +187,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $createComment;
     }
 
-
-
-//chargement commentaires
-       public function updateComment($id_comment, $post_id, $author, $comment)
-    {
-        $this->setIdComment($id_comment);
-        $this->setIdPost($post_id);
-        $this->setAuthor($author);
-        $this->setComment($comment);
-
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET post_id= :post_id, author= :author, comment= :comment, comment_date= NOW() WHERE id= :id_comment');
-        $comments->bindParam('post_id', $this->getIdPost(), PDO::PARAM_INT);
-        $comments->bindParam('author',$this->getAuthor(), PDO::PARAM_STR);
-        $comments->bindParam('comment',$this->getComment(), PDO::PARAM_STR);
-        $comments->bindParam('id_comment', $this->getIdComment(), PDO::PARAM_INT);
-        $updateComment = $comments->execute();
-
-        return $updateComment;
-    }
-
+//suppression commentaires
     public function deleteComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -220,7 +200,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
 
-
+//suppression de tous les commentaires
     public function deleteAllComments($post_id)
     {
         $this->setIdPost($post_id);
@@ -233,7 +213,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
 
-  //signaler commentaire
+//signaler commentaire
     public function reportComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -250,7 +230,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
      
 
-    //Valide un commentaire en retirant son signalement
+//Valider un commentaire en retirant son signalement
     public function approvedComment($id_comment)
     {
         $this->setIdComment($id_comment);

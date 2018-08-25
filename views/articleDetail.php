@@ -54,18 +54,17 @@
 			
 		<div>
             <label for="author" ></label>
-     
-            <input type="text" name="author" class="inputbasic" id="author"value="<?php
-                if (isset($_SESSION['pseudo']))
-                {
-                    echo htmlspecialchars($_SESSION['pseudo']);
-              
-        		}
-       			else {
-       				echo htmlspecialchars("indiquez votre nom");
-       			}
-                ?>"
-                />
+        <?php
+     	if(isset($_SESSION['pseudo'])) { ?>
+            <input type="text" name="author" class="inputbasic" id="author" value="<?php echo htmlspecialchars($_SESSION['pseudo'])?>"/>
+		<?php
+        	}
+       		else { ?>
+       		<input type="text" name="author" class="inputbasic" id="author" placeholder="Indiquez votre nom" />"
+       	 <?php
+            }
+            ?>
+                
         </div>
 
 			<div class="inputbasic" style="margin:auto;">
@@ -127,5 +126,7 @@
 		<script src = "public/js/script.js"></script>
 		<script src ="public/js/tinymce/fr.js"></script>
 		<script src ="public/js/pagination.js"></script>
+		<script src ="public/js/placeholder.js"></script>
+		<script src ="public/js/placeholder.min.js"></script>
 	</body>
 </html>

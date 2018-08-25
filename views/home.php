@@ -20,5 +20,7 @@
 	<script src = "public/js/script.js"></script>
 	<script src ="public/js/tinymce/fr.js"></script>
 	<script src ="public/js/pagination.js"></script>
+	<script src ="public/js/placeholder.js"></script>
+	<script src ="public/js/placeholder.min.js"></script>
 	</body>
 </html>

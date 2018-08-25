@@ -12,22 +12,22 @@ use \models\CommentManager;
 
 class HomeController
 {
-    private $_posts;
-    private $_comment;
+    private $posts;
+    private $comment;
 
     public function __construct()
     {
-        $this->_posts = new \Laetitia_Bernardi\projet4\Model\PostManager();
-        $this->_comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
+        $this->posts = new \Laetitia_Bernardi\projet4\Model\PostManager();
+        $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
 
     }
 
     // Home
     public function home()
     {
-        $posts = $this->_posts->getPosts();
-        $comment = $this->_comment->getLastComment();
-
+        $posts = $this->posts->getPosts();
+        $comment = $this->comment->getLastComment();
+        $postsTotal = $this->posts->countPosts();
         require ('views/articleList.php');
     }
 

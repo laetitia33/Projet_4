@@ -45,20 +45,6 @@ class CommentController
         require ('views/updateCommentView.php');
     }
 
-    public function updateComment($id_comment, $post_id ,$author, $comment)
-    {
-        $updateComment = $this->comment->updateComment($id_comment, $post_id , $author, $comment);
-
-        if($updateComment === false)
-        {
-            throw new Exception('Impossible de mettre à jour le commentaire' );
-        }
-        else
-        {
-            header('Location: index.php?action=post&$post_id =' . $post_id  );
-        }
-    }
-
 
 // Signaler un commentaire
     public function reportingComment()

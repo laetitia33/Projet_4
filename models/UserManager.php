@@ -62,7 +62,11 @@ class UserManager extends Manager
         }
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//fin des getters et setters
 
+
+//recuperation des données de l'utilisateur
 
     public function getUser($pseudo,$pass)
     {
