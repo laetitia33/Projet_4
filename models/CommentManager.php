@@ -108,7 +108,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+        $comments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments ORDER BY comment_date DESC LIMIT 0,10');
         return $comments;
     }
 
@@ -117,7 +117,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     {
         $db = $this->dbConnect();
 
-        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY reporting DESC');
+        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY reporting DESC LIMIT 0,10');
         return $reportComments;
     }
 
@@ -147,7 +147,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $this->setIdPost($post_id);
 
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $comments = $db->prepare('SELECT id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC LIMIT 0,6');
         $comments->execute(array($this->getIdPost()));
 
         return $comments;
