@@ -105,7 +105,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT id, title,author, content, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 6');
+        $req = $db->query('SELECT id, title,author, content, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 20');
         return $req;
     }
 
@@ -171,7 +171,7 @@ class PostManager extends Manager
         $this->setContent($content);
 
         $db = $this->dbConnect();
-        $post = $db->prepare('UPDATE posts SET title= :title, author= :author, content= :content, date_creation= NOW() WHERE id= :post_id');
+        $post = $db->prepare('UPDATE posts SET title= :title, author= :author, content= :content WHERE id= :post_id');
         $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);
         $post->bindValue('author', $this->getAuthor(), PDO::PARAM_STR);
         $post->bindValue('content',$this->getContent(), PDO::PARAM_STR);

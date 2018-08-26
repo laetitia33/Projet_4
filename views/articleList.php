@@ -85,11 +85,7 @@
     }
 ?>
 
-			<div class="admin">
-                <a  href="index.php?action=listPosts#episodes">
-                    <p>Vous avez actuellement écrit <?= $postsTotal['total_posts']?> chapitres .</p>
-                </a>
-            </div>
+			
 
 
 <?php $content = ob_get_clean(); ?>
