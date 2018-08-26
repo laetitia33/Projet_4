@@ -100,7 +100,7 @@ class PostManager extends Manager
     }
 
 
-//indique le nombre d'articles sur ma page (6)
+//affiche nombre d'articles sur ma page (6)
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -131,11 +131,11 @@ class PostManager extends Manager
         return $postsTotal;
     }
 
+
 //recupere un article
     public function getPost($post_id)
     {
         $this->setId($post_id);
-
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts WHERE id = ?');
         $req->execute(array($this->getId()));
@@ -163,7 +163,7 @@ class PostManager extends Manager
     }
 
 //modification de l'article
-    public function updatePost($post_id, $author, $title, $content)
+  public function updatePost($post_id, $author, $title, $content)
     {
         $this->setId($post_id);
         $this->setAuthor($author);
@@ -172,14 +172,15 @@ class PostManager extends Manager
 
         $db = $this->dbConnect();
         $post = $db->prepare('UPDATE posts SET title= :title, author= :author, content= :content, date_creation= NOW() WHERE id= :post_id');
-        $post->bindParam('title',$this->getTitle(), PDO::PARAM_STR);
-        $post->bindParam('author', $this->getAuthor(), PDO::PARAM_STR);
-        $post->bindParam('content',$this->getContent(), PDO::PARAM_STR);
-        $post->bindParam('post_id', $this->getId(), PDO::PARAM_INT);
+        $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);
+        $post->bindValue('author', $this->getAuthor(), PDO::PARAM_STR);
+        $post->bindValue('content',$this->getContent(), PDO::PARAM_STR);
+        $post->bindValue('post_id', $this->getId(), PDO::PARAM_INT);
         $updatePost = $post->execute();
 
         return $updatePost;
     }
+
 
 //suppression d'un article
     public function deletePost($post_id)

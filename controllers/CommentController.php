@@ -40,18 +40,12 @@ class CommentController
     }
 
 
-// Page d'édition d'un commentaire
-    public function adminUpdateComment()
-    {
-        $post = $this->post->getPost($_GET['post_id']);
-        $comment = $this->comment->getCommentById($_GET['id']);
-        require ('views/updateCommentView.php');
-    }
 
 
 // Signaler un commentaire
     public function reportingComment()
-    {
+
+    {	
         $post = $this->post->getPost($_GET['post_id']);
         $reportComment = $this->comment->reportComment($_GET['id']);
         echo '<p class="comSignal" >Email envoyé avec succès</p>';
@@ -72,6 +66,7 @@ class CommentController
 // Liste des commentaires signalés
     public function adminCommentsReport()
     {
+    	$commentsReportTotal = $this->comment->countCommentsReport();
         $postsTotal = $this->post->countPosts();
         $commentsTotal  =$this ->comment ->countComments();
         $reportComments = $this->comment->getReportComments();

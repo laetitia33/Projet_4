@@ -15,6 +15,7 @@ class HomeController
     private $posts;
     private $comment;
 
+       
     public function __construct()
     {
         $this->posts = new \Laetitia_Bernardi\projet4\Model\PostManager();
@@ -24,7 +25,9 @@ class HomeController
 
     // Home
     public function home()
+
     {
+     
         $posts = $this->posts->getPosts();
         $comment = $this->comment->getLastComment();
         $postsTotal = $this->posts->countPosts();

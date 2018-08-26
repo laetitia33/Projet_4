@@ -32,8 +32,11 @@ class PostController
 // Liste des chapitres
     public function listPosts()
     {
+
+        
         $posts = $this->post->getPosts();
         $postsTotal = $this->post->countPosts();
+     
         $commentsTotal  =$this ->comment ->countComments();
         $commentsReportTotal = $this->comment->countCommentsReport();
         require('views/articleList.php');
@@ -59,18 +62,17 @@ class PostController
     }
 
 // Modification d'un chapitre
-    public function updatePost($post_id, $author, $title, $content)
+      public function updatePost($post_id, $author, $title, $content)
     {
         $updatePost = $this->post->updatePost($post_id, $author, $title, $content);
 
         if ($updatePost === false) {
-
             throw new Exception('Impossible de mettre à jour le chapitre');
-
         } else {
             header('Location: index.php?action=listPosts');
         }
     }
+
 // Supprimer un chapitre
     public function deletePost($post_id)
     {

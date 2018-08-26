@@ -64,13 +64,32 @@
 
 			$posts->closeCursor();
 			;?>
+<!--------------------------pagination-----------------------------------------> 
+               
+<?php
+	//rendre le tableau dans un entier
+	$totalArt=	$postsTotal['total_posts'];
+	//redefinir exactement le nombre de chapitre à afficher
+	$posts = 6; 
+
+	// calcule du nombre de pages à afficher en arrondissant
+	// le résultat au nombre supérieur grâce à la fonction ceil()
+   	$nbPages = ceil( $totalArt/$posts );
+ 
+  	$page = 0;
+ 	
+    for ($j=0; $j < $nbPages; $j++)
+    {
+        $page++;
+        echo '<a href="index.php?action=listPosts'.$page.'"> <'.$page."></a>";
+    }
+?>
+
 			<div class="admin">
                 <a  href="index.php?action=listPosts#episodes">
                     <p>Vous avez actuellement écrit <?= $postsTotal['total_posts']?> chapitres .</p>
                 </a>
             </div>
-
-     
 
 
 <?php $content = ob_get_clean(); ?>

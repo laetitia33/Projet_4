@@ -12,7 +12,7 @@ if(isset($_SESSION['pseudo']))
 		<li><a class="btn" href="index.php?action=listPosts#episodes">Tous les chapitres (<?= $postsTotal['total_posts']?>)</a></li>
 		<li><a class="btn" href="index.php?action=adminNewPost#create">Ecrire un chapitre</a><li>
 		<li><a class="btn" href="index.php?action=adminListComments#com">Tous les Commentaires (<?= $commentsTotal['total_comments']?>)</a></li>
-		<li><a class="btn" href="index.php?action=adminListComments#com">Commentaires signalés (<?= $commentsReportTotal['total_comments_report']?>)</a></li>
+		<li><a class="btn" href="index.php?action=adminCommentsReport#com">Commentaires signalés (<?= $commentsReportTotal['total_comments_report']?>)</a></li>
 		<li><a class ="btn" href="index.php?action=logout">Déconnexion</a></li>
 	</ul>
 </nav>

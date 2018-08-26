@@ -36,7 +36,7 @@ class AdministrationController
     }
 
     public function adminNewPost(){
-
+       
         $commentsReportTotal = $this->comment->countCommentsReport();
         $postsTotal = $this->post->countPosts();
         $commentsTotal  =$this ->comment ->countComments();

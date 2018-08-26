@@ -342,8 +342,7 @@ try{
             //données de la connexion
             elseif ($_GET['action'] == 'log')
             {
-                print_r($_POST['pass']);
-                print_r($_POST['pseudo']);
+            
                 if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                 {
                     $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
