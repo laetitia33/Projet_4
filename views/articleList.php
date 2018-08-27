@@ -46,8 +46,8 @@
 					<?php if(isset($_SESSION['pseudo'])) { ?>
 				
 			
-						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-pen-square"> Modifier le chapitre</i></em></a><br>
-               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
+						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre</i></em></a><br>
+               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer le Chapitre?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
 					
 					<?php
 		            }

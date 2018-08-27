@@ -101,6 +101,7 @@ class CommentController
         else
         {
             header('Location: index.php?action=adminListComments' );
+            echo '<p class = "msgConfirm" >"Ce commentaire a été supprimé"</p>';
         }
     }
 }

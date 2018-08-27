@@ -1,7 +1,7 @@
 <?php $title = 'Modification du chapitre ' . htmlspecialchars($post['id']) . ' '; ?>
 
 <?php ob_start(); ?>
-
+<div id ="modif"></div>
 
 <h2>Modifier le chapitre: <?= htmlspecialchars($post['title']); ?></h2>
 
@@ -16,7 +16,7 @@
         </div>
     </p>
 
-    <form action="index.php?action=updatePost&amp;post_id=<?= $_GET['post_id'];?>" method="POST">
+    <form action="index.php?action=updatePost&amp;post_id=<?= $_GET['post_id'];?>#episodes" method="POST">
 
             
         <div>
@@ -41,7 +41,7 @@
             
         </div>
         <div>
-            <input type="submit" value="envoyez votre Chapitre"></input>
+            <input type="submit" value="envoyez votre Chapitre" OnClick="return confirm('Voulez-vous vraiment modifier le chapitre ?');"></input>
         </div>
     </form>
 

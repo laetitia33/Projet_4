@@ -20,7 +20,7 @@
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?><br/>           
               
                 <em><a href="index.php?action=approvedComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Approuver <i class="fas fa-bell-slash"></i></a></em>
-                <em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>">Supprimer <i class="fas fa-minus-circle"></i></a></em>
+                <em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');">Supprimer <i class="fas fa-minus-circle"></i></a></em>
             </p>
         </div>
             <?php

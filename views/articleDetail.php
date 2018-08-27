@@ -31,8 +31,8 @@
 			if(isset($_SESSION['pseudo'])) { ?>
 				<i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
 				</p>
-				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-pen-square"> Modifier le chapitre </i></em></a><br><br>
-               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a><br><br>
+				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre </i></em></a><br><br>
+               	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer le chapitre ?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a><br><br>
  			<?php
         	}
        		else { ?>
@@ -93,11 +93,11 @@
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 		     		
-		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>"><i class="fas fa-minus-circle"></i> Supprimer </a></em>
+		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');"><i class="fas fa-minus-circle"></i> Supprimer </a></em>
 			<?php
         	}
        		else { ?>
-       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>"><i class="fas fa-bell"> Signalez un abus</i></a></em>
+       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire?');"><i class="fas fa-bell"> Signalez un abus</i></a></em>
 		    <?php
             }
             ?>
