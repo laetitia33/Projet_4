@@ -7,8 +7,14 @@
 	<body>
 		<img id="pageArticle" src="public/image/photo13.jpg" alt="photo Alaska"/>
 		
-		<p class ='comSignal'></p>
+		
+		<?php
+		echo $commentReport;
+		if($commentReport===true) { ?>
 
+			 <p class ='comSignal'>Commentaire signalé</p>;
+		<?php
+            }?>
 <!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>

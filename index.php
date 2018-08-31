@@ -167,10 +167,12 @@ try{
                 if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
                 {
                     if (!empty($_POST['author']) && !empty($_POST['comment']))
+
                     {
                         $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                         $commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
                     }
+
                     else
                     {
                         throw new Exception('Tous les champs doivent être remplis !');
@@ -233,7 +235,7 @@ try{
                         $commentCtrl->reportingComment();
                         echo "<p class='comSignal'>Commentaire signalé </p>";
 
-    
+                        
                     }   
                     else
                     {
@@ -280,7 +282,17 @@ try{
                 if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
                 {
                     $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                    $postCtrl->post($_GET['post_id']);
+                      if(isset($_GET['commentReport']))
+                        {
+                           $commentReport = true;
+            
+
+                        }else{
+                            $commentReport = false;
+                        }
+
+                    $postCtrl->post($_GET['post_id'],$commentReport);
+                      
                 } else 
                 {
                     throw new Exception('Erreur. Pas de chapitre séléctionné !');

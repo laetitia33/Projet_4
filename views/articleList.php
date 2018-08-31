@@ -22,7 +22,7 @@
 <?php ob_start(); ?>
 <!-------------------------------------------affichage de tous les articles------------------------------>
 			<a id="episodes"></a><!--ancre du bouton de navigation chapitre à episodes en javascript-->
-	
+			<p class ='comSignal'></p>
 			<div class="body_card">
 
 				<h2>Liste des Chapitres</h2>
@@ -47,7 +47,7 @@
 				
 			
 						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre</i></em></a><br>
-               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer le Chapitre?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
+               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous vraiment supprimer le Chapitre?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
 					
 					<?php
 		            }

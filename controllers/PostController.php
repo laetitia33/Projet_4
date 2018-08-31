@@ -21,8 +21,9 @@ class PostController
     }
 
 // Afficher un chapitre + ses commentaires
-    public function post($post_id)
+    public function post($post_id,$commentReport)
     {
+        $commentReport=$commentReport;
         $commentsReportTotal = $this->comment->countCommentsReport();
         $post = $this->post->getPost($post_id);
         $comments = $this->comment->getComments($post_id);
@@ -85,6 +86,7 @@ class PostController
             throw new Exception('Impossible de supprimer les commentaire du chapitre');
         } else {
             header('Location:index.php?action=listPosts');
+            echo "<p> ce chapitre a bien été supprimé </p>";
         }
     }
 }

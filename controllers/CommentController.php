@@ -48,9 +48,9 @@ class CommentController
     {	
         $post = $this->post->getPost($_GET['post_id']);
         $reportComment = $this->comment->reportComment($_GET['id']);
-        echo '<p class="comSignal" >Email envoyé avec succès</p>';
-        header('Location: index.php?action=post&post_id=' . $_GET['post_id']);
-
+      
+        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport=true");
+    
     }
 
 
@@ -85,6 +85,7 @@ class CommentController
         else
         {
             header('Location: index.php?action=adminListComments' );
+            echo '<p class="comSignal" >Ce commentaire à bien été supprimé </p>';
         }
     }
 
