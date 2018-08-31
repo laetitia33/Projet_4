@@ -147,20 +147,27 @@ try{
                 $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                 $postCtrl->listPosts();
             }
-
-            // Affiche le chapitre avec ses commentaires
-            elseif ($_GET['action'] == 'post')
+            //chapitre avec ses commentaires
+          elseif ($_GET['action'] == 'post') 
             {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+                if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
                 {
                     $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                    $postCtrl->post($_GET['post_id']);
-                }
-                else
+                      if(isset($_GET['commentReport']))
+                        {
+                           $commentReport = true;
+                        }else{
+                            $commentReport = false;
+                        }
+
+                    $postCtrl->post($_GET['post_id'],$commentReport);
+                      
+                } else 
                 {
-                    throw new Exception('Aucun identifiant de chapitre envoyé !');
+                    throw new Exception('Erreur. Pas de chapitre séléctionné !');
                 }
             }
+        
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addComment')
             {
@@ -223,30 +230,6 @@ try{
 
         
 
-            // Signaler un commentaire
-            elseif ($_GET['action'] == 'report')
-            {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
-                {
-                    if (isset($_GET['id']) && $_GET['id'] > 0)
-                    {
-                        
-                        $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                        $commentCtrl->reportingComment();
-                    
-
-                        
-                    }   
-                    else
-                    {
-                        throw new Exception('Aucun identifiant de commentaire envoyé pour pouvoir le signaler!');
-                    }
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de chapitre envoyé pour revenir sur la page précédente!');
-                }
-            }
     
          
         }

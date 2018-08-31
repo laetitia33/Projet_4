@@ -74,15 +74,5 @@ $(document).ready(function() {
      });
 });
 
-//validation commentaire
-  var alert = $('#validCom');
-  if(alert.length>0){
-    alert.hide().animate({Top:$("#comSignal").offset().top});
-    alert.find('#closeCom').click(function(e){
-      e.preventDefault();
-      alert.slideUp();
-    })
-  }
-
 
 

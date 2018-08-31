@@ -373,7 +373,8 @@ html {
 
 /*---------------------Menu navigation-----------------------------*/
 #navigation li{
-    margin-top:2%;
+    margin-bottom:2%;
+    margin-top:1%;
 }
 ul#navigation
  {
@@ -385,8 +386,7 @@ ul#navigation
     -ms-flex:wrap;
     align-content: space-between;
     justify-content: center;
-    -ms-flex-pack: center;
-    margin-top:35px;
+    -ms-flex-pack: center;  
     list-style-type: none;
     
 }
@@ -1059,7 +1059,8 @@ form input[type=submit]:hover {
 #message {
     margin-top:1%;
     text-align:center;
-    font-size:1.1em;   
+    font-size:1.1em;
+   
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 3px;
