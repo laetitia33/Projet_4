@@ -12,7 +12,7 @@
 		
 		if($commentReport===true) { ?>
 
-			 <p class ='comSignal'>Commentaire signalé</p>
+			 <div id="message">Commentaire signalé</div>
 		<?php
             }?>
 <!------------------lien retour page précédente selon si visiteur ou admin----------------------->		

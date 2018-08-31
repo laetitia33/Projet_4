@@ -233,7 +233,7 @@ try{
                         
                         $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                         $commentCtrl->reportingComment();
-                        echo "<p class='comSignal'>Commentaire signalé </p>";
+                    
 
                         
                     }   
@@ -285,8 +285,6 @@ try{
                       if(isset($_GET['commentReport']))
                         {
                            $commentReport = true;
-            
-
                         }else{
                             $commentReport = false;
                         }

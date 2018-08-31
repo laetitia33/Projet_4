@@ -1055,10 +1055,11 @@ form input[type=submit]:hover {
 .news i {
     font-size: 1.4em;
 }
-.comSignal {
- 
+
+#message {
+    margin-top:1%;
     text-align:center;
-    font-size:1.1em;
+    font-size:1.1em;   
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 3px;
