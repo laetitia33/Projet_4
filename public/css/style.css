@@ -1,8 +1,3 @@
-.display_none
-{
-    display:none;
-}
-
 
 /*--------------navigation mobile---------*/
 
@@ -1061,10 +1056,9 @@ form input[type=submit]:hover {
     font-size: 1.4em;
 }
 .comSignal {
-    display:flex;
-    display:-ms-flexbox;
-    justify-content: space-between;
-    -ms-flex-pack:justify;
+ 
+    text-align:center;
+    font-size:1.1em;
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 3px;
@@ -1075,9 +1069,8 @@ form input[type=submit]:hover {
     -ms-border-radius: 14px;
     border-radius: 3px;
     border-radius: 14px;
-    color:blue;
-    font-weight:bold;
-    padding-left:25px;
+    color: rgb(32,61,119);
+    padding: 15px;
     width: 97.5%;
     box-shadow: 0 3px 10px #ccc;
     -ms-box-shadow: 0 3px 10px #ccc;
@@ -1086,7 +1079,6 @@ form input[type=submit]:hover {
     -o-box-shadow: 0 3px 10px #ccc;
     background-color:white ;
  
-
 }
 
 /*----------------pagination---------------*/

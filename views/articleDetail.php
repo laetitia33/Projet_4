@@ -9,10 +9,10 @@
 		
 		
 		<?php
-		echo $commentReport;
+		
 		if($commentReport===true) { ?>
 
-			 <p class ='comSignal'>Commentaire signalé</p>;
+			 <p class ='comSignal'>Commentaire signalé</p>
 		<?php
             }?>
 <!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
