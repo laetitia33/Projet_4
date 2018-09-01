@@ -20,10 +20,14 @@ class PostController
         $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
     }
 
+
+
+
+
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {
-       
+     
         $commentsTotal=  $this->comment->countComments();
         $commentReport=$commentReport;
         $commentsReportTotal = $this->comment->countCommentsReport();
@@ -36,7 +40,7 @@ class PostController
     public function listPosts()
     {
 
-        
+  
         $posts = $this->post->getPosts();
         $postsTotal = $this->post->countPosts();     
         $commentsTotal  =$this ->comment ->countComments();

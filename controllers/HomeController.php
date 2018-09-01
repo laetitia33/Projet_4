@@ -4,9 +4,8 @@ namespace Laetitia_Bernardi\projet4\Controller;
 
 require_once ('models/PostManager.php');
 require_once ('models/CommentManager.php');
-require_once ('models/ContactManager.php');
 
-use \models\ContactManager;
+
 use \models\PostManager;
 use \models\CommentManager;
 

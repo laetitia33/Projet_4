@@ -7,7 +7,6 @@
 	<body>
 		<img id="pageArticle" src="public/image/photo13.jpg" alt="photo Alaska"/>
 		
-		
 		<?php
 		
 		if($commentReport===true) { ?>
@@ -15,6 +14,10 @@
 			 <div id="message">Vous avez bien signalé ce commentaire</div>
 		<?php
             }?>
+
+
+
+
 <!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>
@@ -85,7 +88,6 @@
 	
 <!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
 
-
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
@@ -106,11 +108,11 @@
 			<?php
         	}
        		else { ?>
-       			<div class="reponse">
-					<input type="submit" value="Repondre" />			     
-	       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire?');"><i class="fas fa-bell">  Signalez un abus</i></a></em>
-
-       			</div>
+	       		
+	       			<div class="reponse">
+						<input type="submit" value="Repondre" />			     
+		       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire ?');"><i class="fas fa-bell">  Signalez un abus</i></a></em>			
+       				</div>
 		    <?php
             }
             ?>
@@ -118,9 +120,16 @@
 		<?php
 		}
 		$comments->closeCursor();
+
 		?>
  
+		      <?php if($commentReport== 1) { ?>
+		       	<i class="fas fa-ban"> Commentaire signalé</i>
 
+					<?php
+        			}
+       				?>			
+						
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
 		<?php

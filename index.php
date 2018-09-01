@@ -379,15 +379,12 @@ try{
             elseif ($_GET['action'] == 'addMail') 
             {
                             
-                    if (!empty($_POST['name']) && !empty($_POST['email'])&& !empty($_POST['content'])) 
+                    
                     {
-                        $emailCtrl = new ContactController();
-                        $emailCtrl->addMail($_POST['name'], $_POST['email'], $_POST['content']);
+                        $emailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                        $emailCtrl->envoi_mail();
                     } 
-                    else
-                    {
-                        throw new Exception('Tous les champs doivent être remplis !');
-                    }                                
+                                               
             }
 
             // Ajoute un commentaire dans le chapitre selectionné

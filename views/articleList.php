@@ -84,9 +84,7 @@
         echo '<a href="index.php?action=listPosts'.$page.'"> <'.$page."></a>";
     }
 ?>
-
-			
-
+		
 
 <?php $content = ob_get_clean(); ?>
 <!---------------------------------renvoi vers la template appelée home------------------------------>

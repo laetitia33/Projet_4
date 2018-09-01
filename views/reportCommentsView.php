@@ -31,7 +31,7 @@
 <?php
 
       if($commentsReportTotal['total_comments_report'] > 0) { ;?>
-         <em><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-minus-circle"> Approuver tous les commentaires</i></a></em>
+         <em><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></em>
        <?php } ?>
 
 

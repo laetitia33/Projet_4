@@ -1071,7 +1071,7 @@ textarea{
     margin-top:1%;
     text-align:center;
     font-size:1.1em;
-   font-weight: bold;
+    font-weight: bold;
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 3px;
@@ -1091,6 +1091,7 @@ textarea{
     -moz-box-shadow: 0 3px 10px #ccc;
     -o-box-shadow: 0 3px 10px #ccc;
     background-color:white ;
+  
  
 }
 

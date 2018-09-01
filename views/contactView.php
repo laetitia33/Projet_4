@@ -20,10 +20,14 @@
 				<label for="mail"></label><br />
 				<input type="text" placeholder="Entrez votre mail" class="inputbasic"  name="mail">
 			</div>
+			<div >
+				<label for="tel"></label><br />
+				<input  name="tel" id="tel" class="inputbasic"; placeholder="Entrez votre telephone">
+			</div>
 	
-			<div class="inputbasic" style="margin:auto;">
+			<div >
 				<label for="comment"></label><br />
-				<textarea  id="comment" name="message" ; placeholder="Entrez votre message"></textarea>
+				<textarea  name="comment" id="comment" class="inputbasic"; placeholder="Entrez votre message"></textarea>
 			</div>
 			
 			<div>

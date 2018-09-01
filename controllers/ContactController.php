@@ -1,88 +1,87 @@
 <?php
 
+
 namespace Laetitia_Bernardi\projet4\Controller;
-require_once ('models/ContactManager.php');
 
-class ContactController
 
-{
-    private $_email;
- 
 
-    public function __construct()
-    {
-        $this->_email = new \Laetitia_Bernardi\projet4\Model\ContactManager();
+class ContactController{
 
-    }
+    public $nom;
+    public $mail;
+    public $tel;
+    public $sujet;
+    public $message;
 
-//page du formulaire
- public function mailView(){
+   
+    public $webmaster = '33260laetitia.bernardi@gmail.com';
+    
+
+
+    //page du formulaire
+    public function mailView(){
        require ('views/contactView.php');
     }
 
 
 
-// envoyer un mail
-    public function addMail($name, $email,$content)
-    {
-        $postMail = $this->_email->createMail($name, $email, $content);
-        if($postMail === false)
-        {
-            throw new Exception('Impossible d\'envoyer le message');
+    public function verif_null($var)
+    { 
+        if($var!="" and !empty($var)){
+          return trim($var);
         }
-        else{
-            header('Location: index.php?action=email');
-                echo '<p class="comSignal" >Le commentaire a ete signalé</p>';
+        return null;
+    }
 
+    public function verif_mail($var) 
+    {
+        $code_syntaxe='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,5}$#';   
+        if(preg_match($code_syntaxe,$var)){ 
+          return $var;
         }
+        return null;   
     }
 
-
-// Afficher  email
-    public function email($id)
+    public function verif_tel($var) 
     {
-        $email = $this->_email->getMail($id);
-        require('views/mailView.php');
-    }
-
-// Liste des des mails
-    public function listMails()
-    {
-        $emails = $this->_email->getMails();
-        require('views/mailList.php');
-      
-    }
-
-// Page d'édition d'un mail
-    public function adminUpdateMail()
-    {
-        $email = $this->_email->getMail($_GET['id']);
-        require ('views/updateMailView.php');
-    }
-
-// Editer un mail
-    public function updateMail($id, $name, $email, $content)
-    {
-        $updateMail = $this->_email->updatemail($id, $name, $email, $content);
-
-        if ($updatemail === false) {
-            throw new Exception('Impossible de mettre à jour l email');
-        } else {
-            header('Location: index.php?action=mailList');
+        $code_syntaxe='#^[0-9]{9,18}$#'; 
+        if(preg_match($code_syntaxe,$var)){ 
+          return $var;
         }
+        return null;
+    }
+    
+    function envoi_mail(){ //fonction qui envoie le mail
+       
+       $contenu_message = "Nom : ".$this->nom."\nMail : ".$this->mail."\nSujet : ".$this->sujet."\nTelephone : ".$this->tel."\nMessage : ".$this->message;
+	     $entete = "From: ".$this->nom." <".$this->mail."> \nContent-Type: text/html; charset=iso-8859-1";	 
+       mail($this->webmaster,$this->sujet,$contenu_message,$entete);
+	
+	  }
+    
+    public function loadForm($data){
+        extract($data);
+        $this->nom      = trim(htmlentities($nom, ENT_QUOTES));
+        $this->mail     = $this->verif_mail($mail);
+        $this->tel      = $this->verif_tel($tel);
+        $this->sujet    = trim(htmlentities($sujet, ENT_QUOTES));
+        $this->message  = trim(htmlentities($message, ENT_QUOTES));
+        $test = $this->testForm();
+        if(!empty($test)){
+           $this->envoi_mail();
+        };
+    } 
+    
+    public function testForm(){
+       if($this->verif_null($this->nom) and $this->verif_null($this->mail) and $this->verif_null($this->tel) and $this->verif_null($this->sujet) and $this->verif_null($this->message)){
+          if($this->verif_mail($this->mail) and $this->verif_tel($this->tel)){
+              return 1;
+          }
+          return null; 
+       }
+       return null; 
     }
 
-// Supprimer un mail
-    public function deleteMail($id)
-    {
-        $deleteMail = $this->_email->deleteMail($id);
-
-        if ($deleteMail === false) {
-            throw new Exception('Impossible de supprimer l \'email');
-
-        } else {
-            header('Location:index.php?action=mailList');
-        }
-    }
 }
 
+?>
