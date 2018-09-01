@@ -12,6 +12,23 @@
 <div  id="com"></div>
 
 
+<!--indique s'il y a des commentaires -->
+    
+<?php
+
+      if($commentsTotal['total_comments']==0){
+                        echo "<p> Aucun commentaire .<p>";
+       
+        ?>                
+   <?php
+    }else { ?>
+
+        <em><a href="index.php?action=deleteComments#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires</i></a></em>
+
+     <?php
+    }
+    ?>
+
 <?php
 
 

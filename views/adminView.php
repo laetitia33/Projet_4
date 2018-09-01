@@ -62,7 +62,7 @@
                 </a>
             </div>
             <div class="admin">
-                <a class="nav-link" href="index.php?action=adminCommentsReport#reportcom">
+                <a href="index.php?action=adminCommentsReport#reportcom">
                     <?php
                      if($commentsReportTotal['total_comments_report']== 0){
                         echo "<p> Vous n'avez aucun commentaire de signalé.<p>";

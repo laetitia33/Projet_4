@@ -112,29 +112,31 @@ try{
             }
 
 
-            // ADMIN - Supprimer tous les commentaires
-
-
-            elseif ($_GET['action'] == 'deleteAllComment')
+            //ADMIN - Supprimer tous les commentaires
+               elseif ($_GET['action'] == 'deleteComments')
             {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+               
                 {
-                    $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                    $commentsCtrl->deleteAllComment($_GET['post_id']);
+                    $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
+                    $commentCtrl->deleteComments();
                 }
-                else
-                {
-                    throw new Exception('Aucun identifiant de commentaire envoyé !');
-                }
+            
             }
 
-            // ADMIN - Approuver un commentaire (retirer le signalement)
+
+            // ADMIN - Approuver un commentaire 
             elseif ($_GET['action'] == 'approvedComment')
             {
                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                 $commentCtrl->approvedComment();
             }
 
+            // ADMIN - Approuver tous les commentaires
+            elseif ($_GET['action'] == 'approvedComments')
+            {
+                $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
+                $commentsCtrl->approvedComments();
+            }
 
             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')

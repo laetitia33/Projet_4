@@ -201,13 +201,12 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
 
 //suppression de tous les commentaires
-    public function deleteAllComments($post_id)
+    public function deleteAllComments()
     {
-        $this->setIdPost($post_id);
-
+        
         $db = $this->dbConnect();
-        $comments = $db->prepare('DELETE FROM comments WHERE post_id= ?');
-        $deleteComments = $comments->execute(array($this->getIdPost()));
+        $comments = $db->prepare('DELETE FROM comments ');
+        $deleteComments = $comments->execute();
 
         return $deleteComments;
     }
@@ -228,6 +227,21 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $report;
     }
      
+
+//valider tous les commentaires en retirant leur signalement
+
+    public function approvedComments()
+    {
+       
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE comments SET reporting= :reporting ');
+        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
+   
+        $report = $comments->execute();
+    
+        return $report;
+    }
+
 
 //Valider un commentaire en retirant son signalement
     public function approvedComment($id_comment)

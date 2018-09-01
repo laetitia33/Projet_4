@@ -18,11 +18,13 @@ class CommentController
 
 // Liste des commentaires
     public function adminListComments()
+
     {
-        $postsTotal = $this->post->countPosts();
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $commentsTotal  =$this ->comment ->countComments();
-        $comments = $this->comment->getAllComments();
+        
+        $postsTotal = $this->post->countPosts();//compte tous les chapitres
+        $commentsReportTotal = $this->comment->countCommentsReport();//compte tous les commentaires signales
+        $commentsTotal  =$this ->comment ->countComments();//compte tous les commentaires
+        $comments = $this->comment->getAllComments();//recupere tous les commentaires
         require ('views/ListCommentsView.php');
     }
 
@@ -38,6 +40,7 @@ class CommentController
             header('Location: index.php?action=post&post_id=' . $post_id);
         }
     }
+
 
 
 // Signaler un commentaire
@@ -60,6 +63,19 @@ class CommentController
  
         header('Location: index.php?action=adminCommentsReport');
     }
+
+
+//approuver tous les commentaires signalés
+
+  public function approvedComments()
+    {
+        
+        $reportComments = $this->comment->approvedComments();
+ 
+        header('Location: index.php?action=adminCommentsReport');
+    }
+
+
 
 // Liste des commentaires signalés
     public function adminCommentsReport()
@@ -87,4 +103,20 @@ class CommentController
             header('Location: index.php?action=adminListComments' );
         }
     }
+
+ //supprime tous les commentaires
+    public function deleteComments()
+    {
+        $deleteComments = $this->comment->deleteAllComments();
+        if($deleteComments === false)
+       {
+
+            throw new Exception('Impossible de supprimer les commentaires' );
+        }
+        else{
+            header('Location: index.php?action=adminListComments' );
+        }
+   
+    }
+
 }
