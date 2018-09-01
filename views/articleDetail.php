@@ -84,6 +84,8 @@
 		 </form>
 	
 <!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
+
+
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
@@ -99,7 +101,7 @@
 			if(isset($_SESSION['pseudo'])) { ?>
 				<div class="reponse">
 					<input type="submit" value="Repondre" />		     	
-		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 		     	</div>
 			<?php
         	}
@@ -117,6 +119,8 @@
 		}
 		$comments->closeCursor();
 		?>
+ 
+
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
 		<?php

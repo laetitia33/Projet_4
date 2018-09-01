@@ -20,9 +20,11 @@ class PostController
         $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
     }
 
-// Afficher un chapitre + ses commentaires
+// Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {
+    
+        $commentsTotal=  $this->comment->countComments();
         $commentReport=$commentReport;
         $commentsReportTotal = $this->comment->countCommentsReport();
         $post = $this->post->getPost($post_id);
@@ -30,14 +32,13 @@ class PostController
         require('views/articleDetail.php');
     }
 
-// Liste des chapitres
+// Liste des chapitres(2eme partie de la page d'accueil)
     public function listPosts()
     {
 
         
         $posts = $this->post->getPosts();
-        $postsTotal = $this->post->countPosts();
-     
+        $postsTotal = $this->post->countPosts();     
         $commentsTotal  =$this ->comment ->countComments();
         $commentsReportTotal = $this->comment->countCommentsReport();
         require('views/articleList.php');
@@ -45,49 +46,6 @@ class PostController
     }
 
 
-// Ajouter un chapitre
-    public function postAdd($author, $title, $content)
-    {
-        $createPost = $this->post->createPost($author, $title, $content);
-        header('Location: index.php?action=listPosts');
-    }
 
-// Page de modification d'un chapitre
-    public function adminUpdatePost()
-    {
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal  =$this ->comment ->countComments();
-        $post = $this->post->getPost($_GET['post_id']);
-        require ('views/updatePostView.php');
-    }
-
-// Modification d'un chapitre
-      public function updatePost($post_id, $author, $title, $content)
-    {
-        $updatePost = $this->post->updatePost($post_id, $author, $title, $content);
-
-        if ($updatePost === false) {
-            throw new Exception('Impossible de mettre à jour le chapitre');
-        } else {
-            header('Location: index.php?action=listPosts');
-        }
-    }
-
-// Supprimer un chapitre
-    public function deletePost($post_id)
-    {
-        $deletePost = $this->post->deletePost($post_id);
-        $deleteComments = $this->comment->deleteAllComments($post_id);
-
-        if ($deletePost === false) {
-            throw new Exception('Impossible de supprimer le chapitre');
-        } elseif ($deleteComments === false) {
-            throw new Exception('Impossible de supprimer les commentaire du chapitre');
-        } else {
-            header('Location:index.php?action=listPosts');
-            echo "<p> ce chapitre a bien été supprimé </p>";
-        }
-    }
 }
 

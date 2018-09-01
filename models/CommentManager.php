@@ -141,6 +141,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $commentsReportTotal;
     }
 
+
 //recupere les commentaires d'un chapitre 
     public function getComments($post_id)
     {
@@ -152,6 +153,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
         return $comments;
     }
+
 
 
 //Récupère un commentaire via son identifiant

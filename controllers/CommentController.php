@@ -16,19 +16,9 @@ class CommentController
         $this->post = new \Laetitia_Bernardi\projet4\Model\PostManager();
     }
 
-// Liste des commentaires
-    public function adminListComments()
 
-    {
-        
-        $postsTotal = $this->post->countPosts();//compte tous les chapitres
-        $commentsReportTotal = $this->comment->countCommentsReport();//compte tous les commentaires signales
-        $commentsTotal  =$this ->comment ->countComments();//compte tous les commentaires
-        $comments = $this->comment->getAllComments();//recupere tous les commentaires
-        require ('views/ListCommentsView.php');
-    }
 
-// Ajouter un commentaire
+// Ajouter un commentaire(page du detail de chaque chapitre)
     public function addComment($post_id, $author, $comment)
     {
         $postComment = $this->comment->createComment($post_id, $author, $comment);
@@ -43,7 +33,7 @@ class CommentController
 
 
 
-// Signaler un commentaire
+// Signaler un commentaire(page du detail de chaque chapitre)
     public function reportingComment()
 
     {	
@@ -55,46 +45,13 @@ class CommentController
     }
 
 
-// Approuver un commentaire (retirer le signalement)
-    public function approvedComment()
+
+// Supprimer un commentaire (page de detail de la liste des commentaires)
+    public function deleteOneComment($id_comment)
     {
-        $post = $this->post->getPost($_GET['post_id']);
-        $reportComment = $this->comment->approvedComment($_GET['id']);
- 
-        header('Location: index.php?action=adminCommentsReport');
-    }
+        $deleteOneComment = $this->comment->deleteComment($id_comment);
 
-
-//approuver tous les commentaires signalés
-
-  public function approvedComments()
-    {
-        
-        $reportComments = $this->comment->approvedComments();
- 
-        header('Location: index.php?action=adminCommentsReport');
-    }
-
-
-
-// Liste des commentaires signalés
-    public function adminCommentsReport()
-    {
-    	$commentsReportTotal = $this->comment->countCommentsReport();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal  =$this ->comment ->countComments();
-        $reportComments = $this->comment->getReportComments();
-        require ('views/reportCommentsView.php');
-    }
-
- 
-
-// Supprimer un commentaire
-    public function deleteComment($id_comment)
-    {
-        $deleteComment = $this->comment->deleteComment($id_comment);
-
-        if($deleteComment === false)
+        if($deleteOneComment === false)
         {
             throw new Exception('Impossible de supprimer le commentaire' );
         }
@@ -104,19 +61,9 @@ class CommentController
         }
     }
 
- //supprime tous les commentaires
-    public function deleteComments()
-    {
-        $deleteComments = $this->comment->deleteAllComments();
-        if($deleteComments === false)
-       {
 
-            throw new Exception('Impossible de supprimer les commentaires' );
-        }
-        else{
-            header('Location: index.php?action=adminListComments' );
-        }
-   
-    }
+
+
+
 
 }

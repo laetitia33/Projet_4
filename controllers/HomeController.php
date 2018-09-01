@@ -23,10 +23,11 @@ class HomeController
 
     }
 
-    // Home
+    // page de la liste des chapitre avec les fonctions
     public function home()
 
     {
+     
      
         $posts = $this->posts->getPosts();
         $comment = $this->comment->getLastComment();

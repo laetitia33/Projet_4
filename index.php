@@ -28,25 +28,16 @@ try{
                 $administrationCtrl->administration();
 
             }
-            // ADMIN - Liste des commentaires
-            elseif ($_GET['action'] == 'adminListComments')
-            {
-                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                $commentCtrl->adminListComments();
+          
 
-            }
-            // ADMIN - Liste des commentaires signalés
-            elseif ($_GET['action'] == 'adminCommentsReport')
-            {
-                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                $commentCtrl->adminCommentsReport();
-            }
+///redirection concernant les chapitres
+
             // ADMIN - Creation d'un chapitre
             elseif ($_GET['action'] == 'createPost')
             {
                 if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
                 {
-                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
+                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
                     $postCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
                    
                 }
@@ -57,101 +48,22 @@ try{
                 }
             }
 
-            // ADMIN - page de MAJ d'un chapitre
-            elseif ($_GET['action'] == 'adminUpdatePost')
-            {
-                $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                $postCtrl->adminUpdatePost();
-            }
-            // ADMIN - Mise à jour d'un chapitre
-            elseif ($_GET['action'] == 'updatePost')
-            {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
-                {
-                    if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
-                    {
-                        $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                        $postCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'], $_POST['content']);
-                    }
-                    else
-                    {
-                        throw new Exception('Tous les champs ne sont pas remplis..');
-                    }
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de chapitre envoyé !');
-                }
-            }
-            // ADMIN - suppression d'un chapitre
-            elseif ($_GET['action'] == 'deletePost')
-            {
-                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
-                {
-                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                    $postCtrl->deletePost($_GET['post_id']);
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de chapitre envoyé !');
-                }
-            }
-           
-            // ADMIN - Supprimer un commentaire
-            elseif ($_GET['action'] == 'deleteComment')
-            {
-                if (isset($_GET['id']) && $_GET['id'] > 0)
-                {
-                    $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                    $commentCtrl->deleteComment($_GET['id']);
-                }
-                else
-                {
-                    throw new Exception('Aucun identifiant de commentaire envoyé !');
-                }
-            }
-
-
-            //ADMIN - Supprimer tous les commentaires
-               elseif ($_GET['action'] == 'deleteComments')
-            {
-               
-                {
-                    $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                    $commentCtrl->deleteComments();
-                }
-            
-            }
-
-
-            // ADMIN - Approuver un commentaire 
-            elseif ($_GET['action'] == 'approvedComment')
-            {
-                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                $commentCtrl->approvedComment();
-            }
-
-            // ADMIN - Approuver tous les commentaires
-            elseif ($_GET['action'] == 'approvedComments')
-            {
-                $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                $commentsCtrl->approvedComments();
-            }
-
-            // ADMIN - Page pour créer un chapitre
+             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')
             {
                 $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
                 $viewCtrl->adminNewPost();
             }
+
             // Liste des chapitres
             elseif ($_GET['action'] == 'listPosts')
             {
                 $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                 $postCtrl->listPosts();
             }
+
             //chapitre avec ses commentaires
-          elseif ($_GET['action'] == 'post') 
+            elseif ($_GET['action'] == 'post') 
             {
                 if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
                 {
@@ -170,7 +82,59 @@ try{
                     throw new Exception('Erreur. Pas de chapitre séléctionné !');
                 }
             }
-        
+     
+            // ADMIN - page de MAJ d'un chapitre
+            elseif ($_GET['action'] == 'adminUpdatePost')
+            {
+                $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $postCtrl->adminUpdatePost();
+            }
+
+            // ADMIN - Mise à jour d'un chapitre
+            elseif ($_GET['action'] == 'updatePost')
+            {
+                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+                {
+                    if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
+                    {
+                        $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                        $postCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'], $_POST['content']);
+                    }
+                    else
+                    {
+                        throw new Exception('Tous les champs ne sont pas remplis..');
+                    }
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de chapitre envoyé !');
+                }
+            }
+
+            // ADMIN - suppression d'un chapitre
+            elseif ($_GET['action'] == 'deletePost')
+            {
+                if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+                {
+                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                    $postCtrl->deletePost($_GET['post_id']);
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de chapitre envoyé !');
+                }
+            }
+  
+
+//redirection concernant les commentaires           
+            // ADMIN - Liste des commentaires
+            elseif ($_GET['action'] == 'adminListComments')
+            {
+                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $commentCtrl->adminListComments();
+
+            }
+
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addComment')
             {
@@ -195,6 +159,53 @@ try{
             }
 
 
+            // ADMIN - Liste des commentaires signalés
+            elseif ($_GET['action'] == 'adminCommentsReport')
+            {
+                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $commentCtrl->adminCommentsReport();
+            }
+
+            // ADMIN - Supprimer un commentaire
+            elseif ($_GET['action'] == 'deleteComment')
+            {
+                if (isset($_GET['id']) && $_GET['id'] > 0)
+                {
+                    $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                    $commentCtrl->deleteComment($_GET['id']);
+                }
+                else
+                {
+                    throw new Exception('Aucun identifiant de commentaire envoyé !');
+                }
+            }
+
+            //ADMIN - Supprimer tous les commentaires
+               elseif ($_GET['action'] == 'deleteComments')
+            {
+               
+                {
+                    $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                    $commentCtrl->deleteComments();
+                }
+            
+            }
+
+            // ADMIN - Approuver un commentaire 
+            elseif ($_GET['action'] == 'approvedComment')
+            {
+                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $commentCtrl->approvedComment();
+            }
+
+            // ADMIN - Approuver tous les commentaires
+            elseif ($_GET['action'] == 'approvedComments')
+            {
+                $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                $commentsCtrl->approvedComments();
+            }
+
+           
 
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addCommentAdmin')
@@ -231,10 +242,7 @@ try{
                 $userCtrl->logoutUser();
             }
 
-        
-
-    
-         
+             
         }
         // Retourne a l'administration.
         else
@@ -282,7 +290,8 @@ try{
                     throw new Exception('Erreur. Pas de chapitre séléctionné !');
                 }
             }
-        
+
+
              // Page d'inscription
             elseif ($_GET['action'] == 'inscriLogin')
             {
@@ -335,7 +344,7 @@ try{
                
             }
 
-            //données de la connexion
+            //connexion
             elseif ($_GET['action'] == 'log')
             {
             
