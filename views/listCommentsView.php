@@ -15,7 +15,6 @@
 <!--indique s'il y a des commentaires -->
     
 <?php
-
       if($commentsTotal['total_comments']==0){
                         echo "<p> Aucun commentaire .<p>";
        
@@ -30,7 +29,6 @@
     ?>
 
 <?php
-
 
 while ($comment = $comments->fetch())
 {

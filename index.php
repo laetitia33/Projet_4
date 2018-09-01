@@ -166,7 +166,7 @@ try{
                 $commentCtrl->adminCommentsReport();
             }
 
-            // ADMIN - Supprimer un commentaire
+         // ADMIN - Supprimer un commentaire
             elseif ($_GET['action'] == 'deleteComment')
             {
                 if (isset($_GET['id']) && $_GET['id'] > 0)

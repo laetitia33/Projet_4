@@ -23,7 +23,7 @@ class PostController
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {
-    
+       
         $commentsTotal=  $this->comment->countComments();
         $commentReport=$commentReport;
         $commentsReportTotal = $this->comment->countCommentsReport();

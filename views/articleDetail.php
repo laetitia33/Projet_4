@@ -101,7 +101,7 @@
 			if(isset($_SESSION['pseudo'])) { ?>
 				<div class="reponse">
 					<input type="submit" value="Repondre" />		     	
-		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et revenir à la liste des commentaires ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 		     	</div>
 			<?php
         	}

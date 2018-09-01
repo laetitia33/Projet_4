@@ -213,7 +213,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $deleteComments;
     }
 
-
 //signaler commentaire
     public function reportComment($id_comment)
     {

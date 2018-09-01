@@ -55,7 +55,7 @@ class AdministrationController
     public function adminListComments()
 
     {
-        
+       
         $postsTotal = $this->post->countPosts();//compte tous les chapitres
         $commentsReportTotal = $this->comment->countCommentsReport();//compte tous les commentaires signales
         $commentsTotal  =$this ->comment ->countComments();//compte tous les commentaires
@@ -89,6 +89,7 @@ class AdministrationController
 // Liste des commentaires signalés (page des commentaires signalés admin)
     public function adminCommentsReport()
     {
+
         $commentsReportTotal = $this->comment->countCommentsReport();
         $postsTotal = $this->post->countPosts();
         $commentsTotal  =$this ->comment ->countComments();
@@ -100,19 +101,15 @@ class AdministrationController
  //supprime tous les commentaires(page de detail de la liste des commentaires)
     public function deleteComments()
     {
-        $deleteComments = $this->comment->deleteAllComments();
-        if($deleteComments === false)
-       {
-
-            throw new Exception('Impossible de supprimer les commentaires' );
-        }
-        else{
-            header('Location: index.php?action=adminListComments' );
-        }
+        $deleteComments = $this->comment->deleteAllComments();      
+        header('Location: index.php?action=adminListComments' );
+        
    
     }
 
-    // Supprimer un commentaire (page de detail de la liste des commentaires)
+
+
+// Supprimer un commentaire
     public function deleteComment($id_comment)
     {
         $deleteComment = $this->comment->deleteComment($id_comment);
@@ -123,10 +120,11 @@ class AdministrationController
         }
         else
         {
+          
             header('Location: index.php?action=adminListComments' );
+            
         }
     }
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
