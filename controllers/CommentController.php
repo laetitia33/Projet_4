@@ -40,8 +40,6 @@ class CommentController
     }
 
 
-
-
 // Signaler un commentaire
     public function reportingComment()
 
@@ -73,23 +71,8 @@ class CommentController
         require ('views/reportCommentsView.php');
     }
 
+ 
 
-// supprimer tous les commentaires d'un chapitre(post_id)
-    public function deleteAllComment($post_id)
-    {
-        $deleteAllComment = $this->post->deleteAllComment($post_id);
-        if($deleteAllComment === false)
-        {
-            throw new Exception('Impossible de supprimer le commentaire' );
-        }
-        else
-        {
-            header('Location: index.php?action=adminListComments' );
-            echo '<p class="comSignal" >Ce commentaire à bien été supprimé </p>';
-        }
-    }
-
-    
 // Supprimer un commentaire
     public function deleteComment($id_comment)
     {
@@ -102,7 +85,6 @@ class CommentController
         else
         {
             header('Location: index.php?action=adminListComments' );
-            echo '<p class = "msgConfirm" >"Ce commentaire a été supprimé"</p>';
         }
     }
 }

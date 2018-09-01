@@ -222,10 +222,9 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
 
         $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
         $comments->bindValue(':reporting', 1, \PDO::PARAM_INT);
-        $comments->bindParam(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
+        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
         $report = $comments->execute();
-        $_SESSION['script'] = '<script>sendAlert</script>';
-
+        
         return $report;
     }
      
@@ -238,7 +237,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
         $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
-        $comments->bindParam(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
+        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
         $report = $comments->execute();
     
         return $report;

@@ -11,8 +11,8 @@
 		<?php
 		
 		if($commentReport===true) { ?>
-
-			 <div id="message">Commentaire signalé</div>
+			
+			 <div id="message">Vous avez bien signalé ce commentaire</div>
 		<?php
             }?>
 <!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
@@ -32,7 +32,7 @@
 		<h2><?= htmlspecialchars($post['title']) ?></h2>
 		<p>
 
-<!---affichage de l'auteur , de modification ou suppression de l'article selon si visiteur ou admin---->				
+<!---affichage de l'auteur , de modification ou suppression de l'article  admin---->				
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 				<i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
@@ -53,7 +53,7 @@
 			</div>	
 		</p>
 
-<!-----------------------------écrire commentaires admin-  ou visiteur--------------------------------------->
+<!-----------------------------écrire commentaires admin ou visiteur--------------------------------------->
 
 		<span id ="com"><h3><i class="far fa-comments"></i>Commentaires</h3></span>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#commentaires" method="POST">
@@ -73,9 +73,9 @@
                 
         </div>
 
-			<div class="inputbasic" style="margin:auto;">
+			<div >
 				<label for="comment"></label><br />
-				<textarea  name="comment" id="comment" ; placeholder="Entrez votre commentaire"></textarea>
+				<textarea  name="comment" id="comment" class="inputbasic"; placeholder="Entrez votre commentaire"></textarea>
 			</div>
 			
 			<div>
@@ -87,23 +87,28 @@
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
-		
+			
 			<div class = "commentaires">
 				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
 				</p>
 
 				<div class="user" id="commentaires">
-
 					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars(substr($comment['comment'],0,400))) ?></p></span>				
-		     	</div>
+		    	</div>
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
-		     		
-		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');"><i class="fas fa-minus-circle"></i> Supprimer </a></em>
+				<div class="reponse">
+					<input type="submit" value="Repondre" />		     	
+		     		<em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+		     	</div>
 			<?php
         	}
        		else { ?>
-       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire?');"><i class="fas fa-bell"> Signalez un abus</i></a></em>
+       			<div class="reponse">
+					<input type="submit" value="Repondre" />			     
+	       			<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire?');"><i class="fas fa-bell">  Signalez un abus</i></a></em>
+
+       			</div>
 		    <?php
             }
             ?>
@@ -112,7 +117,6 @@
 		}
 		$comments->closeCursor();
 		?>
-
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
 		<?php
@@ -130,7 +134,6 @@
           ?>
 		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
-		<script src ="public/js/tinymce/fr.js"></script>
 		<script src ="public/js/pagination.js"></script>
 		<script src ="public/js/placeholder.js"></script>
 		<script src ="public/js/placeholder.min.js"></script>

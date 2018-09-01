@@ -907,7 +907,7 @@ form,
     font-size: 1.5em;
 }
 
-form input {
+input{
     margin-bottom: 10px;
 }
 
@@ -952,7 +952,7 @@ form input {
     background-color: lightgrey;
 }
 
-form input[type=submit] {
+input[type=submit]   {
     padding: 15px;
     border: 1px solid grey;
     border-radius: 3px;
@@ -964,11 +964,11 @@ form input[type=submit] {
     -moz-transition: 0.5s ease;
 }
 
-form input[type=submit]:active {
+input[type=submit]:active{
     padding: 15px;
 }
 
-form input[type=submit]:hover {
+input[type=submit]:hover {
     border-radius: 150px;
     color: white;
     background-color: rgb(32,61,119);
@@ -977,9 +977,11 @@ form input[type=submit]:hover {
     -ms-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
+    cursor:pointer;
 }
 
 #comment {
+    margin:auto
     height: 250px;
     border: 10px solid white;
     -webkit-border-radius: 3px;
@@ -999,6 +1001,11 @@ form input[type=submit]:hover {
 
 /*placement commentaires en dessous de chaque article*/
 
+.reponse{
+    margin-left:80%;
+    margin-bottom:2%;
+
+}
 .commentaires {
     display: flex;
     display: -ms-flexbox;
@@ -1041,10 +1048,14 @@ form input[type=submit]:hover {
 
 .commentaires em {
     height: auto;
-    margin-bottom: 2%;
-    margin-left: 80%;
+   
 }
 
+textarea{
+
+    width: 100%;
+    height:200px;
+}
 /*fin commentaires*/
 
 #pageArticle {
@@ -1060,7 +1071,7 @@ form input[type=submit]:hover {
     margin-top:1%;
     text-align:center;
     font-size:1.1em;
-   
+   font-weight: bold;
     -webkit-border-radius: 3px;
     -webkit-border-radius: 14px;
     -moz-border-radius: 3px;

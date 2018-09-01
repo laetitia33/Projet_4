@@ -37,7 +37,7 @@
   
         <div class="inputbasic" style="margin:auto;">
                 <label for="content"></label>
-                <textarea name="content" id="content"><?php echo htmlspecialchars($post['content']) ;?></textarea>
+                <tinymce name="content" id="content"><?php echo htmlspecialchars($post['content']) ;?></tinymce>
             
         </div>
         <div>

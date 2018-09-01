@@ -134,7 +134,8 @@ try{
                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
                 $commentCtrl->approvedComment();
             }
-    
+
+
             // ADMIN - Page pour créer un chapitre
             elseif ($_GET['action'] == 'adminNewPost')
             {

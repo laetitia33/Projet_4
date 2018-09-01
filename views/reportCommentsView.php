@@ -18,9 +18,10 @@
         <div class="commentaires">
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?><br/>           
-              
-                <em><a href="index.php?action=approvedComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>#reportcom">Approuver <i class="fas fa-bell-slash"></i></a></em>
+              <div class="reponse"
+                <em><a href="index.php?action=approvedComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>#reportcom"OnClick="return confirm('Soutez-vous approuver ce commentaire ?');">Approuver <i class="fas fa-bell-slash"></i></a></em>
                 <em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire et retourner à la liste des commentaires?');">Supprimer <i class="fas fa-minus-circle"></i></a></em>
+            </div>
             </p>
         </div>
             <?php
