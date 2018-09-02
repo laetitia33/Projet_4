@@ -5,17 +5,15 @@ namespace Laetitia_Bernardi\projet4\Controller;
 
 
 
+
 class ContactController{
 
-    public $nom;
-    public $mail;
-    public $tel;
-    public $sujet;
-    public $message;
+    private $message;
+    private $objet;
+    private $expediteur;
+    private $email;
+    private $destinataire = '33260laetitia.bernardi@gmail.com';
 
-   
-    public $webmaster = '33260laetitia.bernardi@gmail.com';
-    
 
 
     //page du formulaire
@@ -23,65 +21,52 @@ class ContactController{
        require ('views/contactView.php');
     }
 
+    //vérifier le $_Post du formulaire de contact.
+ 
+    public function message(){
+        extract($_POST);
+        $this->message = htmlspecialchars($mail);
+        $this->objet = htmlspecialchars($object);
+        $this->expediteur = htmlspecialchars($name);
+        $this->email = htmlspecialchars($email);
+    }
 
-
-    public function verif_null($var)
-    { 
-        if($var!="" and !empty($var)){
-          return trim($var);
+  
+    // Permet d'envoyer un email si les champs ne sont pas vides.
+   
+    public  function email($function){
+        $this->message();
+        if(!empty($this->message)&& !empty($this->objet)&& !empty($this->expediteur)&& !empty($this->email) && (filter_var($this->email, FILTER_VALIDATE_EMAIL) == false)){
+            $this->$function();
         }
-        return null;
+        else{
+            $this->sendEmail();
+        }
     }
 
-    public function verif_mail($var) 
-    {
-        $code_syntaxe='#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,5}$#';   
-        if(preg_match($code_syntaxe,$var)){ 
-          return $var;
-        }
-        return null;   
+
+    //Envoie un mail suite au formulaire de contact.
+
+    public function sendEmail(){
+        $this->message();
+        $destinataire = $this->destinataire;
+        $expediteur = $this->expediteur;
+        $objet = $this->objet;
+        $email = $this->email;
+        $headers = 'MIME-Version: 1.0' . "\n";
+        $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\n";
+        $headers .= 'Reply-To: ' . $email . "\n";
+        $headers .= 'From: "Expediteur"<' . $expediteur . '>' . "\n";
+        $headers .= 'Delivered-to: ' . $destinataire . "\n";
+        $message = '<div style="width: 100%; text-align: center; font-weight: bold">' . $this->message . '</div>';
+        mail($destinataire, $objet, $message, $headers);
+        header('Location: index.php?action=listPosts');
+        
+        
+
     }
 
-    public function verif_tel($var) 
-    {
-        $code_syntaxe='#^[0-9]{9,18}$#'; 
-        if(preg_match($code_syntaxe,$var)){ 
-          return $var;
-        }
-        return null;
-    }
-    
-    function envoi_mail(){ //fonction qui envoie le mail
-       
-       $contenu_message = "Nom : ".$this->nom."\nMail : ".$this->mail."\nSujet : ".$this->sujet."\nTelephone : ".$this->tel."\nMessage : ".$this->message;
-	     $entete = "From: ".$this->nom." <".$this->mail."> \nContent-Type: text/html; charset=iso-8859-1";	 
-       mail($this->webmaster,$this->sujet,$contenu_message,$entete);
-	
-	  }
-    
-    public function loadForm($data){
-        extract($data);
-        $this->nom      = trim(htmlentities($nom, ENT_QUOTES));
-        $this->mail     = $this->verif_mail($mail);
-        $this->tel      = $this->verif_tel($tel);
-        $this->sujet    = trim(htmlentities($sujet, ENT_QUOTES));
-        $this->message  = trim(htmlentities($message, ENT_QUOTES));
-        $test = $this->testForm();
-        if(!empty($test)){
-           $this->envoi_mail();
-        };
-    } 
-    
-    public function testForm(){
-       if($this->verif_null($this->nom) and $this->verif_null($this->mail) and $this->verif_null($this->tel) and $this->verif_null($this->sujet) and $this->verif_null($this->message)){
-          if($this->verif_mail($this->mail) and $this->verif_tel($this->tel)){
-              return 1;
-          }
-          return null; 
-       }
-       return null; 
-    }
+
 
 }
 
-?>

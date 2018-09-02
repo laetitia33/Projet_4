@@ -19,7 +19,7 @@ class Manager
         $host = 'localhost';
         $db = 'blog_jean_forteroche';
         $user = 'root';
-        $pass = '';
+        $pass = 'azerty33';
         $charset = 'utf8';
 
         $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

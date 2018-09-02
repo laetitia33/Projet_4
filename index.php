@@ -375,17 +375,22 @@ try{
             }
             
           
-            //envoyer un mail
+               //envoyer un mail
             elseif ($_GET['action'] == 'addMail') 
             {
-                            
-                    
-                    {
-                        $emailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                        $emailCtrl->envoi_mail();
-                    } 
-                                               
+                        
+               if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
+                {
+                    $emailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+                    $emailCtrl->sendEmail();
+              	}
+                else
+                {
+                        throw new Exception('Tous les champs doivent être remplis !');
+                }   
+       
             }
+
 
             // Ajoute un commentaire dans le chapitre selectionné
             elseif ($_GET['action'] == 'addComment') 
