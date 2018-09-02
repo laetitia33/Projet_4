@@ -2,9 +2,30 @@
 
 <?php $title = 'Jean Forteroche - Billet simple pour l\'Alaska'; ?>
 
-<!--------------------------------------------biographie---------------------------------------------->
-<?php ob_start(); ?>
 
+
+				<!-----------phrase d'accueil--------->
+
+<?php ob_start(); ?>
+<?php
+		if(isset($_SESSION['pseudo'])) { ?>
+			<p class = "publishDate">Bonjour Jean, <?php
+			setlocale(LC_TIME, "fr_FR");
+			echo "Nous sommes le ".strftime("%d %B %Y");?> , Vos lecteurs attendent la suite           		
+			<p>
+			<?php
+		}
+		else
+		{ ?>
+
+			<p class = "publishDate">Bonjour ,<?php
+			setlocale(LC_TIME, "fr_FR");
+			echo "Nous sommes le ".strftime("%d %B %Y");?> , bientot le prochain chapitre en ligne...patientez ;)          		
+			<p>
+			  <?php
+         }
+         ?>
+<!--------------------------------------------biographie---------------------------------------------->
 
 <div id="bio">	
 	<img id="photobio" src="public/image/photobio.jpg" alt="photo jean Forteroche">

@@ -6,10 +6,8 @@
 		<div id="blocpage">
 			
 			<?php include_once 'views/include/header.php';?>
-			 <div id="msg"></div>
 			<?php include_once 'views/include/menu.php'; ?>
 			<?php include_once 'views/include/menuResponsive.php'; ?>
-
 			<?=$header?>
 						
 			<?= $content ?>

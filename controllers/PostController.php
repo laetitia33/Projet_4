@@ -5,6 +5,7 @@ namespace Laetitia_Bernardi\projet4\Controller;
 require_once ('models/PostManager.php');
 require_once ('models/CommentManager.php');
 
+
 use \models\PostManager;
 use \models\CommentManager;
 
@@ -28,6 +29,7 @@ class PostController
     public function post($post_id,$commentReport)
     {
      
+        
         $commentsTotal=  $this->comment->countComments();
         $commentReport=$commentReport;
         $commentsReportTotal = $this->comment->countCommentsReport();
@@ -39,8 +41,6 @@ class PostController
 // Liste des chapitres(2eme partie de la page d'accueil)
     public function listPosts()
     {
-
-  
         $posts = $this->post->getPosts();
         $postsTotal = $this->post->countPosts();     
         $commentsTotal  =$this ->comment ->countComments();

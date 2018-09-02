@@ -26,14 +26,11 @@ class HomeController
     public function home()
 
     {
-     
-     
         $posts = $this->posts->getPosts();
         $comment = $this->comment->getLastComment();
         $postsTotal = $this->posts->countPosts();
         require ('views/articleList.php');
     }
-
 
 
 }

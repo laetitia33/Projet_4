@@ -6,10 +6,7 @@
 
 <?php $header = ob_get_clean(); ?>
 
-
-
-    <?php
-
+<?php
     while ($data = $post->fetch())
     {
         ?>

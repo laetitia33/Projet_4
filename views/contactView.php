@@ -9,7 +9,7 @@
 		<img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
 		<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
 		Retour à l'accueil</i></a></p>
-
+            <div id="msg"></div>
 			<form class="form" method="post" action="index.php?action=addMail" ?>
       
                 <h2>Contactez l'auteur</h2>

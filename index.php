@@ -375,7 +375,7 @@ try{
             }
             
           
-               //envoyer un mail
+            //envoyer un mail
             elseif ($_GET['action'] == 'addMail') 
             {
                         
@@ -383,6 +383,7 @@ try{
                 {
                     $emailCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
                     $emailCtrl->sendEmail();
+
               	}
                 else
                 {

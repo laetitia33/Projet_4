@@ -25,7 +25,7 @@ class ContactController{
  
     public function message(){
         extract($_POST);
-        $this->message = htmlspecialchars($mail);
+        $this->message = htmlspecialchars($message);
         $this->objet = htmlspecialchars($object);
         $this->expediteur = htmlspecialchars($name);
         $this->email = htmlspecialchars($email);
@@ -59,14 +59,25 @@ class ContactController{
         $headers .= 'From: "Expediteur"<' . $expediteur . '>' . "\n";
         $headers .= 'Delivered-to: ' . $destinataire . "\n";
         $message = '<div style="width: 100%; text-align: center; font-weight: bold">' . $this->message . '</div>';
-        mail($destinataire, $objet, $message, $headers);
-        header('Location: index.php?action=listPosts');
-        
-        
+        mail($destinataire, $objet, $message, $headers);       
+        $this->messag(1);        
+        require('views/contactView.php');
+               
 
     }
 
+    public function alert()
+    {
+         ?><script>alert("Le message a bien été envoyé.\nMerci.");</script><?php
 
+
+    }
+
+    public function messag($num)
+    {
+        ?><script>sendAlert('. $num . ')</script><?php
+    }
 
 }
 
+//<script>sendAlert('. $num . ');</script>

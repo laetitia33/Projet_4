@@ -11,7 +11,7 @@
 		
 		if($commentReport===true) { ?>
 			
-			 <div id="message">Vous avez bien signalé ce commentaire</div>
+			 <div id="message">Ce commentaire a bien été signalé</div>
 		<?php
             }?>
 

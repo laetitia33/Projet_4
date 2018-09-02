@@ -85,15 +85,20 @@ $(document).ready(function() {
         }, 5000);
 
 
+
+
+
+
 function sendAlert(num)
 {
   var alertElt = document.getElementById("msg");
+ 
   var para = document.createElement('P');
   var msg;
   switch(num)
   {
     case 1 :
-      msg = 'Le message a bien été envoyé';
+      msg = 'Message envoyé avec succès';
       break;
     case 2 :
       msg = 'Le billet a bien été supprimé';
@@ -107,14 +112,11 @@ function sendAlert(num)
       msg = 'Opération inconnue';
   }
   para.innerHTML = msg;
-  alertElt.style.display = 'block';
+  
   alertElt.appendChild(para);
 
   setTimeout(function () {
             alertElt.style.display = 'none';
         }, 2000);
 }
-
-
-
 
