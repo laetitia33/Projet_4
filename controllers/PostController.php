@@ -41,6 +41,7 @@ class PostController
 // Liste des chapitres(2eme partie de la page d'accueil)
     public function listPosts()
     {
+      
         $posts = $this->post->getPosts();
         $postsTotal = $this->post->countPosts();     
         $commentsTotal  =$this ->comment ->countComments();
@@ -49,7 +50,7 @@ class PostController
 
     }
 
-
+    
 
 }
 

@@ -4,14 +4,12 @@
 <!DOCTYPE html>
 <html>
 
-	<?php include_once 'views/include/head.php';?>
-	<body>
-		<img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
-		<p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
-		Retour à l'accueil</i></a></p>
-            <div id="msg"></div>
-			<form class="form" method="post" action="index.php?action=addMail" ?>
-      
+    <?php include_once 'views/include/head.php';?>
+    <body>
+        <img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
+        <p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
+        Retour à l'accueil</i></a></p>
+            <form class="form" method="post" action="index.php?action=addMail" ?>
                 <h2>Contactez l'auteur</h2>
                 <div class="name">
                     <label for="name"></label><br />
@@ -26,17 +24,18 @@
                     <input type="text" name="object" placeholder="sujet" class="inputbasic" value="" "/>
                 </div>
                 <div class="textarea">
-                	<label for="message"></label><br />
+                    <label for="message"></label><br />
                     <textarea type="text" name="message" placeholder="Entrez votre message"  class="inputbasic" ></textarea>
                 </div>
-                <input class="button" type="submit" value ="Envoyez votre message" OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
+                <input class="button" type="submit" value ="Envoyez votre message" id ='m' OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
    
-			</form>
-		<?php include_once 'views/include/footer.php' ?>			       
-		<script src = "public/js/script.js"></script>
-		<script src ="public/js/pagination.js"></script>
-		<script src ="public/js/placeholder.js"></script>
-		<script src ="public/js/placeholder.min.js"></script>
-	</body>
+            </form>
+        <?php include_once 'views/include/footer.php' ?>                   
+        <script src = "public/js/script.js"></script>
+        <script src ="public/js/pagination.js"></script>
+        <script src ="public/js/placeholder.js"></script>
+        <script src ="public/js/placeholder.min.js"></script>
+    </body>
 </html>
+
 

@@ -33,6 +33,7 @@
     			branding: false,browser_spellcheck: true, 
     			entity_encoding: 'raw',
     			menubar: false,
+    			height : 300,
     			style_formats: [ { title: 'Bold text', inline: 'strong' }],
     			toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat',
     			

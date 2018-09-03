@@ -78,45 +78,9 @@ $(document).ready(function() {
 //duree d'affichage des messages
 
 
-  var alertElt = document.getElementById("message");
-  
-  setTimeout(function () {
-            alertElt.style.display = 'none';
-        }, 5000);
-
-
-
-
-
-
-function sendAlert(num)
-{
-  var alertElt = document.getElementById("msg");
  
-  var para = document.createElement('P');
-  var msg;
-  switch(num)
-  {
-    case 1 :
-      msg = 'Message envoyé avec succès';
-      break;
-    case 2 :
-      msg = 'Le billet a bien été supprimé';
-      break;
-    case 3 :
-      msg = 'Votre commentaire a bien été ajouté';
-      break;
-    case 4 :
-      msg = 'Le billet a bien été modifié';
-    default :
-      msg = 'Opération inconnue';
-  }
-  para.innerHTML = msg;
-  
-  alertElt.appendChild(para);
-
   setTimeout(function () {
-            alertElt.style.display = 'none';
-        }, 2000);
-}
+      document.getElementById("message").style.display="none";
+  }, 5000);
+
 

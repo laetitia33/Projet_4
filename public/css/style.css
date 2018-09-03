@@ -1009,10 +1009,12 @@ input[type=submit]:hover {
 /*placement commentaires en dessous de chaque article*/
 
 .reponse{
-    margin-left:80%;
+    margin-left:75%;
     margin-bottom:2%;
 
 }
+
+
 .commentaires {
     display: flex;
     display: -ms-flexbox;
@@ -1098,6 +1100,7 @@ textarea{
     -moz-box-shadow: 0 3px 10px #ccc;
     -o-box-shadow: 0 3px 10px #ccc;
     background-color:white ;
+    margin-bottom:2%;
 }
 
 
@@ -1347,10 +1350,12 @@ textarea{
         margin-left: 45.5%;
     }
 
-    .commentaires em {
-        margin-left: 70%;
-    }
+    .reponse{
+        margin-left:70%;
+        margin-bottom:2%;
 
+    }
+   
     footer a span {
         margin-top: -70px;
         margin-left: 40px;
@@ -1380,6 +1385,13 @@ textarea{
         left: 92%;
     }
 
+    .reponse{
+        margin-left:65%;
+     
+
+    }
+   
+
 }
 
 @media screen and (max-width:380px) {
@@ -1406,5 +1418,11 @@ textarea{
     }
 
   
+    .reponse{
+        margin-left:60%;
+  
+
+    }
+   
   
 }

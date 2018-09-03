@@ -39,12 +39,9 @@ class CommentController
     {	
         $post = $this->post->getPost($_GET['post_id']);
         $reportComment = $this->comment->reportComment($_GET['id']);
-      
-        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport=true");
+        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
     
     }
-
-
 
 // Supprimer un commentaire (page de detail de la liste des commentaires)
     public function deleteOneComment($id_comment)

@@ -45,7 +45,7 @@ class ContactController{
     }
 
 
-    //Envoie un mail suite au formulaire de contact.
+    //Envoie un mail apres le formulaire de contact.
 
     public function sendEmail(){
         $this->message();
@@ -60,24 +60,18 @@ class ContactController{
         $headers .= 'Delivered-to: ' . $destinataire . "\n";
         $message = '<div style="width: 100%; text-align: center; font-weight: bold">' . $this->message . '</div>';
         mail($destinataire, $objet, $message, $headers);       
-        $this->messag(1);        
+        $this->messag();        
         require('views/contactView.php');
                
 
     }
 
-    public function alert()
+
+    public function messag()
     {
-         ?><script>alert("Le message a bien été envoyé.\nMerci.");</script><?php
-
-
-    }
-
-    public function messag($num)
-    {
-        ?><script>sendAlert('. $num . ')</script><?php
+        // echo "<h1 style ='position:absolute;margin-top:20%;font-size:3em;right:1%;'>message envoyé avec succès</h1>";
+       
+      echo "<p id ='message'>message envoyé avec succès</p>";
     }
 
 }
-
-//<script>sendAlert('. $num . ');</script>
