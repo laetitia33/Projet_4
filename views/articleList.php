@@ -62,8 +62,20 @@
 						<p><?= nl2br(substr(htmlspecialchars($data['content']), 0, 500).'...'); ?></p>
 						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
 						<div id="commentaires">
+
+							<?php if($data['nbCommentaires'] > 0) { ?>
+							<p class ="nbcom"><?= $data['nbCommentaires']?> commentaire(s)</p>
+							 <?php
+				            }
+				           	else { ?>
+				           	<p class ="nbcom">Aucun commentaire</p>
+				           	<?php
+				            }
+				            ?>
 						<a href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#com"><em><i class="fas fa-pencil-alt"> Ajouter un Commentaire</i></em></a><br>
-					 	
+
+					
+													 	
 					<?php if(isset($_SESSION['pseudo'])) { ?>
 				
 			

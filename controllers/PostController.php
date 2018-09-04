@@ -13,22 +13,21 @@ class PostController
 
 {
     private $post;
-    private $comment;
+    private $comment;    
+    private $posts;
+
 
     public function __construct()
     {
         $this->post = new \Laetitia_Bernardi\projet4\Model\PostManager();
+        $this->posts = new \Laetitia_Bernardi\projet4\Model\PostManager();
         $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
     }
 
 
-
-
-
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
-    {
-     
+    {     
         
         $commentsTotal=  $this->comment->countComments();
         $commentReport=$commentReport;
@@ -38,12 +37,13 @@ class PostController
         require('views/articleDetail.php');
     }
 
-// Liste des chapitres(2eme partie de la page d'accueil)
+// Liste des chapitres( page d'accueil)
     public function listPosts()
     {
-      
-        $posts = $this->post->getPosts();
-        $postsTotal = $this->post->countPosts();     
+       
+        $posts = $this->posts->getPosts();
+        $comment = $this->comment->getLastComment();
+        $postsTotal = $this->posts->countPosts();     
         $commentsTotal  =$this ->comment ->countComments();
         $commentsReportTotal = $this->comment->countCommentsReport();
         require('views/articleList.php');

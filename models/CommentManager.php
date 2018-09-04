@@ -112,14 +112,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $comments;
     }
 
-//commentaires signalés
-    public function getReportComments()
-    {
-        $db = $this->dbConnect();
-
-        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY reporting DESC LIMIT 0,10');
-        return $reportComments;
-    }
 
 //nombre de commentaires
     public function countComments()
@@ -129,6 +121,16 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $req->execute();
         $commentsTotal = $req->fetch();
         return $commentsTotal;
+    }
+
+
+//commentaires signalés 
+    public function getReportComments()
+    {
+        $db = $this->dbConnect();
+
+        $reportComments = $db->query('SELECT id, post_id, author, comment, reporting, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE reporting= 1 ORDER BY reporting DESC LIMIT 0,10');
+        return $reportComments;
     }
 
 //nombre de commentaires signalés   
@@ -141,6 +143,48 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $commentsReportTotal;
     }
 
+//signaler commentaire
+    public function reportComment($id_comment)
+    {
+        $this->setIdComment($id_comment);
+
+        $db = $this->dbConnect();
+
+        $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
+        $comments->bindValue(':reporting', 1, \PDO::PARAM_INT);
+        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
+        $report = $comments->execute();
+        
+        return $report;
+    }
+     
+//valider tous les commentaires en retirant leur signalement
+
+    public function approvedComments()
+    {
+       
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE comments SET reporting= :reporting ');
+        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
+   
+        $report = $comments->execute();
+    
+        return $report;
+    }
+
+//Valider un commentaire en retirant son signalement
+    public function approvedComment($id_comment)
+    {
+        $this->setIdComment($id_comment);
+
+        $db = $this->dbConnect();
+        $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
+        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
+        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
+        $report = $comments->execute();
+    
+        return $report;
+    }
 
 //recupere les commentaires d'un chapitre 
     public function getComments($post_id)
@@ -189,7 +233,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $createComment;
     }
 
-//suppression commentaires
+//suppression commentaire
     public function deleteComment($id_comment)
     {
         $this->setIdComment($id_comment);
@@ -213,49 +257,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $deleteComments;
     }
 
-//signaler commentaire
-    public function reportComment($id_comment)
-    {
-        $this->setIdComment($id_comment);
 
-        $db = $this->dbConnect();
-
-        $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
-        $comments->bindValue(':reporting', 1, \PDO::PARAM_INT);
-        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
-        $report = $comments->execute();
-        
-        return $report;
-    }
-     
-
-//valider tous les commentaires en retirant leur signalement
-
-    public function approvedComments()
-    {
-       
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET reporting= :reporting ');
-        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
-   
-        $report = $comments->execute();
-    
-        return $report;
-    }
-
-
-//Valider un commentaire en retirant son signalement
-    public function approvedComment($id_comment)
-    {
-        $this->setIdComment($id_comment);
-
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET reporting= :reporting WHERE id= :id_comment');
-        $comments->bindValue(':reporting', 0, \PDO::PARAM_INT);
-        $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
-        $report = $comments->execute();
-    
-        return $report;
-    }
     
 }

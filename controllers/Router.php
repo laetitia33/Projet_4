@@ -4,7 +4,6 @@
 require('controllers/PostController.php');
 require('controllers/CommentController.php');
 require('controllers/AdminController.php');
-require('controllers/HomeController.php');
 require('controllers/UserController.php');
 require('controllers/ContactController.php');
 require('controllers/Autoload.php');
@@ -13,7 +12,6 @@ use \controllers\UserController;
 use \controllers\PostController;
 use \controllers\CommentController;
 use \controllers\AdminController;
-use \controllers\HomeController;
 use \controllers\Autoload;
 
 class Routeur
@@ -33,7 +31,6 @@ class Routeur
             $this->postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
             $this->commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
             $this->administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-            $this->homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
             $this->userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
             $this->contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
         }
@@ -287,15 +284,9 @@ class Routeur
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))
                 {
-                    // Accueil Visiteur
-                    if ($_GET['action'] == 'home')
-                    {
-                        $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-                        $homeCtrl->home();
-                    }
-                   
-                    // Liste des chapitres
-                    elseif ($_GET['action'] == 'listPosts') 
+                    
+                    // Accueil visiteurs /Liste des chapitres
+                   if ($_GET['action'] == 'listPosts') 
                     {
                         $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                         $postCtrl->listPosts();
@@ -468,11 +459,12 @@ class Routeur
                    
                 }
 
-                // Retourne à l'index.
+                // Retourne à l'index.Accueil
                 else
                 {
-                    $homeCtrl = new \Laetitia_Bernardi\projet4\Controller\HomeController();
-                    $homeCtrl->home();
+                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
+                    $postCtrl->listPosts();
+
                 }
             }
 
