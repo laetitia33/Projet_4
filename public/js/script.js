@@ -84,3 +84,9 @@ $(document).ready(function() {
   }, 5000);
 
 
+
+$(function(){
+   $('#validcom').click(function(){
+      $('#signal').toggle() // AFFICHE ET CACHE A CHAQUE CLIQUE SUR LE BOUTTON
+   });
+});

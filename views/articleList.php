@@ -64,7 +64,7 @@
 						<div id="commentaires">
 
 							<?php if($data['nbCommentaires'] > 0) { ?>
-							<p class ="nbcom"><?= $data['nbCommentaires']?> commentaire(s)</p>
+							<p class ="nbcom"><?= $data['nbCommentaires']?> commentaire(s) <i class="far fa-comment"></i></p>
 							 <?php
 				            }
 				           	else { ?>

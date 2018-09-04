@@ -207,6 +207,21 @@ class Routeur
                         }
                     }
 
+                // ADMIN - Supprimer un commentaire dans la  page detail 
+                    elseif ($_GET['action'] == 'deleteOneComment')
+                    {
+                        if (isset($_GET['id']) && $_GET['id'] > 0)
+                        {
+                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                            $commentCtrl->deleteOneComment($_GET['id']);
+                        }
+                        else
+                        {
+                            throw new Exception('Aucun identifiant de commentaire envoyé !');
+                        }
+                    }
+
+
                     //ADMIN - Supprimer tous les commentaires
                        elseif ($_GET['action'] == 'deleteComments')
                     {
@@ -291,6 +306,7 @@ class Routeur
                         $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                         $postCtrl->listPosts();
                     }
+
                     // Affiche le chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {

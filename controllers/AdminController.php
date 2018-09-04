@@ -109,7 +109,7 @@ class AdministrationController
 
 
 
-// Supprimer un commentaire
+// Supprimer un commentaire dans la liste des commentaires
     public function deleteComment($id_comment)
     {
         $deleteComment = $this->comment->deleteComment($id_comment);
@@ -126,6 +126,26 @@ class AdministrationController
         }
     }
 
+// Supprimer un commentaire dans la page article details
+    public function deleteOneComment($id_comment)
+    {
+        $deleteComment = $this->comment->deleteComment($id_comment);
+
+        if($deleteComment === false)
+        {
+            throw new Exception('Impossible de supprimer le commentaire' );
+        }
+        else
+        {
+           echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Commentaire supprimé avec succès</h1>";
+          // echo "<script>alert('Commentaire supprimé avec succès');</script>";
+             header('Refresh: 1; url= index.php?action=post&post_id=' . $_GET['post_id']);
+            
+        }
+    }
+
+  
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +157,8 @@ class AdministrationController
     public function postAdd($author, $title, $content)
     {
         $createPost = $this->post->createPost($author, $title, $content);
-        header('Location: index.php?action=listPosts');
+         echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Chapitre ajouté avec succès</h1>";
+        header('Refresh: 1; url= index.php?action=listPosts#episodes');
     }
 
 

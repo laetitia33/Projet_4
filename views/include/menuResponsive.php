@@ -15,7 +15,7 @@ if(isset($_SESSION['id']))
 		<li><a class="creation" href="index.php?action=adminNewPost#create">Ecrire un chapitre</a><li>
 		<li><a class="creation" href="index.php?action=adminListComments#com">Tous les Commentaires (<?= $commentsTotal['total_comments']?>)</a></li>
 		<li><a class="creation" href="index.php?action=adminCommentsReport#reportcom">Commentaires signalés (<?= $commentsReportTotal['total_comments_report']?>)</a></li>
-		<li><a class ="creation" href="index.php?action=logout">Déconnexion</a></li>
+		<li><a class ="creation" href="index.php?action=logout" OnClick="return confirm('Souhaitez-vous vous déconnecter?')";>Déconnexion</a></li>
 
 	</ul>
 </div>
