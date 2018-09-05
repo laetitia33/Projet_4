@@ -12,7 +12,7 @@
     <p>
         <p><i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?></p>
         <div class="news" >         
-            <?= nl2br(htmlspecialchars($post['content'])) ?>
+            <p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>
         </div>
     </p>
 
@@ -37,7 +37,7 @@
   
         <div class="inputbasic" style="margin:auto;">
                 <label for="content"></label>
-                <tinymce name="content" id="content"><?php echo htmlspecialchars($post['content']) ;?></tinymce>
+                <textarea name="content" id="content"><p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p></textarea>
             
         </div>
         <div>

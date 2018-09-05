@@ -17,8 +17,8 @@
                         
             
                 <div class="news" >
-                    <?= nl2br(htmlspecialchars(substr($data['content'], 0, 350))); ?>...
-                </div>
+                    <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['content']), 0, 500).'...'));?></p>
+                 </div>
                 
                 <a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>">En lire plus</a>           
         </div>
@@ -38,7 +38,7 @@
             <p><strong><?= htmlspecialchars($data['author']); ?></strong> le <?= $data['comment_date_fr']; ?></p>
 
             <div class="news" >
-                <p><?= nl2br(htmlspecialchars(substr($data['comment'],0,350))); ?></p>
+                <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['comment']), 0, 300).'...'));?></p>
             </div>
         </div>
 

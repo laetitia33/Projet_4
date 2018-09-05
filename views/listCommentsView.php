@@ -22,7 +22,7 @@
    <?php
     }else { ?>
 
-        <em><a href="index.php?action=deleteComments#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires</i></a></em>
+        <em><a href="index.php?action=deleteComments" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires</i></a></em>
 
      <?php
     }
@@ -35,9 +35,9 @@ while ($comment = $comments->fetch())
     ?>
     <div class = "commentaires">
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?><br/>
+        <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300).'...'));?><br/>
         	<div class="reponse">
-            <em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire ?');" >Supprimer <i class="fas fa-minus-circle"></i></a></em>
+            <em><a href="index.php?action=deleteComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>" OnClick="return confirm('Voulez-vous vraiment supprimer le commentaire ?');" >Supprimer <i class="fas fa-minus-circle"></i></a></em>
         	</div>
         </p>
         </div>

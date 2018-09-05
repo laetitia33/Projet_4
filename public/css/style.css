@@ -906,8 +906,7 @@ h3 {
 /* --------------page de l' article entier-------------------*/
 
 div.news {
-    display: flex;
-    display:-ms-flexbox;
+    
     width: 90%;
     margin: auto;
     font-size: 1.2em;

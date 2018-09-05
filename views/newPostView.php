@@ -32,7 +32,7 @@
             
         <div class="inputbasic" style="margin:auto;">
                 <label for="content"></label>
-                <tinymce name="content" id="content" placeholder="Indiquez ,ici ,votre chapitre"></tinymce>
+                <textarea name="content" id="content" placeholder="Indiquez ,ici ,votre chapitre"></textarea>
             </div>
         </div>
 

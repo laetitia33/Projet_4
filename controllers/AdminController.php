@@ -81,8 +81,11 @@ class AdministrationController
     {
         
         $reportComments = $this->comment->approvedComments();
- 
-        header('Location: index.php?action=adminCommentsReport');
+        echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Tous les commentaires approuvés avec succès</h1>";
+        
+        header('Refresh: 1; url=index.php?action=adminCommentsReport#reportcom' );
+        
+        
     }
 
 
@@ -101,8 +104,10 @@ class AdministrationController
  //supprime tous les commentaires(page de detail de la liste des commentaires)
     public function deleteComments()
     {
-        $deleteComments = $this->comment->deleteAllComments();      
-        header('Location: index.php?action=adminListComments' );
+        $deleteComments = $this->comment->deleteAllComments();
+          echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Tous les commentaires supprimés avec succès</h1>";
+          // echo "<script>alert('Commentaire supprimé avec succès');</script>";      
+        header('Refresh: 1; url=index.php?action=adminListComments#deleteCom' );
         
    
     }
@@ -121,7 +126,7 @@ class AdministrationController
         else
         {
           
-            header('Location: index.php?action=adminListComments' );
+            header('Location:index.php?action=adminListComments#deleteCom' );
             
         }
     }
@@ -137,14 +142,29 @@ class AdministrationController
         }
         else
         {
-           echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Commentaire supprimé avec succès</h1>";
-          // echo "<script>alert('Commentaire supprimé avec succès');</script>";
-             header('Refresh: 1; url= index.php?action=post&post_id=' . $_GET['post_id']);
+         
+             header('Location: index.php?action=post&post_id=' . $_GET['post_id']);
             
         }
     }
 
-  
+//supprimer le commentaire signalé dans la page commentaire report
+      public function deleteOneCommentInReport($id_comment)
+    {
+        $deleteComment = $this->comment->deleteComment($id_comment);
+
+        if($deleteComment === false)
+        {
+            throw new Exception('Impossible de supprimer le commentaire' );
+        }
+        else
+        {
+         
+            header('Location:index.php?action=adminCommentsReport#reportcom');
+
+            
+        }
+    }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////

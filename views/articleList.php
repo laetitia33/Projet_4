@@ -58,8 +58,9 @@
 					<span  class="punaise" ><img src="public/image/punaise.gif" alt="punaise"></span>
 					<h2><?= (htmlspecialchars($data['title'])) ?></h2>
 					<p><span class="publishing">Article écrit par <?= $data['author'] ?><br><i class="far fa-calendar-alt"> le <?= $data['date_creation_fr'] ?></i></span></p>
+							<p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['content']), 0, 500).'...'));?></p>
 
-						<p><?= nl2br(substr(htmlspecialchars($data['content']), 0, 500).'...'); ?></p>
+
 						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
 						<div id="commentaires">
 

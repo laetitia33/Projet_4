@@ -53,8 +53,7 @@
             }
             ?>
 			<div class="news" >	
-			<?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])))?> 		
-				
+			<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>	
 		</p>
 
@@ -78,9 +77,9 @@
                 
         </div>
 
-			<div >
+			<div class="inputbasic" style='margin:auto;'>
 				<label for="comment"></label><br />
-				<textarea  name="comment" id="comment" class="inputbasic"; placeholder="Entrez votre commentaire"></textarea>
+				<com  name="comment" id="comment" ; placeholder="Entrez votre commentaire"></com>
 			</div>
 			
 			<div>
@@ -99,12 +98,12 @@
 				</p>
 
 				<div class="user" id="commentaires">
-					<span id="confirmsignal"><p><?= nl2br(htmlspecialchars(substr($comment['comment'],0,400))) ?></p></span>				
+					<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
 		    	</div>
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 				<div class="reponse">     	
-		     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+		     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#commentaires" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 		     	</div>
 			<?php
         	}

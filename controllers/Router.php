@@ -222,6 +222,25 @@ class Routeur
                     }
 
 
+
+                // ADMIN - Supprimer un commentaire dans la  comment report
+                    elseif ($_GET['action'] == 'deleteOneCommentInReport')
+                    {
+                        if (isset($_GET['id']) && $_GET['id'] > 0)
+                        {
+                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+                            $commentCtrl->deleteOneCommentInReport($_GET['id']);
+                        }
+                        else
+                        {
+                            throw new Exception('Aucun identifiant de commentaire envoyé !');
+                        }
+                    }
+
+
+
+
+
                     //ADMIN - Supprimer tous les commentaires
                        elseif ($_GET['action'] == 'deleteComments')
                     {
