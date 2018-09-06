@@ -100,6 +100,8 @@ class PostManager extends Manager
     }
 
 
+
+
 //affiche nombre d'articles sur ma page (6)
     public function getPosts()
     {
@@ -169,7 +171,6 @@ class PostManager extends Manager
         $this->setAuthor($author);
         $this->setTitle($title);
         $this->setContent($content);
-
         $db = $this->dbConnect();
         $post = $db->prepare('UPDATE posts SET title= :title, author= :author, content= :content WHERE id= :post_id');
         $post->bindValue('title',$this->getTitle(), PDO::PARAM_STR);

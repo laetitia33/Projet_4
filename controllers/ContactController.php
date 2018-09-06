@@ -21,14 +21,15 @@ class ContactController{
        require ('views/contactView.php');
     }
 
-    //vérifier le $_Post du formulaire de contact.
+    //vérifier le $_Post du formulaire de contact et à la reception avec tinymce
  
     public function message(){
         extract($_POST);
-        $this->message = htmlspecialchars($message);
-        $this->objet = htmlspecialchars($object);
-        $this->expediteur = htmlspecialchars($name);
-        $this->email = htmlspecialchars($email);
+
+        $this->message = htmlspecialchars_decode(nl2br(html_entity_decode($message)));
+        $this->objet = htmlspecialchars_decode(nl2br(html_entity_decode($object)));
+        $this->expediteur = htmlspecialchars_decode(nl2br(html_entity_decode($name)));
+        $this->email = htmlspecialchars_decode(nl2br(html_entity_decode($email)));
     }
 
   
@@ -66,11 +67,10 @@ class ContactController{
 
     }
 
-
+//message confirmation email envoyé
     public function messag()
     {
-        // echo "<h1 style ='position:absolute;margin-top:20%;font-size:3em;right:1%;'>message envoyé avec succès</h1>";
-       
+     
       echo "<p id ='message'>message envoyé avec succès</p>";
     }
 

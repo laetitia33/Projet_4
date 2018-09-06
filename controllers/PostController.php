@@ -28,12 +28,12 @@ class PostController
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {     
-
-        $commentsTotal=  $this->comment->countComments();
-        $commentReport=$commentReport;
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $post = $this->post->getPost($post_id);
-        $comments = $this->comment->getComments($post_id);
+        
+        $commentsTotal=  $this->comment->countComments(); //connaitre le nombre total de com 
+        $commentReport=$commentReport;//afficgafe message confirmation signalé
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre nombre total de coms signalés
+        $post = $this->post->getPost($post_id);// recuperer le chapitre selectionné
+        $comments = $this->comment->getComments($post_id);//tous les commentaires du chapitre selectionné
         require('views/articleDetail.php');
     }
 
@@ -41,16 +41,18 @@ class PostController
 
 // Liste des chapitres( page d'accueil)
     public function listPosts()
+
     {
-      
-        $posts = $this->posts->getPosts();
-        $comment = $this->comment->getLastComment();
-        $postsTotal = $this->posts->countPosts();     
-        $commentsTotal  =$this ->comment ->countComments();
-        $commentsReportTotal = $this->comment->countCommentsReport();
+   
+        $posts = $this->posts->getAllPosts();//recupère tous les chapitres
+        $sixpost = $this->posts->getPosts();// affichage des 6 chapitres/pages avec le nombre de com sur chacun
+        $postsTotal = $this->posts->countPosts();  //connaitre le nombre de total chapitre    
+        $commentsTotal  =$this ->comment ->countComments();//connaitre le nombre de com 
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre nombre total de coms signalés
         require('views/articleList.php');
 
     }
+
 
 
 }

@@ -13,21 +13,21 @@
                 <h2>Contactez l'auteur</h2>
                 <div class="name">
                     <label for="name"></label><br />
-                    <input type="text" name="name" placeholder="Entrez votre nom" class="inputbasic" value="" "/>
+                    <input type="text" name="name" placeholder="Entrez votre nom" class="inputbasic" value="" />
                 </div>
                 <div class="email">
                     <label for="email"></label><br />
-                    <input type="email" name="email" placeholder="Entrez votre e-mail" class="inputbasic"  value="" "/>
+                    <input type="email" name="email" placeholder="Entrez votre e-mail" class="inputbasic"  value="" />
                 </div>
                 <div class="object">
                     <label for="object"></label><br />
-                    <input type="text" name="object" placeholder="sujet" class="inputbasic" value="" "/>
+                    <input type="text" name="object" placeholder="sujet" class="inputbasic" value="" />
                 </div>
-                <div class="textarea">
+                <div class="inputbasic" style="margin:auto;">
                     <label for="message"></label><br />
-                    <textarea type="text" name="message" placeholder="Entrez votre message"  class="inputbasic" ></textarea>
+                <textarea type="text" name="message" placeholder="Entrez votre message"></textarea>
                 </div>
-                <input class="button" type="submit" value ="Envoyez votre message" id ='m' OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
+                <input class="button" type="submit" value ="Envoyez votre message"  OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
    
             </form>
         <?php include_once 'views/include/footer.php' ?>                   

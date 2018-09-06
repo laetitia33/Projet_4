@@ -199,22 +199,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
     }
 
 
-
-//Récupère un commentaire via son identifiant
-    public function getCommentById($id_comment)
-    {
-        $this->setIdComment($id_comment);
-
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%i\') AS comment_date_fr FROM comments WHERE id= ?');
-        $comments->execute(array($this->getIdComment()));
-        $comment = $comments->fetch();
-
-        return $comment;
-    }
-
-
-
 //envoi d'un commentaire
     public function createComment($post_id, $author, $comment)
     {
@@ -229,7 +213,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
             $this->getAuthor(),
             $this->getComment()
         ));
-
         return $createComment;
     }
 

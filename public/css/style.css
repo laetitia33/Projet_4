@@ -612,6 +612,7 @@ a {
     
 }
 
+
 #ep1:hover {
     -webkit-box-shadow: 0 8px 12px #666;
     -moz-box-shadow: 0 8px 12px #666;
@@ -994,7 +995,7 @@ input[type=submit]:hover {
 }
 
 #comment {
-    margin:auto
+    margin:auto;
     height: 250px;
     border: 10px solid white;
     -webkit-border-radius: 3px;
@@ -1124,6 +1125,17 @@ textarea{
 
 /*----------------pagination---------------*/
 
+.pagination a {
+    color: black;
+}
+
+.pagination a:hover {
+    color: red; text-decoration: none;
+}
+
+.pagination a:visited {
+    color: red; text-decoration: none;
+}
 
 /*--------------tableau de bord-----------*/
 

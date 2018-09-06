@@ -51,7 +51,7 @@
 
 		<?php
 				
-				while ($data = $posts->fetch()){
+				while ($data = $sixpost->fetch()){
 				?>
 				
 				<div id="ep1">
@@ -100,26 +100,52 @@
 			;?>
 <!--------------------------pagination-----------------------------------------> 
                
-<?php
-	//rendre le tableau dans un entier
-	$totalArt=	$postsTotal['total_posts'];
-	//redefinir exactement le nombre de chapitre à afficher
-	$posts = 6; 
 
-	// calcule du nombre de pages à afficher en arrondissant
-	// le résultat au nombre supérieur grâce à la fonction ceil()
-   	$nbPages = ceil( $totalArt/$posts );
+ <?php
+			// On met dans une variable le nombre de messages qu'on veut par page
+			$sixposts = 6; 
+			// On récupère le nombre total de messages
+
+			$totalDesMessages = $postsTotal['total_posts'];
+			// On calcule le nombre de pages à créer
+			$nombreDePages  = ceil($totalDesMessages / $sixposts);
+			// Puis on fait une boucle pour écrire les liens vers chacune des pages
+			echo 'Page : ';
+			for ($i = 1 ; $i <= $nombreDePages ; $i++)
+			{
+			     echo '<a href="index.php?action=listPosts&' . $i .'#episodes">' . $i . '</a> ';
+			    
+			    var_dump($sixposts);
+			    var_dump($totalDesMessages);
+			    var_dump($nombreDePages);
+
+			}
+			?>
+			 
+		<?php
+
+
+			 if (isset($_GET['listPosts']))
+					{
+					        $page = $_GET['listPosts']; // On récupère le numéro de la page indiqué dans l'adresse (livreor.php?page=4)
+					}
+					else // La variable n'existe pas, c'est la première fois qu'on charge la page
+					{
+					        $page = 1; // On se met sur la page 1 (par défaut)
+					}
+					 
+
+			var_dump($sixposts);
+
+				$sixposts = ($page - 1) * $sixposts;
  
-  	$page = 0;
- 	
-    for ($j=0; $j < $nbPages; $j++)
-    {
-        $page++;
-        echo '<a href="index.php?action=listPosts'.$page.'"> <'.$page."></a>";
-    }
-?>
-		
+			$reponse = $sixposts . ', ' . $sixposts;
 
+
+?>
+
+ 
+	
 <?php $content = ob_get_clean(); ?>
 <!---------------------------------renvoi vers la template appelée home------------------------------>
 <?php require('views/home.php'); ?>

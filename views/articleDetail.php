@@ -113,11 +113,13 @@
 
 	       				<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire ?');"><i class="fas fa-bell">  Signalez un abus</i></a></em>
 	       			</div>
+				
+							<?php if($commentReport==1){?>
+								<p id='signal' <i class="fas fa-ban" > Commentaire signalé</i></p>
 
-	       			<p id='signal' <i class="fas fa-ban" > Commentaire signalé</i></p>
-						    
-							
-
+								  <?php
+            }
+            ?>
        				
 		    <?php
             }

@@ -57,7 +57,7 @@ class Routeur
                     }
                   
 
-        ///redirection concernant les chapitres
+//redirection concernant les chapitres
 
                     // ADMIN - Creation d'un chapitre
                     elseif ($_GET['action'] == 'createPost')
@@ -82,14 +82,14 @@ class Routeur
                         $viewCtrl->adminNewPost();
                     }
 
-                    // Liste des chapitres
+                    // ADMIN - Liste des chapitres
                     elseif ($_GET['action'] == 'listPosts')
                     {
                         $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
                         $postCtrl->listPosts();
                     }
 
-                    //chapitre avec ses commentaires
+                    //ADMIN - chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
@@ -153,7 +153,8 @@ class Routeur
                     }
           
 
-        //redirection concernant les commentaires           
+
+//redirection concernant les commentaires           
                     // ADMIN - Liste des commentaires
                     elseif ($_GET['action'] == 'adminListComments')
                     {
@@ -162,7 +163,7 @@ class Routeur
 
                     }
 
-                    // Ajoute un commentaire dans le chapitre selectionné
+                    // ADMIN - Ajoute un commentaire dans le chapitre selectionné
                     elseif ($_GET['action'] == 'addComment')
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -193,7 +194,7 @@ class Routeur
                         $commentCtrl->adminCommentsReport();
                     }
 
-                 // ADMIN - Supprimer un commentaire
+                    // ADMIN - Supprimer un commentaire
                     elseif ($_GET['action'] == 'deleteComment')
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -207,7 +208,7 @@ class Routeur
                         }
                     }
 
-                // ADMIN - Supprimer un commentaire dans la  page detail 
+                    // ADMIN - Supprimer un commentaire dans la  page detail 
                     elseif ($_GET['action'] == 'deleteOneComment')
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -221,9 +222,10 @@ class Routeur
                         }
                     }
 
+                    //marque commentaire signalés
 
 
-                // ADMIN - Supprimer un commentaire dans la  comment report
+                    // ADMIN - Supprimer un commentaire dans la  comment report
                     elseif ($_GET['action'] == 'deleteOneCommentInReport')
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
@@ -238,10 +240,7 @@ class Routeur
                     }
 
 
-
-
-
-                    //ADMIN - Supprimer tous les commentaires
+                    // ADMIN - Supprimer tous les commentaires
                        elseif ($_GET['action'] == 'deleteComments')
                     {
                        
@@ -268,7 +267,7 @@ class Routeur
 
                    
 
-                    // Ajoute un commentaire dans le chapitre selectionné
+                    // ADMIN - Ajoute un commentaire dans le chapitre selectionné
                     elseif ($_GET['action'] == 'addCommentAdmin')
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
@@ -288,7 +287,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
-                    // Page de connexion
+                    // ADMIN - Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
                         $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
@@ -296,7 +295,7 @@ class Routeur
                        
                     }
 
-                    // Deconnexion
+                    // ADMIN - Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
                         $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
@@ -305,7 +304,7 @@ class Routeur
 
                      
                 }
-                // Retourne a l'administration.
+                // ADMIN - Retourne a l'administration.
                 else
                 {
                     $administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
@@ -313,7 +312,8 @@ class Routeur
                 }
             }
 
-        //visiteur
+
+//visiteur
             else
             {
                 if (isset($_GET['action']) && !empty($_GET['action']))

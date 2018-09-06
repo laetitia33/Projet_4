@@ -33,11 +33,11 @@ class AdministrationController
 //page d'accueil de l'administrateur
     public function administration()
     {
-        $post = $this->post->getLastPost();
-        $comment = $this->comment->getLastComment();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal = $this->comment->countComments();
-        $commentsReportTotal = $this->comment->countCommentsReport();
+        $post = $this->post->getLastPost();// affichage dernier chapitre
+        $comment = $this->comment->getLastComment();//affichage dernier commentaire
+        $postsTotal = $this->post->countPosts();//connaitre le nombre total de chapitres
+        $commentsTotal = $this->comment->countComments();//connaitre le nombre total de commentaires
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
     
         require('views/adminView.php');
     }
@@ -45,9 +45,9 @@ class AdministrationController
 //page pour éditer un article
     public function adminNewPost(){
        
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal  =$this ->comment ->countComments();
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
+        $postsTotal = $this->post->countPosts();//connaitre le nombre total de chapitres
+        $commentsTotal  =$this ->comment ->countComments();//connaitre le nombre total de commentaires
         require('views/newPostView.php');
     }
    
@@ -56,9 +56,9 @@ class AdministrationController
 
     {
        
-        $postsTotal = $this->post->countPosts();//compte tous les chapitres
-        $commentsReportTotal = $this->comment->countCommentsReport();//compte tous les commentaires signales
-        $commentsTotal  =$this ->comment ->countComments();//compte tous les commentaires
+        $postsTotal = $this->post->countPosts();//connaitre le nombre total de chapitres
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
+        $commentsTotal  =$this ->comment ->countComments();//connaitre le nombre total de commentaires
         $comments = $this->comment->getAllComments();//recupere tous les commentaires
         require ('views/ListCommentsView.php');
     }
@@ -68,9 +68,8 @@ class AdministrationController
 // Approuver un commentaire en  retirerant le signalement (page du detail de chaque chapitre)
     public function approvedComment()
     {
-        $post = $this->post->getPost($_GET['post_id']);
-        $reportComment = $this->comment->approvedComment($_GET['id']);
- 
+        $post = $this->post->getPost($_GET['post_id']);//récuperer le chapitre selectionné
+        $reportComment = $this->comment->approvedComment($_GET['id']);//approuver un commentaire en fonction du chapitre
         header('Location: index.php?action=adminCommentsReport');
     }
 
@@ -81,8 +80,7 @@ class AdministrationController
     {
         
         $reportComments = $this->comment->approvedComments();
-        echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Tous les commentaires approuvés avec succès</h1>";
-        
+        echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Tous les commentaires approuvés avec succès</h1>";        
         header('Refresh: 1; url=index.php?action=adminCommentsReport#reportcom' );
         
         
@@ -93,10 +91,10 @@ class AdministrationController
     public function adminCommentsReport()
     {
 
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal  =$this ->comment ->countComments();
-        $reportComments = $this->comment->getReportComments();
+        $commentsReportTotal = $this->comment->countCommentsReport();//connaitre le nombre total de commentaires signalés
+        $postsTotal = $this->post->countPosts();//connaitre le nombre total de chapitres
+        $commentsTotal  =$this ->comment ->countComments();//connaitre le nombre total de commentaires
+        $reportComments = $this->comment->getReportComments();//récuperer les commentaires signalés
         require ('views/reportCommentsView.php');
     }
 
@@ -185,10 +183,10 @@ class AdministrationController
 // Page de modification d'un chapitre
     public function adminUpdatePost()
     {
-        $commentsReportTotal = $this->comment->countCommentsReport();
-        $postsTotal = $this->post->countPosts();
-        $commentsTotal  =$this ->comment ->countComments();
-        $post = $this->post->getPost($_GET['post_id']);
+        $commentsReportTotal = $this->comment->countCommentsReport();//nombre de commentaires signalés
+        $postsTotal = $this->post->countPosts();//nombre de chapitres
+        $commentsTotal  =$this ->comment ->countComments();//nombre de commentaires
+        $post = $this->post->getPost($_GET['post_id']);//récupere un chapitre selectionné
         require ('views/updatePostView.php');
     }
 
@@ -213,8 +211,8 @@ class AdministrationController
 // Supprimer un chapitre (page de la liste des chapitres admin , page du detail du chapitre )
     public function deletePost($post_id)
     {
-        $deletePost = $this->post->deletePost($post_id);
-        $deleteComments = $this->comment->deleteAllComments($post_id);
+        $deletePost = $this->post->deletePost($post_id);//supprimé un chapitre selectionné
+        $deleteComments = $this->comment->deleteAllComments($post_id);//supprimé tous les chapitres 
 
         if ($deletePost === false) {
             throw new Exception('Impossible de supprimer le chapitre');
