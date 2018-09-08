@@ -18,6 +18,7 @@
 
 		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h6ble8677pog4pffjmzlwtaf0l6xs0i472c1aw6acasvxtuy"></script>
   		<script src= "public/js/tinymce/tinymce.js"></script>
+  		<script src='https://www.google.com/recaptcha/api.js'></script>
   			
 		<title><?= isset($title) ? $title : 'Un billet pour l\'Alaska ';?></title>
 	</head>

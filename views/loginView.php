@@ -24,9 +24,11 @@
                 <input type="submit" value="Connexion" />
             </div>
         </form>
-        <p><a class="news" href="index.php"><i class="fas fa-arrow-left">
+      
 
-        Retour à l'accueil</i></a></p>
+
+
+          <p><a class="news" href="index.php"><i class="fas fa-arrow-left">Retour à l'accueil</i></a></p>
         <?php include_once 'views/include/footer.php' ?>                   
         <script src = "public/js/script.js"></script>
         <script src ="public/js/tinymce/fr.js"></script>

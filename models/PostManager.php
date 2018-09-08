@@ -101,7 +101,6 @@ class PostManager extends Manager
 
 
 
-
 //affiche nombre d'articles sur ma page (6)
     public function getPosts()
     {
@@ -118,7 +117,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT 0, 100');
+        $req = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr  FROM posts ORDER BY date_creation DESC LIMIT 0, 100');
         return $req;
     }
 
@@ -132,7 +131,6 @@ class PostManager extends Manager
         $postsTotal = $req->fetch();
         return $postsTotal;
     }
-
 
 //recupere un article
     public function getPost($post_id)

@@ -10,7 +10,7 @@
 <?php ob_start(); ?>
 
     <p>
-        <p><i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?></p>
+        <p><i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr']) ?></p>
         <div class="news" >         
             <p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>
         </div>
@@ -23,7 +23,7 @@
             <label for="author" ></label>
      
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
-                if (isset($_SESSION['pseudo']))
+                if (isset(htmlspecialchars($_SESSION['pseudo'])))
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
                 }
@@ -35,7 +35,7 @@
                 <input type="text" name="title" class="inputbasic" id="title" value="<?php echo htmlspecialchars($post['title']) ;?>"/>
         </div>
   
-        <div class="inputbasic" style="margin:auto;">
+        <div class="inputbasic">
                 <label for="content"></label>
                 <textarea name="content" id="content"><p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p></textarea>
             

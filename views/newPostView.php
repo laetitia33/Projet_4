@@ -14,7 +14,7 @@
             <label for="author" ></label>
      
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
-                if (isset($_SESSION['pseudo']))
+                if (isset($_SESSION['pseudo']));
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
                 }
@@ -30,7 +30,7 @@
         
         <div >
             
-        <div class="inputbasic" style="margin:auto;">
+        <div class="inputbasic" >
                 <label for="content"></label>
                 <textarea name="content" id="content" placeholder="Indiquez ,ici ,votre chapitre"></textarea>
             </div>

@@ -14,7 +14,7 @@
 
 <?php
 
-      if($commentsReportTotal['total_comments_report']> 0){ ;?>
+      if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0){ ;?>
          <em><a href="index.php?action=deleteComments#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></em><br><br>
                        
        
@@ -30,7 +30,7 @@
 
 <?php
 
-      if($commentsReportTotal['total_comments_report'] > 0) { ;?>
+      if(htmlspecialchars($commentsReportTotal['total_comments_report']) > 0) { ;?>
          <em><a href="index.php?action=approvedComments" OnClick="return confirm('Souhaitez-vous approuver tous les commentaires signalés ?');" ><i class="fas fa-bell-slash"> Approuver tous les commentaires</i></a></em>
        <?php } ?>
 
@@ -44,7 +44,7 @@
             ?>
 
         <div class="commentaires">
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?></p>
             <p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300).'...'));?><br/>           
               <div class="reponse">
                 <em><a href="index.php?action=approvedComment&amp;post_id=<?= $comment['post_id'];?>&amp;id=<?= $comment['id'];?>#reportcom"OnClick="return confirm('Souhaitez-vous approuver ce commentaire ?');">Approuver <i class="fas fa-bell-slash"></i></a></em>

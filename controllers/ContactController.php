@@ -54,6 +54,7 @@ class ContactController{
         $expediteur = $this->expediteur;
         $objet = $this->objet;
         $email = $this->email;
+        $this->recaptcha();
         $headers = 'MIME-Version: 1.0' . "\n";
         $headers .= 'Content-type: text/html; charset=ISO-8859-1' . "\n";
         $headers .= 'Reply-To: ' . $email . "\n";
@@ -66,6 +67,36 @@ class ContactController{
                
 
     }
+
+
+//repatcha
+
+public function recaptcha(){
+    // Ma clé privée
+    $secret = "6Lfm7G4UAAAAAInBgjxGcvGnb9T52a1ScWUP49Tg";
+    // Paramètre renvoyé par le recaptcha
+    $response = $_POST['g-recaptcha-response'];
+    // On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" 
+        . $secret
+        . "&response=" . $response
+        . "&remoteip=" . $remoteip ;
+    
+    $decode = json_decode(file_get_contents($api_url), true);
+    
+    if ($decode['success'] == true) {
+        // C'est un humain
+    }
+    
+    else {
+        // C'est un robot ou le code de vérification est incorrecte
+    }
+        
+
+}
+
 
 //message confirmation email envoyé
     public function messag()

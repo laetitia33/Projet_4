@@ -39,7 +39,7 @@
 <!---affichage de l'auteur , de modification ou suppression de l'article  admin---->				
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
-				<i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?>
+				<i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr'])?>
 				</p>
 				<a href="index.php?action=adminUpdatePost&amp;post_id=<?= $post['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre </i></em></a><br><br>
                	<a href="index.php?action=deletePost&amp;post_id=<?= $post['id']; ?>" OnClick="return confirm('Voulez-vous vraiment supprimer le chapitre ?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a><br><br>
@@ -77,7 +77,7 @@
                 
         </div>
 
-			<div class="inputbasic" style='margin:auto;'>
+			<div class="inputbasic">
 				<label for="comment"></label><br />
 				<com  name="comment" id="comment" ; placeholder="Entrez votre commentaire"></com>
 			</div>
@@ -89,10 +89,11 @@
 	
 <!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
 
+
 		<?php
 		while ($comment = $comments->fetch())
 		{ ;?>
-			
+
 			<div class = "commentaires">
 				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
 				</p>
@@ -125,14 +126,18 @@
             }
             ?>
 			</div>
+		
 		<?php
 		}
 		$comments->closeCursor();
-
 		?>
  
-		     		
-						
+       
+
+          
+           
+
+			
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
 		<?php
@@ -150,7 +155,6 @@
           ?>
 		<?php include_once 'views/include/footer.php' ?>			       
 		<script src = "public/js/script.js"></script>
-		<script src ="public/js/pagination.js"></script>
 		<script src ="public/js/placeholder.js"></script>
 		<script src ="public/js/placeholder.min.js"></script>
 	</body>

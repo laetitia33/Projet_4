@@ -78,15 +78,10 @@ $(document).ready(function() {
 //duree d'affichage des messages
 
 
+var signal = document.getElementById("message")
  
   setTimeout(function () {
-      document.getElementById("message").style.display="none";
+      signal.style.display="none";
   }, 5000);
 
 
-
-$(function(){
-   $('#validcom').click(function(){
-      $('#signal').toggle() // AFFICHE ET CACHE A CHAQUE CLIQUE SUR LE BOUTTON
-   });
-});

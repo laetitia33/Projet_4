@@ -5,7 +5,7 @@ namespace Laetitia_Bernardi\projet4\Controller;
 require_once ('models/PostManager.php');
 require_once ('models/CommentManager.php');
 
-class CommentController
+class CommentController 
 {
     private $comment;
     private $post;
@@ -41,8 +41,11 @@ class CommentController
        
         $post = $this->post->getPost($_GET['post_id']);//recupere un chapitre selectionné
         $reportComment = $this->comment->reportComment($_GET['id']);//signale un commentaire grace à son id
+
         header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
-    
+        
+        
+     
     }
 
 }

@@ -41,6 +41,8 @@
 
 
 <?php ob_start(); ?>
+
+
 <!-------------------------------------------affichage de tous les articles------------------------------>
 			<a id="episodes"></a><!--ancre du bouton de navigation chapitre à episodes en javascript-->
 			<p class ='comSignal'></p>
@@ -56,16 +58,16 @@
 				
 				<div id="ep1">
 					<span  class="punaise" ><img src="public/image/punaise.gif" alt="punaise"></span>
-					<h2><?= (htmlspecialchars($data['title'])) ?></h2>
-					<p><span class="publishing">Article écrit par <?= $data['author'] ?><br><i class="far fa-calendar-alt"> le <?= $data['date_creation_fr'] ?></i></span></p>
+					<h2><?= htmlspecialchars($data['title']) ?></h2>
+					<p><span class="publishing">Article écrit par <?= htmlspecialchars($data['author']) ?><br><i class="far fa-calendar-alt"> le <?= htmlspecialchars($data['date_creation_fr']) ?></i></span></p>
 							<p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($data['content']), 0, 500).'...'));?></p>
 
 
 						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
 						<div id="commentaires">
 
-							<?php if($data['nbCommentaires'] > 0) { ?>
-							<p class ="nbcom"><?= $data['nbCommentaires']?> commentaire(s) <i class="far fa-comment"></i></p>
+							<?php if (htmlspecialchars($data['nbCommentaires']) > 0) { ?>
+							<p class ="nbcom"><?= htmlspecialchars($data['nbCommentaires'])?> commentaire(s) <i class="far fa-comment"></i></p>
 							 <?php
 				            }
 				           	else { ?>
@@ -96,56 +98,79 @@
 
 			<?php
 
-			$posts->closeCursor();
+			$sixpost->closeCursor();
 			;?>
 <!--------------------------pagination-----------------------------------------> 
-               
+<?php
+$nbParPage = 6;
+//on effectue la requète sur l'objet que l'on souhaite paginer ( ici des news )
+$req1=mysql_query("SELECT * FROM news");
+$nbNews=mysql_numrows($req1);
+//$nbnews=$nbnews[0];
+echo "il y a $nbNews";
 
- <?php
-			// On met dans une variable le nombre de messages qu'on veut par page
-			$sixposts = 6; 
-			// On récupère le nombre total de messages
+//On calcule le nombre de numéro à afficher en fonction du nombre de news par
+//page en arrondissant au nombre supérieur grace a la fonction ceil.
+$moy= ceil($nbNews/$nbParPage);
+echo "<br>et il y aura $moy page<br>";
+//*********** Partie concernant le "bouton" précedent ***********\\
+//on vérifie qu'il y a au minimum 2 page a afficher pour utiliser
+//la fonction Suivant / précédent
+if ($moy>=2)
+{
+  //on vérifie l'éxistence de la variable page avant les vérifications
+  if (isset($_GET['page']))
+  {
+      //si $_GET['page'] = 1 alors on est a la première page et donc pas besoins
+      //de lien vers la précédente qui n'éxiste pas
+      if ($_GET['page']==1){echo "Precedent ";}
+      //sinon on met le lien en ajoutant +1 page a la page courante
+      else
+      {
+          echo "<a href=\"pagination.php?page=".($_GET['page']-1)."\">Precedent</a> ";
+      }
+  }
+    else{echo "Precedent ";}
+}
+//*********** fin de la partie concernant le "bouton" précedent ***********\\
 
-			$totalDesMessages = $postsTotal['total_posts'];
-			// On calcule le nombre de pages à créer
-			$nombreDePages  = ceil($totalDesMessages / $sixposts);
-			// Puis on fait une boucle pour écrire les liens vers chacune des pages
-			echo 'Page : ';
-			for ($i = 1 ; $i <= $nombreDePages ; $i++)
-			{
-			     echo '<a href="index.php?action=listPosts&' . $i .'#episodes">' . $i . '</a> ';
-			    
-			    var_dump($sixposts);
-			    var_dump($totalDesMessages);
-			    var_dump($nombreDePages);
+//prenons un exemple concret :
+// nous avons 10 news dans la base
+// a ce moment nous savons donc qu'il y aura 2 page :
+// $nbNews = 10 divisé par 5 ( 5 news par page ) = 2 pages.
+// on peut déja afficher les numéros :
+// on effectue une boucle tant qu'il y a des pages on ajoute un lien
+for ($i=0;$i<$moy;$i++)
+{
+    // on ajoute 1 a $i pour afficher 1-2-3-... au lieu de  0-1-2-3-...
+    echo "<a href=\"pagination.php?page=".($i+1)."\"> Page ".($i+1)."</a> ";
+}
 
-			}
-			?>
-			 
-		<?php
+//*********** Partie concernant le "bouton" suivant ***********\\
+//on vérifie qu'il y a au minimum 2 page a afficher pour utiliser
+//la fonction Suivant / précédent
+if ($moy>=2)
+{
+  //on vérifie l'éxistence de la variable page avant les vérifications
+  if (isset($_GET['page']))
+  {
+      //si $_GET['page'] = $moy alors on est a la dernière page et donc pas besoins
+      //de lien vers la suivante qui n'éxiste pas
+      if ($_GET['page']==$moy){echo " Suivant";}
+      //sinon on met le lien en ajoutant +1 page a la page courante
+      else
+      {
+          echo " <a href=\"pagination.php?page=".($_GET['page']+1)."\">Suivant</a>";
+      }
+  }
+  else{echo "<a href=\"pagination.php?page=1\">Suivant</a>";}
+}
+//*********** fin de la partie concernant le "bouton" Suivant ***********\\
 
-
-			 if (isset($_GET['listPosts']))
-					{
-					        $page = $_GET['listPosts']; // On récupère le numéro de la page indiqué dans l'adresse (livreor.php?page=4)
-					}
-					else // La variable n'existe pas, c'est la première fois qu'on charge la page
-					{
-					        $page = 1; // On se met sur la page 1 (par défaut)
-					}
-					 
-
-			var_dump($sixposts);
-
-				$sixposts = ($page - 1) * $sixposts;
- 
-			$reponse = $sixposts . ', ' . $sixposts;
-
-
+echo "<br>La page courante est :".$_GET['page'];
 ?>
 
- 
-	
+<!----------------------------------------------------------------------------->	
 <?php $content = ob_get_clean(); ?>
 <!---------------------------------renvoi vers la template appelée home------------------------------>
 <?php require('views/home.php'); ?>

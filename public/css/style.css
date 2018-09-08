@@ -927,6 +927,7 @@ input{
 
 
 .inputbasic {
+    margin:auto;
     width: 60%;
     padding: 10px;
     border: 1px solid grey;
@@ -1123,19 +1124,22 @@ textarea{
   transition: padding 2s ease;
 }
 
+/* recaptcha*/
+
+#g-recaptcha{
+    display:flex;
+    display: -ms-flexbox;
+    flex-direction:center;
+    -ms-flex-direction:center;
+    justify-content: space-around;
+    -ms-flex-pack: justify;
+    
+}
+
+
 /*----------------pagination---------------*/
 
-.pagination a {
-    color: black;
-}
 
-.pagination a:hover {
-    color: red; text-decoration: none;
-}
-
-.pagination a:visited {
-    color: red; text-decoration: none;
-}
 
 /*--------------tableau de bord-----------*/
 

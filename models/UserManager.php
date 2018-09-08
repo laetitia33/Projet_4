@@ -10,7 +10,7 @@ use \PDO;
 
 class UserManager extends Manager
 {
-    private $id, $pseudo, $pass;
+    private $id,$id_group, $pseudo, $pass;
 
 
     public function __construct()
@@ -71,16 +71,13 @@ class UserManager extends Manager
     public function getUser($pseudo,$pass)
     {
         $this->setPseudo($pseudo);
-
         $db = $this->dbConnect();
         $req = $db->query("SELECT * FROM users WHERE pseudo = '$pseudo' AND pass = '$pass' "); 
         $user = $req->fetch(); 
         $req->closeCursor();
     
         return $user;
-
     }
     
-
     
 }
