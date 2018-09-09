@@ -355,8 +355,10 @@ class Routeur
                     elseif ($_GET['action'] == 'log')
                     {
                     
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']) )
+
                         {
+                    
                             $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
                             $userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
                         }

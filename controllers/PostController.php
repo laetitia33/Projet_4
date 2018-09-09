@@ -30,7 +30,7 @@ class PostController
 // Page Afficher un chapitre + ses commentaires
     public function post($post_id,$commentReport)
     {     
-
+    
         $commentsTotal=  $this->comment->countComments(); //connaitre le nombre total de com 
         $commentReport=$commentReport;//affichage message confirmation signalé
         $commentsReportTotal = $this->comment->countCommentsReport();//connaitre nombre total de coms signalés
@@ -45,9 +45,8 @@ class PostController
     public function listPosts()
 
     {
-     
+      
         $posts = $this->posts->getAllPosts();//recupère tous les chapitres
-        $sixpost = $this->posts->getPosts();// affichage des 6 chapitres/pages avec le nombre de com sur chacun
         $postsTotal = $this->posts->countPosts();  //connaitre le nombre de total chapitre    
         $commentsTotal  =$this ->comment ->countComments();//connaitre le nombre de com 
         $commentsReportTotal = $this->comment->countCommentsReport();//connaitre nombre total de coms signalés

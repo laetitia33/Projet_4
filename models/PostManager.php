@@ -117,11 +117,11 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT id, title, content,author, DATE_FORMAT(date_creation, \'%d/%m/%Y à %H:%i:%s\') AS date_creation_fr  FROM posts ORDER BY date_creation DESC LIMIT 0, 100');
+        $req = $db->query('SELECT b.id, b.title, b.content, b.author, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC ');
         return $req;
     }
 
-   
+
 //nombre d'articles
     public function countPosts()
     {

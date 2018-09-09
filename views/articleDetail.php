@@ -89,9 +89,7 @@
 	
 <!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
 
-
-		<?php
-		while ($comment = $comments->fetch())
+<?php while ($comment = $comments->fetch())
 		{ ;?>
 
 			<div class = "commentaires">
@@ -129,15 +127,12 @@
 		
 		<?php
 		}
-		$comments->closeCursor();
-		?>
+		$comments->closeCursor();?>
+	
  
-       
 
-          
-           
-
-			
+	
+		
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
 
 		<?php

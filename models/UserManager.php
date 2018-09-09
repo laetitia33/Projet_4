@@ -67,17 +67,15 @@ class UserManager extends Manager
 
 
 //recuperation des données de l'utilisateur
-
-    public function getUser($pseudo,$pass)
+   public function getUser($pseudo,$pass)
     {
         $this->setPseudo($pseudo);
         $db = $this->dbConnect();
-        $req = $db->query("SELECT * FROM users WHERE pseudo = '$pseudo' AND pass = '$pass' "); 
+        $req = $db->query("SELECT * FROM users WHERE pseudo = '$pseudo' AND pass = PASSWORD('$pass') "); 
         $user = $req->fetch(); 
         $req->closeCursor();
     
         return $user;
     }
-    
     
 }

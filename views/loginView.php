@@ -7,13 +7,13 @@
     <body>
         <img id="pageArticle" src="public/image/photo6.jpg" alt="photo Alaska"/>
         <form action="index.php?action=log" method="POST">
-            
+          
            
             <div>
                 <label for="pseudo">Pseudo :</label><br />
                 <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"/>
             </div>
-            
+        
             <div>
                 <label for="pass"/>Mot de passe :</label><br />
                 <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe"/>

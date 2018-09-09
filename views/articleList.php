@@ -53,7 +53,7 @@
 
 		<?php
 				
-				while ($data = $sixpost->fetch()){
+				while ($data = $posts->fetch()){
 				?>
 				
 				<div id="ep1">
@@ -66,7 +66,7 @@
 						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
 						<div id="commentaires">
 
-							<?php if (htmlspecialchars($data['nbCommentaires']) > 0) { ?>
+							<?php if ($data['nbCommentaires'] > 0) { ?>
 							<p class ="nbcom"><?= htmlspecialchars($data['nbCommentaires'])?> commentaire(s) <i class="far fa-comment"></i></p>
 							 <?php
 				            }
@@ -98,20 +98,25 @@
 
 			<?php
 
-			$sixpost->closeCursor();
+			$posts->closeCursor();
 			;?>
 <!--------------------------pagination-----------------------------------------> 
 <?php
-$nbParPage = 6;
+
+$posts = 6;
 //on effectue la requète sur l'objet que l'on souhaite paginer ( ici des news )
-$req1=mysql_query("SELECT * FROM news");
-$nbNews=mysql_numrows($req1);
+
+$nbNews=$postsTotal['total_posts'];
 //$nbnews=$nbnews[0];
 echo "il y a $nbNews";
 
+
+
+
+
 //On calcule le nombre de numéro à afficher en fonction du nombre de news par
 //page en arrondissant au nombre supérieur grace a la fonction ceil.
-$moy= ceil($nbNews/$nbParPage);
+$moy= ceil($nbNews/$posts);
 echo "<br>et il y aura $moy page<br>";
 //*********** Partie concernant le "bouton" précedent ***********\\
 //on vérifie qu'il y a au minimum 2 page a afficher pour utiliser
@@ -119,15 +124,15 @@ echo "<br>et il y aura $moy page<br>";
 if ($moy>=2)
 {
   //on vérifie l'éxistence de la variable page avant les vérifications
-  if (isset($_GET['page']))
+  if (isset($_GET['listPosts']))
   {
       //si $_GET['page'] = 1 alors on est a la première page et donc pas besoins
       //de lien vers la précédente qui n'éxiste pas
-      if ($_GET['page']==1){echo "Precedent ";}
+      if ($_GET['listPosts']==1){echo "Precedent ";}
       //sinon on met le lien en ajoutant +1 page a la page courante
       else
       {
-          echo "<a href=\"pagination.php?page=".($_GET['page']-1)."\">Precedent</a> ";
+          echo "<a href=\"index.php?listPosts&amp;=".($_GET['listPosts']-1)."\">Precedent</a> ";
       }
   }
     else{echo "Precedent ";}
@@ -140,10 +145,11 @@ if ($moy>=2)
 // $nbNews = 10 divisé par 5 ( 5 news par page ) = 2 pages.
 // on peut déja afficher les numéros :
 // on effectue une boucle tant qu'il y a des pages on ajoute un lien
+echo 'Page : ';
 for ($i=0;$i<$moy;$i++)
 {
     // on ajoute 1 a $i pour afficher 1-2-3-... au lieu de  0-1-2-3-...
-    echo "<a href=\"pagination.php?page=".($i+1)."\"> Page ".($i+1)."</a> ";
+    echo "<a href=\"index.php?action=listPosts&amp;=".($i+1)."\">".($i+1)."</a> ";
 }
 
 //*********** Partie concernant le "bouton" suivant ***********\\
@@ -152,23 +158,56 @@ for ($i=0;$i<$moy;$i++)
 if ($moy>=2)
 {
   //on vérifie l'éxistence de la variable page avant les vérifications
-  if (isset($_GET['page']))
+  if (isset($_GET['listPosts']))
   {
       //si $_GET['page'] = $moy alors on est a la dernière page et donc pas besoins
       //de lien vers la suivante qui n'éxiste pas
-      if ($_GET['page']==$moy){echo " Suivant";}
+      if ($_GET['listPosts']==$moy){echo " Suivant";}
       //sinon on met le lien en ajoutant +1 page a la page courante
       else
       {
-          echo " <a href=\"pagination.php?page=".($_GET['page']+1)."\">Suivant</a>";
+          echo " <a href=\"index.php?action=listPosts&amp;=".($_GET['page']+1)."\">Suivant</a>";
       }
   }
-  else{echo "<a href=\"pagination.php?page=1\">Suivant</a>";}
+  else{echo "<a href=\"index.php?action=listPosts&amp;=1\">Suivant</a>";}
 }
 //*********** fin de la partie concernant le "bouton" Suivant ***********\\
 
-echo "<br>La page courante est :".$_GET['page'];
+echo "<br>La page courante est :".$_GET['listPosts'];
 ?>
+
+
+
+
+
+/ Pagination
+ 
+ <?php
+// On met dans une variable le nombre de messages qu'on veut par page
+$nombreDeMessagesParPage = 6; // Essais de changer ce nombre pour voir
+// On récupère le nombre total de messages
+
+$totalDesMessages=$postsTotal['total_posts'];
+// On calcule le nombre de pages à créer
+$nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
+// Puis on fait une boucle pour écrire les liens vers chacune des pages
+echo 'Page : ';
+for ($i = 1 ; $i <= $nombreDePages ; $i++)
+{
+    echo '<a href="index.php?action=listPosts&amp' . $i . '">' . $i . '</a> ';
+}
+ 
+if (isset($_GET['listPosts&amp']))
+{
+        $page = $_GET['listPosts&amp']; // On récupère le numéro de la page indiqué dans l'adresse (billets.php?page=4)
+}
+else // La variable n'existe pas, c'est la première fois qu'on charge la page
+{
+        $page = 1; // On se met sur la page 1 (par défaut)
+}
+  
+// On calcule le numéro du premier message qu'on prend pour le LIMIT de MySQL
+$premierMessageAafficher = ($page - 1) * $nombreDeMessagesParPage;?>
 
 <!----------------------------------------------------------------------------->	
 <?php $content = ob_get_clean(); ?>

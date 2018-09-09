@@ -23,7 +23,7 @@
             <label for="author" ></label>
      
             <input type="text" name="author" class="inputbasic" id="author"value="<?php
-                if (isset(htmlspecialchars($_SESSION['pseudo'])))
+                if (isset($_SESSION['pseudo']))
                 {
                     echo htmlspecialchars($_SESSION['pseudo']);
                 }

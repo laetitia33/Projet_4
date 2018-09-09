@@ -21,9 +21,12 @@ class UserController
         require ('views/inscriptionView.php');
     }
 // Connexion
-    public function logUser($pseudo, $pass)
+    public function logUser($pseudo,$pass)
     {
+
+        
         $user = $this->user->getUser($pseudo,$pass);
+    
         if(!$user )
         {
             throw new Exception('Utilisateur ou mot de passe incorrect');
