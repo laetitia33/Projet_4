@@ -256,6 +256,22 @@ class Routeur
                         $userCtrl->login();
                        
                     }
+
+                    //connexion
+                    elseif ($_GET['action'] == 'log')
+                    {
+                    
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
+                        {
+                            $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
+                             
+                             $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                        }
+                        else
+                        {
+                            throw new Exception('Tous les champs doivent être remplis !');
+                        }
+                    }
                     // ADMIN - Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
@@ -351,21 +367,22 @@ class Routeur
                         $userCtrl->login();
                        
                     }
-                    //connexion
+                     //connexion
                     elseif ($_GET['action'] == 'log')
                     {
-                    
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']) )
-
+                   
+                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                         {
-                    
                             $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-                            $userCtrl->logUser($_POST['pseudo'], $_POST['pass']);
+                                       
+                             $userCtrl->logUser($_POST['pseudo'],($_POST['pass']));
                         }
                         else
                         {
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
+
+
                     }
                     // Deconnexion
                     elseif ($_GET['action'] == 'logout')

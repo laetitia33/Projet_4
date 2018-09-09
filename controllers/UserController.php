@@ -15,18 +15,12 @@ class UserController
     {
         require('views/loginView.php');
     }
-//page inscription
-    public function inscriLogin()
-    {
-        require ('views/inscriptionView.php');
-    }
+
 // Connexion
     public function logUser($pseudo,$pass)
     {
-
-        
         $user = $this->user->getUser($pseudo,$pass);
-    
+        
         if(!$user )
         {
             throw new Exception('Utilisateur ou mot de passe incorrect');
