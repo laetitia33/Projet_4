@@ -192,7 +192,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de commentaire envoyé !');
                         }
                     }
-                    //marque commentaire signalés
+                    
                     // ADMIN - Supprimer un commentaire dans la  comment report
                     elseif ($_GET['action'] == 'deleteOneCommentInReport')
                     {
@@ -326,40 +326,7 @@ class Routeur
                         $userCtrl->inscriLogin();
                        
                     }
-                     // Inscription
-                    elseif ($_GET['action'] == 'register')
-                    {
-                        if (!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['pass_confirm']) && !empty($_POST['email']))
-                        {
-                            // Sécurité
-                            $pseudo = htmlspecialchars($_POST['pseudo']);
-                            $email = htmlspecialchars($_POST['email']);
-                            // Hachage du mot de passe
-                            $password_hache = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-                            // On vérifie la Regex pour l'adresse email
-                            if (preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $_POST['email']))
-                            {
-                                // On vérifie que les 2 mots de passe sont identiques.
-                                if ($_POST['pass'] == $_POST['pass_confirm'])
-                                {
-                                    $userCtrl = new UserController();
-                                    $userCtrl->registerUser(2, $pseudo, $password_hache, $email);
-                                }
-                                else
-                                {
-                                    throw new Exception('Les 2 mots de passe ne sont pas identiques, recommencez !');
-                                }
-                            }
-                            else
-                            {
-                                throw new Exception('L\'adresse email ' . $email . ' n\'est pas valide, recommencez !');
-                            }
-                        }
-                        else
-                        {
-                            throw new Exception('Tous les champs doivent être remplis !');
-                        }
-                    }
+                
                     // Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
