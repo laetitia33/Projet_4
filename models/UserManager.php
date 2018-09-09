@@ -70,16 +70,14 @@ class UserManager extends Manager
    public function getUser($pseudo,$pass)
     {
      
-     
+   
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT * FROM users WHERE pseudo= ? AND pass= ?");
+        $req = $db->prepare("SELECT * FROM users WHERE pseudo= ? AND pass= PASSWORD(?)");
         $req->execute(array($pseudo, $pass));
          $user = $req->fetch(); 
        
     
         return $user;
-
-
         
     }
 }

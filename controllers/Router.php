@@ -265,7 +265,7 @@ class Routeur
                         {
                             $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
                              
-                             $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                              $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
                         }
                         else
                         {
@@ -342,7 +342,7 @@ class Routeur
                         {
                             $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
                                        
-                             $userCtrl->logUser($_POST['pseudo'],($_POST['pass']));
+                             $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
                         }
                         else
                         {
