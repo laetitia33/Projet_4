@@ -6,6 +6,10 @@
 
 <?php $header = ob_get_clean(); ?>
 
+<!------------------liste des chapitres------------------------->
+
+<?php ob_start(); ?>
+
 <?php
     while ($data = $post->fetch())
     {
