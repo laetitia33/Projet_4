@@ -1,7 +1,5 @@
 <?php
-
 namespace Laetitia_Bernardi\projet4\Controller;
-
 require_once ('models/PostManager.php');
 require_once ('models/CommentManager.php');
 
@@ -9,14 +7,11 @@ class CommentController
 {
     private $comment;
     private $post;
-
     public function __construct()
     {
         $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
         $this->post = new \Laetitia_Bernardi\projet4\Model\PostManager();
     }
-
-
 
 // Ajouter un commentaire(page du detail de chaque chapitre)
     public function addComment($post_id, $author, $comment)
@@ -32,20 +27,17 @@ class CommentController
         }
     }
 
-
-
 // Signaler un commentaire(page du detail de chaque chapitre)
     public function reportingComment()
-
-    {	
-       
+    {   
+        
         $post = $this->post->getPost($_GET['post_id']);//recupere un chapitre selectionné
         $reportComment = $this->comment->reportComment($_GET['id']);//signale un commentaire grace à son id
-
-        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
+         
+   
+        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport" );
         
         
      
     }
-
 }

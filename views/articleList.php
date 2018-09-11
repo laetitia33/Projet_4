@@ -52,7 +52,8 @@
 
 
 		<?php
-				
+
+
 				while ($data = $posts->fetch()){
 				?>
 				
@@ -93,121 +94,14 @@
 				<?php
 				}
 				?>
+
 			</div>
-	
 
 			<?php
-
+	
 			$posts->closeCursor();
 			;?>
 <!--------------------------pagination-----------------------------------------> 
-<?php
-
-$posts = 6;
-//on effectue la requète sur l'objet que l'on souhaite paginer ( ici des news )
-
-$nbNews=$postsTotal['total_posts'];
-//$nbnews=$nbnews[0];
-echo "il y a $nbNews";
-
-
-
-
-
-//On calcule le nombre de numéro à afficher en fonction du nombre de news par
-//page en arrondissant au nombre supérieur grace a la fonction ceil.
-$moy= ceil($nbNews/$posts);
-echo "<br>et il y aura $moy page<br>";
-//*********** Partie concernant le "bouton" précedent ***********\\
-//on vérifie qu'il y a au minimum 2 page a afficher pour utiliser
-//la fonction Suivant / précédent
-if ($moy>=2)
-{
-  //on vérifie l'éxistence de la variable page avant les vérifications
-  if (isset($_GET['listPosts']))
-  {
-      //si $_GET['page'] = 1 alors on est a la première page et donc pas besoins
-      //de lien vers la précédente qui n'éxiste pas
-      if ($_GET['listPosts']==1){echo "Precedent ";}
-      //sinon on met le lien en ajoutant +1 page a la page courante
-      else
-      {
-          echo "<a href=\"index.php?listPosts&amp;=".($_GET['listPosts']-1)."\">Precedent</a> ";
-      }
-  }
-    else{echo "Precedent ";}
-}
-//*********** fin de la partie concernant le "bouton" précedent ***********\\
-
-//prenons un exemple concret :
-// nous avons 10 news dans la base
-// a ce moment nous savons donc qu'il y aura 2 page :
-// $nbNews = 10 divisé par 5 ( 5 news par page ) = 2 pages.
-// on peut déja afficher les numéros :
-// on effectue une boucle tant qu'il y a des pages on ajoute un lien
-echo 'Page : ';
-for ($i=0;$i<$moy;$i++)
-{
-    // on ajoute 1 a $i pour afficher 1-2-3-... au lieu de  0-1-2-3-...
-    echo "<a href=\"index.php?action=listPosts&amp;=".($i+1)."\">".($i+1)."</a> ";
-}
-
-//*********** Partie concernant le "bouton" suivant ***********\\
-//on vérifie qu'il y a au minimum 2 page a afficher pour utiliser
-//la fonction Suivant / précédent
-if ($moy>=2)
-{
-  //on vérifie l'éxistence de la variable page avant les vérifications
-  if (isset($_GET['listPosts']))
-  {
-      //si $_GET['page'] = $moy alors on est a la dernière page et donc pas besoins
-      //de lien vers la suivante qui n'éxiste pas
-      if ($_GET['listPosts']==$moy){echo " Suivant";}
-      //sinon on met le lien en ajoutant +1 page a la page courante
-      else
-      {
-          echo " <a href=\"index.php?action=listPosts&amp;=".($_GET['page']+1)."\">Suivant</a>";
-      }
-  }
-  else{echo "<a href=\"index.php?action=listPosts&amp;=1\">Suivant</a>";}
-}
-//*********** fin de la partie concernant le "bouton" Suivant ***********\\
-
-echo "<br>La page courante est :".$_GET['listPosts'];
-?>
-
-
-
-
-
-/ Pagination
- 
- <?php
-// On met dans une variable le nombre de messages qu'on veut par page
-$nombreDeMessagesParPage = 6; // Essais de changer ce nombre pour voir
-// On récupère le nombre total de messages
-
-$totalDesMessages=$postsTotal['total_posts'];
-// On calcule le nombre de pages à créer
-$nombreDePages  = ceil($totalDesMessages / $nombreDeMessagesParPage);
-// Puis on fait une boucle pour écrire les liens vers chacune des pages
-echo 'Page : ';
-for ($i = 1 ; $i <= $nombreDePages ; $i++)
-{
-    echo '<a href="index.php?action=listPosts&amp' . $i . '">' . $i . '</a> ';
-}
- 
-if (isset($_GET['listPosts&amp']))
-{
-        $page = $_GET['listPosts&amp']; // On récupère le numéro de la page indiqué dans l'adresse (billets.php?page=4)
-}
-else // La variable n'existe pas, c'est la première fois qu'on charge la page
-{
-        $page = 1; // On se met sur la page 1 (par défaut)
-}
-  
-// On calcule le numéro du premier message qu'on prend pour le LIMIT de MySQL
-$premierMessageAafficher = ($page - 1) * $nombreDeMessagesParPage;?>
 
 <!----------------------------------------------------------------------------->	
 <?php $content = ob_get_clean(); ?>

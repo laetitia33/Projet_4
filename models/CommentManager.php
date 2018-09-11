@@ -158,6 +158,9 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $report;
     }
      
+
+
+
 //valider tous les commentaires en retirant leur signalement
 
     public function approvedComments()
@@ -169,7 +172,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
    
         $report = $comments->execute();
     
-        return $report;
+        return $approvReport;
     }
 
 //Valider un commentaire en retirant son signalement
@@ -183,7 +186,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
         $report = $comments->execute();
     
-        return $report;
+        return $approvReports;
     }
 
 //recupere les commentaires d'un chapitre 

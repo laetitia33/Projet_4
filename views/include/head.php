@@ -3,6 +3,7 @@
 		<link rel="stylesheet" type="text/css" href="public/css/style.css">
 		<meta name="description" content="En un simple clique . Venez découvrir les aventures du dernier roman de Jean Forteroche. Billet simple pour l'Alaska!">
 		<meta name="viewport" content="width=device-width initial-scale=1">
+		
 		<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 		<meta property="og:url" content="https://forteroche.000webhostapp.com/"/>
 		<meta property="og:title" content="Jean Forteroche, acteur et écrivain."/>

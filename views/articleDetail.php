@@ -11,7 +11,7 @@
 		
 		if($commentReport===true) { ?>
 			
-			 <div id="message">Ce commentaire a bien été signalé</div>
+			 <div id="message">Ce commentaire a bien été signalé et sera vérifié par l'administrateur</div>
 
 		<?php
             }?>
@@ -107,19 +107,15 @@
 			<?php
         	}
        		else { ?>
-	       			<div class="reponse">
-						
-
-	       				<em><a id="validcom" href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Voulez-vous vraiment signaler ce commentaire ?');"><i class="fas fa-bell">  Signalez un abus</i></a></em>
+						<?php	if($commentReport===true) { ?>			
+			 					<p>Commentaire signalé </p> 
+			 				<?php  }else {?>
+	       				<div class="reponse">				
+	       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
+	       				<?php } ?>	
+     		  
 	       			</div>
-				
-							<?php if($commentReport==1){?>
-								<p id='signal' <i class="fas fa-ban" > Commentaire signalé</i></p>
-
-								  <?php
-            }
-            ?>
-       				
+	       				
 		    <?php
             }
             ?>
@@ -130,7 +126,6 @@
 		$comments->closeCursor();?>
 	
  
-
 	
 		
 <!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	

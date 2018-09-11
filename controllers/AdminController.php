@@ -69,7 +69,7 @@ class AdministrationController
     public function approvedComment()
     {
         $post = $this->post->getPost($_GET['post_id']);//récuperer le chapitre selectionné
-        $reportComment = $this->comment->approvedComment($_GET['id']);//approuver un commentaire en fonction du chapitre
+        $reportComment = $this->comment->approvedComment($_GET['id']);//approuver un commentaire en fonction de son id
         header('Location: index.php?action=adminCommentsReport');
     }
 

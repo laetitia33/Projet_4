@@ -256,7 +256,6 @@ class Routeur
                         $userCtrl->login();
                        
                     }
-
                     //connexion
                     elseif ($_GET['action'] == 'log')
                     {
@@ -302,15 +301,18 @@ class Routeur
                     // Affiche le chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
-                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
+                        if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
+
                         {
                             $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                              if(isset($_GET['commentReport']))
+                            
+                                if(isset($_GET['commentReport']))
                                 {
                                    $commentReport = true;
                                 }else{
                                     $commentReport = false;
                                 }
+
                             $postCtrl->post($_GET['post_id'],$commentReport);
                               
                         } else 
@@ -318,15 +320,7 @@ class Routeur
                             throw new Exception('Erreur. Pas de chapitre séléctionné !');
                         }
                     }
-                     // Page d'inscription
-                    elseif ($_GET['action'] == 'inscriLogin')
-                    {
-                        
-                        $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
-                        $userCtrl->inscriLogin();
-                       
-                    }
-                
+              
                     // Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
@@ -341,15 +335,12 @@ class Routeur
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                         {
                             $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-                                       
-                             $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                            $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
                         }
                         else
                         {
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
-
-
                     }
                     // Deconnexion
                     elseif ($_GET['action'] == 'logout')
@@ -364,15 +355,21 @@ class Routeur
                         $contactCtrl->mailView();
                     }
                     
-                  
-                    //envoyer un mail
+
+                    //envoi un mail
                     elseif ($_GET['action'] == 'addMail') 
                     {
                                 
                        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
                         {
                             $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                            $contactCtrl->sendEmail();
+                             if(isset($_GET['envoiMail']))
+                               {
+                                  $envoiMail = true;
+                                }else{
+                                   $envoiMail = false;
+                               }
+                            $contactCtrl->sendEmail($envoiMail);
                         }
                         else
                         {
@@ -380,6 +377,7 @@ class Routeur
                         }   
                
                     }
+
                     // Ajoute un commentaire dans le chapitre selectionné
                     elseif ($_GET['action'] == 'addComment') 
                     {
@@ -406,11 +404,9 @@ class Routeur
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
                         {
                             if (isset($_GET['id']) && $_GET['id'] > 0) 
-                            {
+                            {                                
                                 $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                                $commentCtrl->reportingComment();
-                          
-                       
+                                $commentCtrl->reportingComment();             
                          
                             }
                             else

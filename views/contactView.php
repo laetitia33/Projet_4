@@ -7,9 +7,13 @@
     <?php include_once 'views/include/head.php';?>
     <body>
         <img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
-        <p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left">
-        Retour à l'accueil</i></a></p>
-
+  
+       
+        <?php if($envoiMail = true) { ?>
+                <div id="message">Message envoyé avec succès</div>
+            <?php
+            }?>
+        <p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left"> Retour à l'accueil</i></a></p>
             <form class="form" method="post" action="index.php?action=addMail" ?>
                 <h2>Contactez l'auteur</h2>
 
@@ -37,7 +41,7 @@
                     <div class="g-recaptcha" data-sitekey="6Lfm7G4UAAAAAP0c1tu9ayQR6USFum9JdhWRPS-8"></div>
                 </div>
 
-                <input class="button" type="submit" value ="Envoyez votre message"  OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
+             <input type="submit" value ="Envoyez votre message"  OnClick="return confirm('Souhaitez-vous envoyer ce message ?');"/>
             
             </form>
             

@@ -75,13 +75,13 @@ $(document).ready(function() {
 });
 
 
-//duree d'affichage des messages
+//fermeture du message alerte
+
+$(document).ready(function(){
+    setTimeout(function(){$("#message").fadeOut('normal');}, 5000);
+});
 
 
-var signal = document.getElementById("message")
- 
-  setTimeout(function () {
-      signal.style.display="none";
-  }, 5000);
+
 
 
