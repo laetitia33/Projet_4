@@ -12,7 +12,7 @@
 <div  id="com"></div>
 
 
-<!--indique s'il y a des commentaires -->
+<!--/////////////////// indique s'il y a des commentaires ////////////////////-->
     
 <?php
       if($commentsTotal['total_comments']==0){

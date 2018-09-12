@@ -10,7 +10,7 @@ use \PDO;
 class PostManager extends Manager
 {
 
-    protected $id, $title,$author,$content, $date_creation;
+    private $_id, $_title,$_author,$c_ontent, $_date_creation;
 
 
     public function __construct()
@@ -21,31 +21,31 @@ class PostManager extends Manager
 
     public function getId()
     {
-        return $this->post_id;
+        return $this->_post_id;
     }
 
 
     public function getTitle()
     {
-        return $this->title;
+        return $this->_title;
     }
  
 
     public function getAuthor()
     {
-        return $this->author;
+        return $this->_author;
     }
 
 
     public function getContent()
     {
-        return $this->content;
+        return $this->_content;
     }
 
   
     public function getDateCreation()
     {
-        return $this->date_creation;
+        return $this->_date_creation;
     }
 
 
@@ -53,7 +53,7 @@ class PostManager extends Manager
     {
         $post_id = (int) $post_id;
         if($post_id > 0){
-            $this->post_id = $post_id;
+            $this->_post_id = $post_id;
         }
     }
 
@@ -61,7 +61,7 @@ class PostManager extends Manager
     public function setTitle($title)
     {
         if(is_string($title)) {
-            $this->title = $title;
+            $this->_title = $title;
         }
     }
 
@@ -69,7 +69,7 @@ class PostManager extends Manager
     public function setAuthor($author)
     {
         if(is_string($author)) {
-            $this->author = $author;
+            $this->_author = $author;
         }
     }
 
@@ -77,13 +77,13 @@ class PostManager extends Manager
     public function setContent($content)
     {
         if(is_string($content)) {
-            $this->content = $content;
+            $this->_content = $content;
         }
     }
 
     public function setCreationDate(DateTime $date_creation)
     {
-        $this->date_creation= $date_creation;
+        $this->_date_creation= $date_creation;
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,23 +101,13 @@ class PostManager extends Manager
 
 
 
-//affiche nombre d'articles sur ma page (6)
-    public function getPosts()
-    {
-        $db = $this->dbConnect();
-
-        $req = $db->query('SELECT b.id, b.title, b.content, b.author, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC LIMIT 0, 6');
-        return $req;
-    }
-
-
 
 //tous les articles
     public function getAllPosts()
     {
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT b.id, b.title, b.content, b.author, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC LIMIT 0,6');
+        $req = $db->query('SELECT b.id, b.title, b.content, b.author, DATE_FORMAT(b.date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, (SELECT count(*) FROM comments c WHERE c.post_id = b.id) AS nbCommentaires FROM posts b ORDER BY date_creation DESC ');
 
         return $req;
     }

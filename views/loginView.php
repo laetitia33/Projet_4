@@ -5,7 +5,7 @@
 <html>
     <?php include_once 'views/include/head.php';?>
     <body>
-        <img id="pageArticle" src="public/image/photo6.jpg" alt="photo Alaska"/>
+        <img id="pageArticle" src="public/image/photo4.jpg" alt="photo Alaska"/>
         <form action="index.php?action=log" method="POST">
           
            

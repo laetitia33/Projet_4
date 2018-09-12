@@ -112,7 +112,7 @@ html {
     height: 900px;
     border: 2px double white;
     overflow: hidden;
-    background: url(../image/photo16.jpg) center center;
+    background: url(../image/photo1.jpg) center center;
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -525,6 +525,7 @@ a {
     margin-bottom: 55px;
 }
 
+
 .body_card span img {
     z-index: 9999;
     position: absolute;
@@ -538,13 +539,8 @@ a {
     width: 350px;
     height: 250px;
     margin: auto;
-    -ms-transition: width 2s;
-    -webkit-transition: width 2s;
-    -o-transition: width 2s;
-    -moz-transition: width 2s;
     transition: width 2s;
 }
-
 .body_card p {
     margin-right: 12%;
     margin-left: 12%;
@@ -559,7 +555,7 @@ a {
     -ms-flex-direction:column;
 }
 
-#commentaires i,
+.coms i,
 .body_card p span {
     text-align: center;
     font-style: italic;
@@ -573,7 +569,7 @@ a {
     font-weight: bold;
 }
 
-#ep1 {
+.ep1 {
     display: flex;
     display: -ms-flexbox;
     flex-direction: column;
@@ -613,7 +609,7 @@ a {
 }
 
 
-#ep1:hover {
+.ep1:hover {
     -webkit-box-shadow: 0 8px 12px #666;
     -moz-box-shadow: 0 8px 12px #666;
     -o-box-shadow: 0 8px 12px #666;
@@ -757,7 +753,7 @@ footer img {
 }
 
 .commentaires a:hover,
-#commentaires i:hover,
+.coms i:hover,
 #legal:hover {
     text-decoration: none;
     font-style: normal;
@@ -1052,7 +1048,7 @@ input[type=submit]:hover {
     -o-box-shadow: 0 3px 10px #ccc;
 }
 
-.user p {
+.coms p {
     width: 90%;
     font-size: 1.2em;
     font-style: italic;
@@ -1129,8 +1125,7 @@ textarea{
 #g-recaptcha{
     display:flex;
     display: -ms-flexbox;
-    flex-direction:center;
-    -ms-flex-direction:center;
+    align-items: center;
     justify-content: space-around;
     -ms-flex-pack: justify;
     
@@ -1266,7 +1261,7 @@ textarea{
         display: none;
     }
 
-    #ep1 {
+    .ep1 {
         transition: none;
         -o-transition: none;
         -moz-transition: none;
@@ -1279,12 +1274,13 @@ textarea{
         -moz-transform: none;
     }
 
-    #ep1:hover {
+    .ep1:hover {
         transform: none;
         -ms-transform: none;
         -o-transform: none;
         -webkit-transform: none;
         -moz-transform: none;
+
     }
 
     .body_card span img {
@@ -1425,7 +1421,7 @@ textarea{
         width: 100%;
     }
 
-    #ep1{
+    .ep1{
         width: 100%;
         border: 2px solid white;
     }  

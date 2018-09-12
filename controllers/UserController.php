@@ -1,14 +1,16 @@
 <?php
 namespace Laetitia_Bernardi\projet4\Controller;
+
 require_once('models/UserManager.php');
+
 use\models\UserManager;
 use \Exception;
 class UserController
 {
-    private $user;
+    private $_user;
     public function __construct()
     {
-        $this->user = new \Laetitia_Bernardi\projet4\Model\UserManager();
+        $this->_user = new \Laetitia_Bernardi\projet4\Model\UserManager();
     }
 //page formulaire
  public function login()
@@ -19,7 +21,7 @@ class UserController
 // Connexion
     public function logUser($pseudo,$pass)
     {
-        $user = $this->user->getUser($pseudo,$pass);
+        $user = $this->_user->getUser($pseudo,$pass);
         
         if(!$user )
         {

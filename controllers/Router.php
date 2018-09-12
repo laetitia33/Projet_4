@@ -5,33 +5,33 @@ require('controllers/AdminController.php');
 require('controllers/UserController.php');
 require('controllers/ContactController.php');
 require('controllers/Autoload.php');
+
 use \controllers\ContactController;
 use \controllers\UserController;
 use \controllers\PostController;
 use \controllers\CommentController;
 use \controllers\AdminController;
 use \controllers\Autoload;
+
+
+
 class Routeur
 {
-        private $postCtrl, $commentCtrl, $administrationCtrl, $contactCtrl, $userCtrl, $homeCtrl;
-        /**
-         * Routeur constructor.
-         * Méthode magique car automatiquement appelé dès l'instanciation de Routeur
-         * Permet d'instancier automatiquement les controller
-         */
+        private $_postCtrl, $_commentCtrl, $_administrationCtrl, $_contactCtrl, $_userCtrl, $_homeCtrl;
+
+
+
         public function __construct()
         {
             \Laetitia_Bernardi\projet4\Controller\Autoload::register();
-            $this->postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-            $this->commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-            $this->administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-            $this->userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-            $this->contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
+            $this->_postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
+            $this->_commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
+            $this->_administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
+            $this->_userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
+            $this->_contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
         }
-        /**
-         * Methode qui permet, si les conditions sont réunis, d'afficher l'url demandée.
-         */
-        
+
+
         public function RouteRequest()
         {
         try{
@@ -42,8 +42,8 @@ class Routeur
                     // ADMIN - administration
                     if ($_GET['action'] == 'administration')
                     {
-                        $administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $administrationCtrl->administration();
+                       
+                       $this->_administrationCtrl->administration();
                     }
                   
 //redirection concernant les chapitres
@@ -52,8 +52,8 @@ class Routeur
                     {
                         if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
                         {
-                            $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $postCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
+                           
+                           $this->_administrationCtrl->postAdd($_POST['author'], $_POST['title'], $_POST['content']);
                            
                         }
                         else
@@ -64,28 +64,28 @@ class Routeur
                      // ADMIN - Page pour créer un chapitre
                     elseif ($_GET['action'] == 'adminNewPost')
                     {
-                        $viewCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $viewCtrl->adminNewPost();
+                     
+                       $this->_administrationCtrl->adminNewPost();
                     }
                     // ADMIN - Liste des chapitres
                     elseif ($_GET['action'] == 'listPosts')
                     {
-                        $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                        $postCtrl->listPosts();
+                       
+                        $this->_postCtrl->listPosts();
                     }
                     //ADMIN - chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0) 
                         {
-                            $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
+                           
                               if(isset($_GET['commentReport']))
                                 {
                                    $commentReport = true;
                                 }else{
                                     $commentReport = false;
                                 }
-                            $postCtrl->post($_GET['post_id'],$commentReport);
+                            $this->_postCtrl->post($_GET['post_id'],$commentReport);
                               
                         } else 
                         {
@@ -96,8 +96,8 @@ class Routeur
                     // ADMIN - page de MAJ d'un chapitre
                     elseif ($_GET['action'] == 'adminUpdatePost')
                     {
-                        $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $postCtrl->adminUpdatePost();
+                       
+                        $this->_administrationCtrl->adminUpdatePost();
                     }
                     // ADMIN - Mise à jour d'un chapitre
                     elseif ($_GET['action'] == 'updatePost')
@@ -106,8 +106,8 @@ class Routeur
                         {
                             if ($_POST['author'] != NULL && $_POST['title'] != NULL && $_POST['content'] != NULL)
                             {
-                                $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                                $postCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'], $_POST['content']);
+                                
+                                $this->_administrationCtrl->updatePost($_GET['post_id'], $_POST['author'], $_POST['title'], $_POST['content']);
                             }
                             else
                             {
@@ -124,8 +124,8 @@ class Routeur
                     {
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
                         {
-                            $postCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $postCtrl->deletePost($_GET['post_id']);
+                           
+                            $this->_administrationCtrl->deletePost($_GET['post_id']);
                         }
                         else
                         {
@@ -137,8 +137,8 @@ class Routeur
                     // ADMIN - Liste des commentaires
                     elseif ($_GET['action'] == 'adminListComments')
                     {
-                        $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $commentCtrl->adminListComments();
+                        
+                        $this->_administrationCtrl->adminListComments();
                     }
                     // ADMIN - Ajoute un commentaire dans le chapitre selectionné
                     elseif ($_GET['action'] == 'addComment')
@@ -147,8 +147,8 @@ class Routeur
                         {
                             if (!empty($_POST['author']) && !empty($_POST['comment']))
                             {
-                                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                                $commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
+                                
+                                $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
                             }
                             else
                             {
@@ -163,16 +163,16 @@ class Routeur
                     // ADMIN - Liste des commentaires signalés
                     elseif ($_GET['action'] == 'adminCommentsReport')
                     {
-                        $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $commentCtrl->adminCommentsReport();
+                        
+                       $this->_administrationCtrl->adminCommentsReport();
                     }
                     // ADMIN - Supprimer un commentaire
                     elseif ($_GET['action'] == 'deleteComment')
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
                         {
-                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $commentCtrl->deleteComment($_GET['id']);
+                           
+                           $this->_administrationCtrl->deleteComment($_GET['id']);
                         }
                         else
                         {
@@ -184,8 +184,8 @@ class Routeur
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
                         {
-                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $commentCtrl->deleteOneComment($_GET['id']);
+                        
+                            $this->_administrationCtrl->deleteOneComment($_GET['id']);
                         }
                         else
                         {
@@ -198,8 +198,8 @@ class Routeur
                     {
                         if (isset($_GET['id']) && $_GET['id'] > 0)
                         {
-                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $commentCtrl->deleteOneCommentInReport($_GET['id']);
+                          
+                            $this->_administrationCtrl->deleteOneCommentInReport($_GET['id']);
                         }
                         else
                         {
@@ -211,22 +211,22 @@ class Routeur
                     {
                        
                         {
-                            $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                            $commentCtrl->deleteComments();
+                          
+                           $this->_administrationCtrl->deleteComments();
                         }
                     
                     }
                     // ADMIN - Approuver un commentaire 
                     elseif ($_GET['action'] == 'approvedComment')
                     {
-                        $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $commentCtrl->approvedComment();
+                       
+                        $this->_administrationCtrl->approvedComment();
                     }
                     // ADMIN - Approuver tous les commentaires
                     elseif ($_GET['action'] == 'approvedComments')
                     {
-                        $commentsCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                        $commentsCtrl->approvedComments();
+                        
+                        $this->_administrationCtrl->approvedComments();
                     }
                    
                     // ADMIN - Ajoute un commentaire dans le chapitre selectionné
@@ -236,8 +236,8 @@ class Routeur
                         {
                             if (!empty($_POST['comment']))
                             {
-                                $commentadminCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                                $commentadminCtrl->addCommentAdmin($_GET['post_id'], $_POST['comment']);
+                                
+                               $this->_commentCtrl->addCommentAdmin($_GET['post_id'], $_POST['comment']);
                             }
                             else
                             {
@@ -252,8 +252,8 @@ class Routeur
                     // ADMIN - Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
-                        $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
-                        $userCtrl->login();
+                        
+                        $this->_userCtrl->login();
                        
                     }
                     //connexion
@@ -262,9 +262,9 @@ class Routeur
                     
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                         {
-                            $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
+                
                              
-                              $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                              $this->_userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
                         }
                         else
                         {
@@ -274,16 +274,15 @@ class Routeur
                     // ADMIN - Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
-                        $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-                        $userCtrl->logoutUser();
+                  
+                        $this->_userCtrl->logoutUser();
                     }
                      
                 }
                 // ADMIN - Retourne a l'administration.
                 else
                 {
-                    $administrationCtrl = new \Laetitia_Bernardi\projet4\Controller\AdministrationController();
-                    $administrationCtrl->administration();
+                    $this->_administrationCtrl->administration();
                 }
             }
 //visiteur
@@ -295,8 +294,8 @@ class Routeur
                     // Accueil visiteurs /Liste des chapitres
                    if ($_GET['action'] == 'listPosts') 
                     {
-                        $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                        $postCtrl->listPosts();
+                 
+                        $this->_postCtrl->listPosts();
                     }
                     // Affiche le chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
@@ -304,7 +303,7 @@ class Routeur
                         if (isset($_GET['post_id']) && $_GET['post_id'] > 0)
 
                         {
-                            $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
+                         
                             
                                 if(isset($_GET['commentReport']))
                                 {
@@ -313,7 +312,7 @@ class Routeur
                                     $commentReport = false;
                                 }
 
-                            $postCtrl->post($_GET['post_id'],$commentReport);
+                            $this->_postCtrl->post($_GET['post_id'],$commentReport);
                               
                         } else 
                         {
@@ -324,8 +323,8 @@ class Routeur
                     // Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
-                        $userCtrl = new \Laetitia_Bernardi\projet4\Controller\userController();
-                        $userCtrl->login();
+                        
+                        $this->_userCtrl->login();
                        
                     }
                      //connexion
@@ -334,8 +333,8 @@ class Routeur
                    
                         if (!empty($_POST['pseudo']) && !empty($_POST['pass']))
                         {
-                            $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-                            $userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
+                          
+                            $this->_userCtrl->logUser($_POST['pseudo'],$_POST['pass']);
                         }
                         else
                         {
@@ -345,14 +344,14 @@ class Routeur
                     // Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
-                        $userCtrl = new \Laetitia_Bernardi\projet4\Controller\UserController();
-                        $userCtrl->logoutUser();
+                     
+                        $this->_userCtrl->logoutUser();
                     }
                     // page mail
                     elseif ($_GET['action'] == 'email') 
                     {
-                        $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                        $contactCtrl->mailView();
+                      
+                        $this->_contactCtrl->mailView();
                     }
                     
 
@@ -362,14 +361,8 @@ class Routeur
                                 
                        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['object']) && !empty($_POST['message'])) 
                         {
-                            $contactCtrl = new \Laetitia_Bernardi\projet4\Controller\ContactController();
-                             if(isset($_GET['envoiMail']))
-                               {
-                                  $envoiMail = true;
-                                }else{
-                                   $envoiMail = false;
-                               }
-                            $contactCtrl->sendEmail($envoiMail);
+                          
+                            $this->_contactCtrl->sendEmail();
                         }
                         else
                         {
@@ -385,8 +378,8 @@ class Routeur
                         {
                             if (!empty($_POST['author']) && !empty($_POST['comment'])) 
                             {
-                                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                                $commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
+                      
+                                $this->_commentCtrl->addComment($_GET['post_id'], $_POST['author'], $_POST['comment']);
                             } 
                             else
                             {
@@ -405,8 +398,8 @@ class Routeur
                         {
                             if (isset($_GET['id']) && $_GET['id'] > 0) 
                             {                                
-                                $commentCtrl = new \Laetitia_Bernardi\projet4\Controller\CommentController();
-                                $commentCtrl->reportingComment();             
+                            
+                                $this->_commentCtrl->reportingComment();             
                          
                             }
                             else
@@ -422,8 +415,8 @@ class Routeur
                 // Retourne à l'index.Accueil
                 else
                 {
-                    $postCtrl = new \Laetitia_Bernardi\projet4\Controller\PostController();
-                    $postCtrl->listPosts();
+                   
+                   $this->_postCtrl->listPosts();
                 }
             }
         }

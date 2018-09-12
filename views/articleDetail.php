@@ -1,11 +1,11 @@
 <?php $title = 'Chapitre ' . htmlspecialchars($post['id']) . ''; ?>
 
-<!-------------------------------------head et header------------------------------>
+<!----//////////////////////////////////////head et header////////////////////////////////--->
 <!DOCTYPE html>
 <html>
 	<?php include_once 'views/include/head.php';?>
 	<body>
-		<img id="pageArticle" src="public/image/photo13.jpg" alt="photo Alaska"/>
+		<img id="pageArticle" src="public/image/photo2.jpg" alt="photo Alaska"/>
 		
 		<?php
 		
@@ -19,7 +19,7 @@
 
 
 
-<!------------------lien retour page précédente selon si visiteur ou admin----------------------->		
+<!--////////////////lien retour page précédente selon si visiteur ou admin//////////////////-->		
 		<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
@@ -36,7 +36,7 @@
 		<h2><?= htmlspecialchars($post['title']) ?></h2>
 		<p>
 
-<!---affichage de l'auteur , de modification ou suppression de l'article  admin---->				
+<!---///////affichage de l'auteur , de modification ou suppression de l'article  admin////---->				
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 				<i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr'])?>
@@ -57,10 +57,10 @@
 			</div>	
 		</p>
 
-<!-----------------------------écrire commentaires admin ou visiteur--------------------------------------->
+<!--/////////////////////////-écrire commentaires admin ou visiteur//////////////////////////-->
 
 		<span id ="com"><h3><i class="far fa-comments"></i>Commentaires</h3></span>
-		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#commentaires" method="POST">
+		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
 		<div>
             <label for="author" ></label>
@@ -87,32 +87,31 @@
 			</div>
 		 </form>
 	
-<!---------------------------------boucle affichage commentaire admin ou visiteur-------------------------------------->
+<!--////////////////////////////////boucle affichage commentaire admin ou visiteur/////////////-->
 
 <?php while ($comment = $comments->fetch())
 		{ ;?>
-
+			<div id="ancrecom"></div>
 			<div class = "commentaires">
 				<p><strong><i class="fas fa-user"></i>   <?= htmlspecialchars($comment['author']) ?></strong> le <?= htmlspecialchars($comment['comment_date_fr']) ?>
 				</p>
 
-				<div class="user" id="commentaires">
+				<div class="coms"> 
+
 					<span id="confirmsignal"><p><?= htmlspecialchars_decode(nl2br(substr(html_entity_decode($comment['comment']), 0, 300)));?></p></span>				
 		    	</div>
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 				<div class="reponse">     	
-		     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#commentaires" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
+		     		<em><a href="index.php?action=deleteOneComment&amp;post_id=<?= $post['id'];?>&amp;id=<?= $comment['id']; ?>#ancrecom" OnClick="return confirm('Voulez-vous vraiment supprimer ce commentaire ?');"><i class="fas fa-minus-circle"> Supprimer </i></a></em>
 		     	</div>
 			<?php
         	}
        		else { ?>
-						<?php	if($commentReport===true) { ?>			
-			 					<p>Commentaire signalé </p> 
-			 				<?php  }else {?>
+						
 	       				<div class="reponse">				
 	       				<em><a id='validcom' href="index.php?action=report&amp;post_id=<?= $post['id']; ?>&amp;id=<?= $comment['id']; ?>" OnClick="return confirm('Souhaitez-vous signaler ce commentaire ?')";"><i class="fas fa-bell">  Signalez un abus</i></a></em> 
-	       				<?php } ?>	
+	       			
      		  
 	       			</div>
 	       				
@@ -128,7 +127,7 @@
  
 	
 		
-<!------------------lien retour page précédente selon si visiteur ou admin--------------------------->	
+<!--/////////////////////lien retour page précédente selon si visiteur ou admin///////////////////-->	
 
 		<?php
 			 if(isset($_SESSION['pseudo'])) { ?>

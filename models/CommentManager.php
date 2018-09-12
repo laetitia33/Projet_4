@@ -7,48 +7,49 @@ use \PDO;
 class CommentManager extends Manager
 {
 
-protected $id, $post_id, $author, $comment, $comment_date, $reporting;
+
+private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
 
 
    public function __construct()
     {
-        $this->comment_date = new DateTime('now');
+        $this->_comment_date = new DateTime('now');
         
     }
 
     public function getIdComment()
     {
-        return $this->id_comment;
+        return $this->_id_comment;
     }
 
  
     public function getIdPost()
     {
-        return $this->post_id;
+        return $this->_post_id;
     }
 
 
     public function getAuthor()
     {
-        return $this->author;
+        return $this->_author;
     }
 
  
     public function getComment()
     {
-        return $this->comment;
+        return $this->_comment;
     }
 
    
     public function getCommentDate()
     {
-        return $this->comment_date;
+        return $this->_comment_date;
     }
 
    
     public function getReporting()
     {
-        return $this->reporting;
+        return $this->_reporting;
     }
 
 
@@ -57,7 +58,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $id_comment = (int) $id_comment;
 
         if ($id_comment > 0) {
-            $this->id_comment = $id_comment;
+            $this->_id_comment = $id_comment;
         }
     }
  
@@ -66,32 +67,32 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $post_id = (int) $post_id;
 
         if ($post_id > 0) {
-            $this->post_id = $post_id;
+            $this->_post_id = $post_id;
         }
     }
  
     public function setAuthor($author)
     {
         if(is_string($author)) {
-            $this->author = $author;
+            $this->_author = $author;
         }
     }
    
     public function setComment($comment)
     {
         if(is_string($comment)) {
-            $this->comment = $comment;
+            $this->_comment = $comment;
         }
     }
   
     public function setCommentDate(DateTime $comment_date)
     {
-        $this->comment_date = $comment_date;
+        $this->_comment_date = $comment_date;
     }
   
     public function setReporting($reporting)
     {
-        $this->reporting = $reporting;
+        $this->_reporting = $reporting;
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //fin de getters et setters
@@ -158,9 +159,6 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         return $report;
     }
      
-
-
-
 //valider tous les commentaires en retirant leur signalement
 
     public function approvedComments()
@@ -172,7 +170,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
    
         $report = $comments->execute();
     
-        return $approvReport;
+        return $report;
     }
 
 //Valider un commentaire en retirant son signalement
@@ -186,7 +184,7 @@ protected $id, $post_id, $author, $comment, $comment_date, $reporting;
         $comments->bindValue(':id_comment', $this->getIdComment(), \PDO::PARAM_INT);
         $report = $comments->execute();
     
-        return $approvReports;
+        return $report;
     }
 
 //recupere les commentaires d'un chapitre 

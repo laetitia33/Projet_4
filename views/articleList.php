@@ -4,7 +4,7 @@
 
 
 
-				<!-----------phrase d'accueil--------->
+<!--///////////////////////// phrase d'accueil///////////////////////////////////////////////////-->
 
 <?php ob_start(); ?>
 <?php
@@ -25,7 +25,7 @@
 			  <?php
          }
          ?>
-<!--------------------------------------------biographie---------------------------------------------->
+<!--/////////////////////////////// biographie /////////////////////////////////////////////////////-->
 
 <div id="bio">	
 	<img id="photobio" src="public/image/photobio.jpg" alt="photo jean Forteroche">
@@ -43,8 +43,9 @@
 <?php ob_start(); ?>
 
 
-<!-------------------------------------------affichage de tous les articles------------------------------>
-			<a id="episodes"></a><!--ancre du bouton de navigation chapitre à episodes en javascript-->
+<!--//////////////////////////////////// affichage de tous les articles ////////////////////////////////////-->
+			<a id="episodes"></a>
+
 			<p class ='comSignal'></p>
 			<div class="body_card">
 
@@ -57,7 +58,7 @@
 				while ($data = $posts->fetch()){
 				?>
 				
-				<div id="ep1">
+				<div class="ep1">
 					<span  class="punaise" ><img src="public/image/punaise.gif" alt="punaise"></span>
 					<h2><?= htmlspecialchars($data['title']) ?></h2>
 					<p><span class="publishing">Article écrit par <?= htmlspecialchars($data['author']) ?><br><i class="far fa-calendar-alt"> le <?= htmlspecialchars($data['date_creation_fr']) ?></i></span></p>
@@ -65,7 +66,7 @@
 
 
 						<a  class="input_read" href="index.php?action=post&amp;post_id=<?= $data['id']; ?>#news">En lire plus</a>
-						<div id="commentaires">
+						<div class="coms">
 
 							<?php if ($data['nbCommentaires'] > 0) { ?>
 							<p class ="nbcom"><?= htmlspecialchars($data['nbCommentaires'])?> commentaire(s) <i class="far fa-comment"></i></p>
@@ -84,7 +85,7 @@
 				
 			
 						 <a href="index.php?action=adminUpdatePost&amp;post_id=<?= $data['id']; ?>#modif"><em><i class="fas fa-pen-square"> Modifier le chapitre</i></em></a><br>
-               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous vraiment supprimer le Chapitre?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
+               			 <a href="index.php?action=deletePost&amp;post_id=<?= $data['id']; ?>#episodes" OnClick="return confirm('Voulez-vous  supprimer le Chapitre?');"><em><i class="fas fa-trash-alt"> Supprimer le chapitre</i></em></a>
 					
 					<?php
 		            }
@@ -101,9 +102,8 @@
 	
 			$posts->closeCursor();
 			;?>
-<!--------------------------pagination-----------------------------------------> 
-
-<!----------------------------------------------------------------------------->	
+	
 <?php $content = ob_get_clean(); ?>
-<!---------------------------------renvoi vers la template appelée home------------------------------>
+
+<!--///////////////////////////////// renvoi vers la template appelée home //////////////////////////////////-->
 <?php require('views/home.php'); ?>

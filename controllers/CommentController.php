@@ -5,18 +5,19 @@ require_once ('models/CommentManager.php');
 
 class CommentController 
 {
-    private $comment;
-    private $post;
+    private $_comment;
+    private $_post;
+
     public function __construct()
     {
-        $this->comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
-        $this->post = new \Laetitia_Bernardi\projet4\Model\PostManager();
+        $this->_comment = new \Laetitia_Bernardi\projet4\Model\CommentManager();
+        $this->_post = new \Laetitia_Bernardi\projet4\Model\PostManager();
     }
 
 // Ajouter un commentaire(page du detail de chaque chapitre)
     public function addComment($post_id, $author, $comment)
     {
-        $postComment = $this->comment->createComment($post_id, $author, $comment);
+        $postComment = $this->_comment->createComment($post_id, $author, $comment);
         if($postComment === false)
         {
             throw new Exception('Impossible d\'ajouter le commentaire');
@@ -26,16 +27,13 @@ class CommentController
             header('Location: index.php?action=post&post_id=' . $post_id);
         }
     }
-
 // Signaler un commentaire(page du detail de chaque chapitre)
     public function reportingComment()
     {   
-        
-        $post = $this->post->getPost($_GET['post_id']);//recupere un chapitre selectionné
-        $reportComment = $this->comment->reportComment($_GET['id']);//signale un commentaire grace à son id
-         
-   
-        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport" );
+       
+        $post = $this->_post->getPost($_GET['post_id']);//recupere un chapitre selectionné
+        $reportComment = $this->_comment->reportComment($_GET['id']);//signale un commentaire grace à son id
+        header('Location: index.php?action=post&post_id=' . $_GET['post_id'] ."&commentReport");
         
         
      

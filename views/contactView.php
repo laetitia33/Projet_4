@@ -7,12 +7,7 @@
     <?php include_once 'views/include/head.php';?>
     <body>
         <img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
-  
-       
-        <?php if($envoiMail = true) { ?>
-                <div id="message">Message envoyé avec succès</div>
-            <?php
-            }?>
+
         <p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left"> Retour à l'accueil</i></a></p>
             <form class="form" method="post" action="index.php?action=addMail" ?>
                 <h2>Contactez l'auteur</h2>

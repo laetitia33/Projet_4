@@ -10,7 +10,7 @@ use \PDO;
 
 class UserManager extends Manager
 {
-    private $id,$id_group, $pseudo, $pass;
+    private $_id,$_id_group, $_pseudo, $_pass;
 
 
     public function __construct()
@@ -20,20 +20,20 @@ class UserManager extends Manager
 
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
 
 
 
     public function getPseudo()
     {
-        return $this->pseudo;
+        return $this->_pseudo;
     }
 
   
     public function getPass()
     {
-        return $this->pass;
+        return $this->_pass;
     }
 
 
@@ -41,7 +41,7 @@ class UserManager extends Manager
     {
         $id = (int) $id;
         if($id> 0){
-            $this->id = $id;
+            $this->_id = $id;
         }
 
     }
@@ -50,7 +50,7 @@ class UserManager extends Manager
     public function setPseudo($pseudo)
     {
         if(is_string($pseudo)) {
-            $this->pseudo = $pseudo;
+            $this->_pseudo = $pseudo;
         }
     }
 
@@ -58,7 +58,7 @@ class UserManager extends Manager
     public function setPass($pass)
     {
         if(is_string($pass)) {
-            $this->pass = $pass;
+            $this->_pass = $pass;
         }
     }
 

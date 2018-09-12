@@ -6,7 +6,7 @@
 
 <?php $header = ob_get_clean(); ?>
 
-<!------------------liste des chapitres------------------------->
+<!--////////////////////// liste des chapitres /////////////////////////////-->
 
 <?php ob_start(); ?>
 
@@ -28,7 +28,8 @@
         </div>
  
         <?php
-    } // fin de la boucle des chapitres
+    } 
+    // fin de la boucle des chapitres
 
     $post->closeCursor();
     ?>
