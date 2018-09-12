@@ -47,6 +47,7 @@ class Routeur
                     }
                   
 //redirection concernant les chapitres
+//
                     // ADMIN - Creation d'un chapitre
                     elseif ($_GET['action'] == 'createPost')
                     {
@@ -61,18 +62,21 @@ class Routeur
                             throw new Exception('Tous les champs ne sont pas remplis..');
                         }
                     }
+
                      // ADMIN - Page pour créer un chapitre
                     elseif ($_GET['action'] == 'adminNewPost')
                     {
                      
                        $this->_administrationCtrl->adminNewPost();
                     }
+
                     // ADMIN - Liste des chapitres
                     elseif ($_GET['action'] == 'listPosts')
                     {
                        
                         $this->_postCtrl->listPosts();
                     }
+
                     //ADMIN - chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
@@ -99,6 +103,7 @@ class Routeur
                        
                         $this->_administrationCtrl->adminUpdatePost();
                     }
+
                     // ADMIN - Mise à jour d'un chapitre
                     elseif ($_GET['action'] == 'updatePost')
                     {
@@ -119,6 +124,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
+
                     // ADMIN - suppression d'un chapitre
                     elseif ($_GET['action'] == 'deletePost')
                     {
@@ -133,13 +139,15 @@ class Routeur
                         }
                     }
           
-//redirection concernant les commentaires           
+//redirection concernant les commentaires 
+//          
                     // ADMIN - Liste des commentaires
                     elseif ($_GET['action'] == 'adminListComments')
                     {
                         
                         $this->_administrationCtrl->adminListComments();
                     }
+
                     // ADMIN - Ajoute un commentaire dans le chapitre selectionné
                     elseif ($_GET['action'] == 'addComment')
                     {
@@ -160,12 +168,14 @@ class Routeur
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
+
                     // ADMIN - Liste des commentaires signalés
                     elseif ($_GET['action'] == 'adminCommentsReport')
                     {
                         
                        $this->_administrationCtrl->adminCommentsReport();
                     }
+
                     // ADMIN - Supprimer un commentaire
                     elseif ($_GET['action'] == 'deleteComment')
                     {
@@ -179,6 +189,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de commentaire envoyé !');
                         }
                     }
+
                     // ADMIN - Supprimer un commentaire dans la  page detail 
                     elseif ($_GET['action'] == 'deleteOneComment')
                     {
@@ -206,22 +217,29 @@ class Routeur
                             throw new Exception('Aucun identifiant de commentaire envoyé !');
                         }
                     }
+
+                    // ADMIN - Supprimer tous les commentaires signalés dans la  comment report
+                    elseif ($_GET['action'] == 'deleteAllCommentReport')
+                    {
+                              
+                            $this->_administrationCtrl->deleteAllCommentReport();
+                    }
+       
                     // ADMIN - Supprimer tous les commentaires
                        elseif ($_GET['action'] == 'deleteComments')
-                    {
-                       
-                        {
+                    {           
                           
                            $this->_administrationCtrl->deleteComments();
-                        }
-                    
+                          
                     }
+
                     // ADMIN - Approuver un commentaire 
                     elseif ($_GET['action'] == 'approvedComment')
                     {
                        
                         $this->_administrationCtrl->approvedComment();
                     }
+
                     // ADMIN - Approuver tous les commentaires
                     elseif ($_GET['action'] == 'approvedComments')
                     {
@@ -249,6 +267,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
+
                     // ADMIN - Page de connexion
                     elseif ($_GET['action'] == 'login')
                     {
@@ -256,6 +275,7 @@ class Routeur
                         $this->_userCtrl->login();
                        
                     }
+
                     //connexion
                     elseif ($_GET['action'] == 'log')
                     {
@@ -271,6 +291,7 @@ class Routeur
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
                     }
+
                     // ADMIN - Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
@@ -279,6 +300,7 @@ class Routeur
                     }
                      
                 }
+
                 // ADMIN - Retourne a l'administration.
                 else
                 {
@@ -297,6 +319,7 @@ class Routeur
                  
                         $this->_postCtrl->listPosts();
                     }
+
                     // Affiche le chapitre avec ses commentaires
                     elseif ($_GET['action'] == 'post') 
                     {
@@ -327,6 +350,7 @@ class Routeur
                         $this->_userCtrl->login();
                        
                     }
+
                      //connexion
                     elseif ($_GET['action'] == 'log')
                     {
@@ -341,12 +365,14 @@ class Routeur
                             throw new Exception('Tous les champs doivent être remplis !');
                         }
                     }
+
                     // Deconnexion
                     elseif ($_GET['action'] == 'logout')
                     {
                      
                         $this->_userCtrl->logoutUser();
                     }
+
                     // page mail
                     elseif ($_GET['action'] == 'email') 
                     {
@@ -391,6 +417,7 @@ class Routeur
                             throw new Exception('Aucun identifiant de chapitre envoyé !');
                         }
                     }
+
                     // Signaler un commentaire
                     elseif ($_GET['action'] == 'report') 
                     {
@@ -412,6 +439,7 @@ class Routeur
                     }
                    
                 }
+
                 // Retourne à l'index.Accueil
                 else
                 {
@@ -423,7 +451,7 @@ class Routeur
         catch (Exception $e)
         {
             $errorMessage = $e->getMessage();
-            require('views/errorView.php');
+            require('views/errorview.php');
         }
     }
    

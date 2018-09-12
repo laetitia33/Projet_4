@@ -15,7 +15,7 @@
 <?php
 
       if(htmlspecialchars($commentsReportTotal['total_comments_report'])> 0){ ;?>
-         <em><a href="index.php?action=deleteComments#deleteCom" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></em><br><br>
+         <em><a href="index.php?action=deleteAllCommentReport" OnClick="return confirm('Voulez-vous vraiment supprimer tous commentaires signalés ?');" ><i class="fas fa-minus-circle"> Supprimer tous les commentaires signalés</i></a></em><br><br>
                        
        
                         

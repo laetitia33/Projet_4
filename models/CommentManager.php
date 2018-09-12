@@ -229,6 +229,17 @@ private $_id, $_post_id, $_author, $_comment, $_comment_date, $_reporting;
         return $deleteComment;
     }
 
+//suppression tous les commentaires signalés
+    public function deleteCommentsReport()
+    {
+     
+
+        $db = $this->dbConnect();
+        $comments = $db->prepare('DELETE  FROM comments WHERE reporting = 1');
+        $deleteAllCommentReport = $comments->execute();
+
+        return $deleteAllCommentReport;
+    }
 
 //suppression de tous les commentaires
     public function deleteAllComments()

@@ -98,6 +98,8 @@ class AdministrationController
         require ('views/reportCommentsView.php');
     }
 
+
+
  
  //supprime tous les commentaires(page de detail de la liste des commentaires)
     public function deleteComments()
@@ -109,7 +111,15 @@ class AdministrationController
    
     }
 
-
+//supprime tous les commentaires signalés
+    public function deleteAllCommentReport()
+    {
+        $deleteAllCommentReport = $this->_comment->deleteCommentsReport();
+          echo "<h1 style='color:#9A97A5;text-align:center;padding:35px;'>Tous les commentaires signalés supprimés avec succès</h1>";     
+        header('Refresh: 1; url=index.php?action=adminCommentsReport#reportcom' );
+        
+   
+    }
 
 // Supprimer un commentaire dans la liste des commentaires
     public function deleteComment($id_comment)
