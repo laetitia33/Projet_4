@@ -8,7 +8,7 @@ class Autoload
     
     static function register()
     {
-        spl_autoload_register(array(__CLASS__, 'autoload')); // Récupération de la class de façon dynamique, appelle de la fonction
+        spl_autoload_register(array(__CLASS__, 'autoload')); 
     }
 
  

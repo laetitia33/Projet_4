@@ -102,7 +102,7 @@ class PostManager extends Manager
 
 
 
-//tous les articles
+//récupère tous les articles
     public function getAllPosts()
     {
         $db = $this->dbConnect();
@@ -113,7 +113,7 @@ class PostManager extends Manager
     }
 
 
-//nombre d'articles
+//nombre le nombre de chapitre
     public function countPosts()
     {
         $db = $this->dbConnect();
@@ -123,7 +123,7 @@ class PostManager extends Manager
         return $postsTotal;
     }
 
-//recupere un article
+//recupere un chapitre
     public function getPost($post_id)
     {
         $this->setId($post_id);
@@ -135,7 +135,7 @@ class PostManager extends Manager
         return $post;
     }
 
-//creation d'un article
+//creation d'un chapitre
     public function createPost($author, $title, $content)
     {
         $this->setAuthor($author);
