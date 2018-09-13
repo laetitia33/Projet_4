@@ -37,9 +37,9 @@ class UserController
             $id = $user['id'];
             $pseudo = $user['pseudo'];
             $pass_hash = $user['pass'];
-            setcookie('id', $id, time() + 1800, null, null, false, true);
-            setcookie('pseudo', $pseudo, time() + 1800, null, null, false, true);
-            setcookie('pass', $pass_hash, time() + 1800, null, null, false, true);
+            setcookie('id', $id, time() + 3600, null, null, false, true);
+            setcookie('pseudo', $pseudo, time() + 3600, null, null, false, true);
+            setcookie('pass', $pass_hash, time() + 3600, null, null, false, true);
             header('Location: index.php?action=administration');
         }
   
