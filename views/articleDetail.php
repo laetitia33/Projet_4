@@ -46,7 +46,7 @@
  			<?php
         	}
        		else { ?>
-				<p>Article écrit par <a href="index.php#bio"><?= $post['author'] ?></a><br>
+				<p>Article écrit par <a href="index.php#bio"><?= $post['author'] ?></a><br></p>
 				<p><i class="far fa-calendar-alt"></i> Le <?= $post['date_creation_fr'] ?></p>
 	
 				  <?php
