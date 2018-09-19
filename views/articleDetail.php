@@ -1,8 +1,8 @@
 <?php $title = 'Chapitre ' . htmlspecialchars($post['id']) . ''; ?>
 
-<!----//////////////////////////////////////head et header////////////////////////////////--->
+<!--/////////////////////// head et header /////////////////////////////-->
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<?php include_once 'views/include/head.php';?>
 	<body>
 		<img id="pageArticle" src="public/image/photo2.jpg" alt="photo Alaska"/>
@@ -19,7 +19,7 @@
 
 
 
-<!--////////////////lien retour page précédente selon si visiteur ou admin//////////////////-->		
+<!--//////////////lien retour page précédente selon si visiteur ou admin//////////////////-->		
 		<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 			<p><a class="news" href="index.php#adminView"><i class="fas fa-arrow-left">
@@ -34,9 +34,9 @@
             }
             ?>
 		<h2><?= htmlspecialchars($post['title']) ?></h2>
-		<p>
+		<div>
 
-<!---///////affichage de l'auteur , de modification ou suppression de l'article  admin////---->				
+<!---///////affichage de l'auteur , de modification ou suppression de l'article  admin////-->				
 			<?php
 			if(isset($_SESSION['pseudo'])) { ?>
 				<i class="far fa-calendar-alt"></i> Le <?= htmlspecialchars($post['date_creation_fr'])?>
@@ -55,11 +55,11 @@
 			<div class="news" >	
 			<p><?= htmlspecialchars_decode(nl2br(html_entity_decode($post['content'])));?></p>	
 			</div>	
-		</p>
+		</div>
 
 <!--/////////////////////////-écrire commentaires admin ou visiteur//////////////////////////-->
 
-		<span id ="com"><h3><i class="far fa-comments"></i>Commentaires</h3></span>
+		<h3 style ="text-align:center;"><span id ="com"><i class="far fa-comments"></i>Commentaires</span></h3>
 		  <form action="index.php?action=addComment&amp;post_id=<?= $_GET['post_id'];?>#ancrecom" method="POST">
 			
 		<div>
@@ -79,7 +79,7 @@
 
 			<div class="inputbasic">
 				<label for="comment"></label><br />
-				<com  name="comment" id="comment" ; placeholder="Entrez votre commentaire"></com>
+				<textarea name="comment" id="comment"  placeholder="Entrez votre commentaire"></textarea>
 			</div>
 			
 			<div>
@@ -87,7 +87,7 @@
 			</div>
 		 </form>
 	
-<!--////////////////////////////////boucle affichage commentaire admin ou visiteur/////////////-->
+<!--///////////////////////// boucle affichage commentaire admin ou visiteur ///////////-->
 
 <?php while ($comment = $comments->fetch())
 		{ ;?>

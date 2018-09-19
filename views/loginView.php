@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <?php include_once 'views/include/head.php';?>
     <body>
         <img id="pageArticle" src="public/image/photo4.jpg" alt="photo Alaska"/>
@@ -10,13 +10,13 @@
           
            
             <div>
-                <label for="pseudo">Pseudo :</label><br />
-                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo"/>
+                <label for="user">Pseudo :</label><br />
+                <input type="text" placeholder="pseudo" class="inputbasic" id="user" name="pseudo">
             </div>
         
             <div>
-                <label for="pass"/>Mot de passe :</label><br /> 
-                <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe"/>
+                <label for="pass">Mot de passe :</label><br /> 
+                <input type="password" class="inputbasic" id="pass" name="pass"  placeholder="mot de passe">
                
             </div>
             

@@ -2,34 +2,34 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
     <?php include_once 'views/include/head.php';?>
     <body>
         <img id="pageArticle" src=" public/image/photo3.jpg" alt="photo Alaska"/>
 
         <p><a class="news" href="index.php#episodes"><i class="fas fa-arrow-left"> Retour à l'accueil</i></a></p>
-            <form class="form" method="post" action="index.php?action=addMail" ?>
+            <form class="form" method="post" action="index.php?action=addMail" >
                 <h2>Contactez l'auteur</h2>
 
                 <div class="name">
                     <label for="name"></label><br />
-                    <input type="text" name="name" placeholder="Entrez votre nom" class="inputbasic" value="" />
+                    <input type="text" id="name" name="name" placeholder="Entrez votre nom" class="inputbasic" value="" />
                 </div>
 
                 <div class="email">
                     <label for="email"></label><br />
-                    <input type="email" name="email" placeholder="Entrez votre e-mail" class="inputbasic"  value="" />
+                    <input type="email" id ="email" name="email" placeholder="Entrez votre e-mail" class="inputbasic"  value="" />
                 </div>
                 <div class="object">
 
                     <label for="object"></label><br />
-                    <input type="text" name="object" placeholder="sujet" class="inputbasic" value="" />
+                    <input type="text" id="object" name="object" placeholder="sujet" class="inputbasic" value="" />
                 </div>
 
                 <div class="inputbasic" >
                     <label for="message"></label><br />
-                        <textarea type="text" name="message" placeholder="Entrez votre message"></textarea>
+                        <textarea  id ="message" name="message" placeholder="Entrez votre message"></textarea>
                 </div>
 
                 <div id ="g-recaptcha" >
@@ -46,5 +46,4 @@
         <script src ="public/js/placeholder.min.js"></script>
     </body>
 </html>
-
 
