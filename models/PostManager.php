@@ -49,7 +49,7 @@ class PostManager extends Manager
     }
 
 
-    private function setId($post_id)
+    public function setId($post_id)
     {
         $post_id = (int) $post_id;
         if($post_id > 0){
