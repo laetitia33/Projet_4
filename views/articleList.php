@@ -10,7 +10,7 @@
 <?php
 		if(isset($_SESSION['pseudo'])) { ?>
 			<p class = "publishDate">Bonjour Jean, <?php
-			setlocale(LC_TIME, "fr_FR");
+			setlocale(LC_TIME, 'fr_FR.utf8','fra');
 			echo "Nous sommes le ".strftime("%d %B %Y");?> , Vos lecteurs attendent la suite           		
 			</p>
 			<?php
@@ -19,7 +19,7 @@
 		{ ?>
 
 			<p class = "publishDate">Bonjour ,<?php
-			setlocale(LC_TIME, "fr_FR");
+			setlocale(LC_TIME, 'fr_FR.utf8','fra');
 			echo "Nous sommes le ".strftime("%d %B %Y");?> , bientot le prochain chapitre en ligne...patientez ;)          		
 			</p>
 			  <?php
