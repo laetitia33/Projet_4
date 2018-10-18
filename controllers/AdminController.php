@@ -221,7 +221,6 @@ class AdministrationController
     public function deletePost($post_id)
     {
         $deletePost = $this->_post->deletePost($post_id);//supprimé un chapitre selectionné
-        $deleteComments = $this->_comment->deleteAllComments($post_id);//supprimé tous les chapitres 
 
         if ($deletePost === false) {
             throw new Exception('Impossible de supprimer le chapitre');
