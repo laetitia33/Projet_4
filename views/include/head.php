@@ -17,7 +17,7 @@
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
-		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h6ble8677pog4pffjmzlwtaf0l6xs0i472c1aw6acasvxtuy"></script>
+		<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=elalnpye4wgms3uvdl8bgb1a7yagjfq3fh5tbdtt1tmp2xuc"></script>
   		<script src= "public/js/tinymce/tinymce.js"></script>
   		<script src='https://www.google.com/recaptcha/api.js'></script>
   			
